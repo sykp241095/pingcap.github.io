@@ -1,0 +1,173 @@
+@import "./variables.less";
+
+// colors
+@M1: #FFFFFF;
+@M2: #FAFAFA;
+@B3: #172D72;
+@B4: #6E77A3;
+@B1: #2E2FFF;
+@T3:#FF4F5E;
+
+// display
+@maxWidth: 1288px;
+@marginEqual: 0 auto;
+
+// font-size 
+@H1: 1.5rem;
+@H2: 1.25rem;
+@p1: 1rem;
+
+// line margin
+@LH1: 3rem;
+@LH3: 2rem;
+
+
+.download-cn {
+    text-align: center;
+    
+    .hero {
+        .hero-body {
+            max-width: 700px;
+            padding: calc(~"@{headerHeight} * 2") @headerHeight @headerHeight;
+            margin: @headerHeight auto;
+
+            .title {
+                font-size: @H1;
+                color: @B3;
+                letter-spacing: 2px;
+            }
+
+            img {
+                padding-top: 2rem;
+            }
+        }
+    }
+
+    .download-field {
+        background-color: @M2;
+        padding: 3rem 1rem;
+
+        .columns {
+            justify-content: center;
+            margin: @marginEqual;
+            max-width: @maxWidth;
+
+
+            .column {
+                max-width: 550px;
+
+                .card {
+                    padding: 0.5rem 2rem;
+                    text-align: center;
+                    height: 100%;
+
+                    .card-image {
+                        width: 100%;
+                        height: 100px;
+                        margin: @LH1 0;
+
+                        figure {
+                            width: 100%;
+                            height: 100%;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+
+                            }
+                        }
+                    }
+
+                    .card-content {
+                        padding: 0;
+
+                        .title {
+                            font-size: @H2;
+                            color: @B3;
+                            margin-bottom: @LH1;
+                        }
+
+                        .content {
+                            ul {
+                                text-align: left;
+                                line-height: @LH3;
+                                font-size: @p1;
+                                color: @B4;
+                                margin: 0 2em @LH1;
+                            }
+
+                            .more {
+                                color: @B1;
+                                text-decoration: underline;
+                                position: relative;
+
+                                &::before {
+                                    content: '';
+                                    position: absolute;
+                                    background-image: url('/images/svgs/blue-right-arrow.svg');
+                                    width: 20px;
+                                    height: 20px;
+                                    left: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .form {
+        max-width: @maxWidth;
+        margin: @marginEqual;
+        background-color: @M2;
+        padding: 2rem 3rem;
+
+        .title-field {
+            .title {
+                display: flex;
+                align-items: center;
+                font-size: @p1;
+                color: @B3;
+                font-weight: bold;
+
+                .linux-icon {
+                    height: 40px;
+                    margin-left: 2rem;
+                }
+            }
+        }
+
+        .form-field {
+            margin: 2rem 0;
+
+            .field {
+                position: relative;
+
+                &::after {
+                    content: '*';
+                    position: absolute;
+                    right: -1rem;
+                    transform: translateY(-50%);
+                    color: @T3;
+                    top: 50%;
+                }
+            }
+        }
+    }
+
+    button {
+        background: @B1;
+        color: @M1;
+        margin: @LH1 0;
+        width: 100%;
+
+        &:hover {
+            color: @M1
+        }
+    }
+
+    .submit {
+        width: 100px;
+    }
+}

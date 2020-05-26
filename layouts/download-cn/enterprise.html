@@ -1,0 +1,66 @@
+{{- define "headTpl" -}}
+{{$.Scratch.Set "nav_active" "download"}}
+{{$.Scratch.Set "data_i18_link" "/download"}}
+{{$.Scratch.Set "data_i18_cn" true }}
+{{- partial "head/preload-css" (dict "href" "/css/download-cn.css") -}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" />
+{{- end -}}
+
+{{- define "main" -}}
+<div class="download-cn">
+    {{- partial "layout/download-cn-hero" -}}
+
+    <div class="form">
+        <div class="title-field">
+            <div class="title">
+                <p>企业版，申请 30 天免费评估！</p>
+            </div>
+        </div>
+
+        <form class="form-field" id="enterprise-form" action="" method="post">
+            <div class="columns is-multiline is-variable is-8">
+                <div class="column is-6">
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" id="name" name="name" type="text" placeholder="姓名">
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" id="phone" name="phone" type="text" placeholder="手机号码">
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" id="company" name="company" type="text" placeholder="公司名称">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <button class="button submit" onclick="submit()">提交</button>
+
+</div>
+{{- end -}}
+
+{{- define "footJS" -}}
+<script type="text/javascript" src="/js/vendor/lazyload.min.js"></script>
+<script type="text/javascript">
+    $(".lazy").lazyload({
+        threshold: 200,
+        effect: "fadeIn"
+    });
+</script>
+<script>
+    function submit() {
+        const data = { 'name': $('#name').val(), 'phone': $('#phone').val(), 'company': $('#company').val() }
+        console.log('data', data)
+    }
+</script>
+{{- end -}}
