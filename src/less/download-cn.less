@@ -6,16 +6,18 @@
 @B3: #172D72;
 @B4: #6E77A3;
 @B1: #2E2FFF;
-@T3:#FF4F5E;
+@B5: #F7F8F9;
+@T3: #FF4F5E;
 
 // display
-@maxWidth: 1288px;
+@maxWidth: 1024px;
 @marginEqual: 0 auto;
 
 // font-size 
 @H1: 1.5rem;
 @H2: 1.25rem;
 @p1: 1rem;
+@p2: 0.875rem;
 
 // line margin
 @LH1: 3rem;
@@ -24,7 +26,7 @@
 
 .download-cn {
     text-align: center;
-    
+
     .hero {
         .hero-body {
             max-width: 700px;
@@ -94,20 +96,58 @@
                                 font-size: @p1;
                                 color: @B4;
                                 margin: 0 2em @LH1;
+
+                                li {
+                                    list-style: none;
+                                    position: relative;
+                                    padding-left: 2rem;
+
+                                    a {
+                                        color: @B1;
+
+                                        &:hover {
+                                            color: @B1;
+                                        }
+                                    }
+
+                                    &:before {
+                                        content:"";
+                                        position: absolute;
+                                        width: 15px;
+                                        height: 15px;
+                                        left: 0;
+                                        transform: translateY(-50%);
+                                        top: 50%;
+                                        border-radius: 50%;
+                                        background-color: @B4;
+                                    }
+                                }
                             }
 
                             .more {
                                 color: @B1;
                                 text-decoration: underline;
                                 position: relative;
+                                text-align: left;
+                                min-height: 3rem;
+                                padding-left: 3.5rem;
+
+                                a {
+                                    color: @B1;
+
+                                    &:hover {
+                                        color: @B1;
+                                    }
+                                }
 
                                 &::before {
                                     content: '';
                                     position: absolute;
                                     background-image: url('/images/svgs/blue-right-arrow.svg');
-                                    width: 20px;
-                                    height: 20px;
-                                    left: 0;
+                                    width: 15px;
+                                    height: 15px;
+                                    left: 2rem;
+                                    top: 7px;
                                 }
                             }
                         }
@@ -178,24 +218,145 @@
                 color: @B1;
             }
         }
+
+        .column {
+            text-align: left;
+
+            .dropdown {
+                width: 100%;
+
+                .dropdown-trigger {
+                    width: 100%;
+
+                    button {
+                        width: 100%;
+                        justify-content: left;
+
+                        span {
+                            color: @p1;
+                            font-size: @B4;
+                            opacity: 0.5;
+                        }
+
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            top: 1em;
+                            right: 1em;
+                            width: 12px;
+                            height: 12px;
+                            background: url('/images/download-cn/dropdown-arrow.svg') no-repeat;
+                            background-size: contain;
+                            transform: rotate(0deg);
+                            transform-origin: 6px 3px;
+                            transition: transform .5s ease-out;
+                        }
+                    }
+                }
+
+                .dropdown-menu {
+                    width: 100%;
+
+                    .dropdown-content>.dropdown-item {
+                        &:hover {
+                            background-color: @B5;
+                        }
+                    }
+                }
+
+                &::after {
+                    content: '*';
+                    position: absolute;
+                    right: -1rem;
+                    transform: translateY(-50%);
+                    color: @T3;
+                    top: 50%;
+                }
+            }
+        }
     }
 
     .feedback-wrapper {
         display: none;
     }
 
-    button {
-        background: @B1;
-        color: @M1;
-        margin: @LH1 0;
-        width: 100%;
+    .form-wrapper,
+    .feedback-wrapper,
+    .card {
+        button {
+            background: @B1;
+            color: @M1;
+            bottom: 0;
+            margin: @LH1 0;
+            width: 100%;
 
-        &:hover {
-            color: @M1
+            &:hover {
+                color: @M1
+            }
+        }
+
+        .submit {
+            width: 150px;
         }
     }
 
-    .submit {
-        width: 150px;
+    .download-wrapper {
+        max-width: @maxWidth;
+        margin: 0 auto;
+
+        .control {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: @p2;
+            color: @B4;
+
+            a {
+                color: @B1;
+            }
+
+            &:hover {
+                input {
+                    color: @B4 !important;
+                }
+            }
+        }
+
+        .download-btn {
+            .allow-download {
+                display: none;
+            }
+        }
+
+        button {
+            background: @B1;
+            color: @M1;
+            margin: @p1 0 @LH1;
+            width: 150px;
+
+            &:hover {
+                color: @M1
+            }
+        }
+    }
+
+    .more-info {
+        max-width: @maxWidth;
+        text-align: left;
+        margin: 0 auto 2rem;
+
+        .title {
+            color: @B3;
+            font-size: @p1;
+        }
+
+        p>a {
+            color: @B1;
+            font-size: @p2;
+            text-decoration: underline;
+
+            &:hover {
+                color: @B1;
+            }
+        }
     }
 }

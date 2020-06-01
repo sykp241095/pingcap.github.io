@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="wrong-tips">错误提示：</div>
+                <div class="wrong-tips">错误提示：<span class="tips"></span></div>
             </form>
         </div>
 
@@ -76,35 +76,30 @@
         effect: "fadeIn"
     });
 </script>
-<script>
+<script type="text/javascript">
     function validateForm(name, phone, company) {
+        $('.tips')[0].innerText = ''
         let errArr = []
         const phoneRegx = /^1[3456789]\d{9}$/
 
         // check name validation
         if (name == '') {
-            console.log('none')
             errArr.push('姓名为必填选项')
         } else if (name.length > 64) {
-            console.log('larger than 64')
             errArr.push('名字长度不得超过 64 个字符')
         }
 
         // check phone
         if (phone == '') {
-            console.log('无手机号')
             errArr.push('手机为必填选项')
         } else if (!(phoneRegx.test(phone))) {
-            console.log('手机号错误')
             errArr.push('请输入正确手机号')
         }
 
         // check company
         if (company == '') {
-            console.log('none')
             errArr.push('公司名称为必填选项')
         } else if (company.length > 255) {
-            console.log('larger than 64')
             errArr.push('公司名称长度不得超过 255 个字符')
         }
 
@@ -112,10 +107,9 @@
     }
 
     function submit() {
+        $('.wrong-tips').css('display', 'none')
         const data = { 'name': $('#name').val(), 'phone': $('#phone').val(), 'company': $('#company').val() }
-        console.log('data', data)
         const errMsg = validateForm($('#name').val(), $('#phone').val(), $('#company').val())
-        console.log('ermsg', errMsg)
 
         if (errMsg.length == 0) {
             $.ajax({
@@ -125,19 +119,18 @@
                 contentType: 'application/json',
                 data: JSON.stringify(data),
                 success: function (result) {
-                    console.log('result', result)
                     $('.form-wrapper').css('display', 'none')
-                    $('.feedback').css('display', 'block')
+                    $('.feedback-wrapper').css('display', 'block')
                 },
                 error: function (err) {
-                    console.log('error', err)
+                    console.log('Submit form failed', err)
                 }
             })
         } else {
             $('.wrong-tips').css('display', 'block')
 
-            $('.wrong-tips').append(
-                errMsg.map(e => '<span>' + e + '</spam>').join('，')
+            $('.wrong-tips .tips').append(
+                errMsg.map(e => '<span>' + e + '</span>').join('，')
             )
         }
     }
