@@ -37,37 +37,37 @@ python scripts/convert_html.py "$cn_tmp_docs_path/index.html" "docs-cn"
 
 start_time=$(date +%H%M%S)
 echo "start time" $start_time
-for v in "${tidb_docs_versions[@]}"
-do
-  echo "$en_tmp_docs_path/$v"
-  echo "$cn_tmp_docs_path/$v"
-  replace_dist_html_link "$en_tmp_docs_path/$v" "docs/$v" &
-  replace_dist_html_link "$cn_tmp_docs_path/$v" "docs-cn/$v" &
-done
+# for v in "${tidb_docs_versions[@]}"
+# do
+#   echo "$en_tmp_docs_path/$v"
+#   echo "$cn_tmp_docs_path/$v"
+#   replace_dist_html_link "$en_tmp_docs_path/$v" "docs/$v" &
+#   replace_dist_html_link "$cn_tmp_docs_path/$v" "docs-cn/$v" &
+# done
 
-for v in "${operator_docs_versions[@]}"
-do 
-  echo "$en_tmp_docs_path/tidb-in-kubernetes/$v"
-  echo "$cn_tmp_docs_path/tidb-in-kubernetes/$v"
-  replace_dist_html_link "$en_tmp_docs_path/tidb-in-kubernetes/$v" "docs/tidb-in-kubernetes/$v" &
-  replace_dist_html_link "$cn_tmp_docs_path/tidb-in-kubernetes/$v" "docs-cn/tidb-in-kubernetes/$v" &
-done
+# for v in "${operator_docs_versions[@]}"
+# do 
+#   echo "$en_tmp_docs_path/tidb-in-kubernetes/$v"
+#   echo "$cn_tmp_docs_path/tidb-in-kubernetes/$v"
+#   replace_dist_html_link "$en_tmp_docs_path/tidb-in-kubernetes/$v" "docs/tidb-in-kubernetes/$v" &
+#   replace_dist_html_link "$cn_tmp_docs_path/tidb-in-kubernetes/$v" "docs-cn/tidb-in-kubernetes/$v" &
+# done
 
-for v in "${dm_docs_versions[@]}"
-do
-  echo "$en_tmp_docs_path/tidb-data-migration/$v"
-  echo "$cn_tmp_docs_path/tidb-data-migration/$v"
-  replace_dist_html_link "$en_tmp_docs_path/tidb-data-migration/$v" "docs/tidb-data-migration/$v" &
-  replace_dist_html_link "$cn_tmp_docs_path/tidb-data-migration/$v" "docs-cn/tidb-data-migration/$v" &
-done
+# for v in "${dm_docs_versions[@]}"
+# do
+#   echo "$en_tmp_docs_path/tidb-data-migration/$v"
+#   echo "$cn_tmp_docs_path/tidb-data-migration/$v"
+#   replace_dist_html_link "$en_tmp_docs_path/tidb-data-migration/$v" "docs/tidb-data-migration/$v" &
+#   replace_dist_html_link "$cn_tmp_docs_path/tidb-data-migration/$v" "docs-cn/tidb-data-migration/$v" &
+# done
 
-for repo in "${misc_repos[@]}"
-do 
-{
-  echo "dist/$repo"
-  replace_dist_html_link "dist/$repo" "$repo"
-} &
-done
+# for repo in "${misc_repos[@]}"
+# do 
+# {
+#   echo "dist/$repo"
+#   replace_dist_html_link "dist/$repo" "$repo"
+# } &
+# done
 
 # waiting all tasks finish.
 wait
@@ -85,17 +85,17 @@ rm_images_from_media_docs() {
 }
 
 # mv blog-cn/cases-cn in media to dist/images
-rm_images_from_media_docs docs/v2.1
-rm_images_from_media_docs docs/dev
-rm_images_from_media_docs docs/stable
-rm_images_from_media_docs docs/v3.1
-rm_images_from_media_docs docs/v3.0
-rm_images_from_media_docs docs-cn/v2.1
-rm_images_from_media_docs docs-cn/dev
-rm_images_from_media_docs docs-cn/stable
-rm_images_from_media_docs docs-cn/v3.1
-rm_images_from_media_docs docs-cn/v3.0
-rm_images_from_media_docs blog-cn
-rm_images_from_media_docs blog
-rm_images_from_media_docs weekly
-rm_images_from_media_docs meetup
+# rm_images_from_media_docs docs/v2.1
+# rm_images_from_media_docs docs/dev
+# rm_images_from_media_docs docs/stable
+# rm_images_from_media_docs docs/v3.1
+# rm_images_from_media_docs docs/v3.0
+# rm_images_from_media_docs docs-cn/v2.1
+# rm_images_from_media_docs docs-cn/dev
+# rm_images_from_media_docs docs-cn/stable
+# rm_images_from_media_docs docs-cn/v3.1
+# rm_images_from_media_docs docs-cn/v3.0
+# rm_images_from_media_docs blog-cn
+# rm_images_from_media_docs blog
+# rm_images_from_media_docs weekly
+# rm_images_from_media_docs meetup
