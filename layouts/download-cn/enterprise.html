@@ -1,0 +1,138 @@
+{{- define "headTpl" -}}
+{{$.Scratch.Set "nav_active" "download"}}
+{{$.Scratch.Set "data_i18_link" "/download"}}
+{{$.Scratch.Set "data_i18_cn" true }}
+{{- partial "head/preload-css" (dict "href" "/css/download-cn.css") -}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" />
+{{- end -}}
+
+{{- define "main" -}}
+<div class="download-cn">
+    {{- partial "layout/download-cn-hero" -}}
+
+    <div class="form-wrapper">
+        <div class="form">
+            <div class="title-field">
+                <div class="title">
+                    <p>企业版，申请 30 天免费评估！</p>
+                </div>
+            </div>
+    
+            <form class="form-field" id="enterprise-form" action="" method="post">
+                <div class="columns is-multiline is-variable is-8">
+                    <div class="column is-6">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input" id="name" name="name" type="text" placeholder="姓名" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input" id="phone" name="phone" type="text" placeholder="手机号码" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input" id="company" name="company" type="text" placeholder="公司名称">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrong-tips">错误提示：<span class="tips"></span></div>
+            </form>
+        </div>
+
+        <button class="button submit" onclick="submit()">提交</button>
+    </div>
+   
+    <div class="feedback-wrapper">
+        <div class="feedback">
+            <div class="title-field">
+                <div class="title">
+                    <img class="check-icon" src="/images/download-cn/check-circle.svg" alt="check circle icon" />
+                    <p>成功提交！</p>
+                </div>
+                <div class="feedback-desc">
+                    您的申请已成功提交，我们的支持团队会在 24 小时内与您联系试用事宜，如需帮助，请联系 <a href="mailto:tidb-support@pingcap.coim">tidb-support@pingcap.coim</a>
+                </div>
+            </div>
+        </div>
+        <a href="/"><button class="button submit">返回首页</button></a>
+    </div>
+
+
+</div>
+{{- end -}}
+
+{{- define "footJS" -}}
+<script type="text/javascript" src="/js/vendor/lazyload.min.js"></script>
+<script type="text/javascript">
+    $(".lazy").lazyload({
+        threshold: 200,
+        effect: "fadeIn"
+    });
+</script>
+<script type="text/javascript">
+    function validateForm(name, phone, company) {
+        $('.tips')[0].innerText = ''
+        let errArr = []
+        const phoneRegx = /^1[3456789]\d{9}$/
+
+        // check name validation
+        if (name == '') {
+            errArr.push('姓名为必填选项')
+        } else if (name.length > 64) {
+            errArr.push('名字长度不得超过 64 个字符')
+        }
+
+        // check phone
+        if (phone == '') {
+            errArr.push('手机为必填选项')
+        } else if (!(phoneRegx.test(phone))) {
+            errArr.push('请输入正确手机号')
+        }
+
+        // check company
+        if (company == '') {
+            errArr.push('公司名称为必填选项')
+        } else if (company.length > 255) {
+            errArr.push('公司名称长度不得超过 255 个字符')
+        }
+
+        return errArr
+    }
+
+    function submit() {
+        $('.wrong-tips').css('display', 'none')
+        const data = { 'name': $('#name').val(), 'phone': $('#phone').val(), 'company': $('#company').val() }
+        const errMsg = validateForm($('#name').val(), $('#phone').val(), $('#company').val())
+
+        if (errMsg.length == 0) {
+            $.ajax({
+                url: 'https://accounts.pingcap.com/api/customer-support/business-download-leads',
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function (result) {
+                    $('.form-wrapper').css('display', 'none')
+                    $('.feedback-wrapper').css('display', 'block')
+                },
+                error: function (err) {
+                    console.log('Submit form failed', err)
+                }
+            })
+        } else {
+            $('.wrong-tips').css('display', 'block')
+
+            $('.wrong-tips .tips').append(
+                errMsg.map(e => '<span>' + e + '</span>').join('，')
+            )
+        }
+    }
+</script>
+{{- end -}}
