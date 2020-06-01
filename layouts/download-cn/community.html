@@ -151,6 +151,8 @@
 
         $('.version .dropdown-item').click(function () {
             $('#version')[0].innerText = $(this)[0].innerText
+            $('#version').css('color', '#172D72')
+            $('#version').css('opacity', '1')
             validateForm()
         })
 
@@ -169,6 +171,9 @@
                     $('.allow-download').attr('href', '/')
                     break;
             }
+
+            $('#package').css('color', '#172D72')
+            $('#package').css('opacity', '1')
             validateForm()
         })
     })
