@@ -90,10 +90,11 @@
                         }
 
                         .content {
+                            font-size: @p1;
+
                             ul {
                                 text-align: left;
                                 line-height: @LH3;
-                                font-size: @p1;
                                 color: @B4;
                                 margin: 0 2em @LH1;
 
@@ -111,7 +112,7 @@
                                     }
 
                                     &:before {
-                                        content:"";
+                                        content: "";
                                         position: absolute;
                                         width: 15px;
                                         height: 15px;
@@ -148,6 +149,21 @@
                                     height: 15px;
                                     left: 2rem;
                                     top: 7px;
+                                }
+                            }
+
+                            @media only screen and (max-width: 414px) {
+                                font-size: @p2;
+
+                                ul>li::before {
+                                    width: 10px;
+                                    height: 10px;
+                                }
+
+                                .more::before {
+                                    width: 12px;
+                                    height: 12px;
+                                    top: 4px;
                                 }
                             }
                         }
@@ -316,7 +332,7 @@
 
             &:hover {
                 input {
-                    color: @B4 !important;
+                    color: @B4  !important;
                 }
             }
         }
@@ -343,6 +359,7 @@
         max-width: @maxWidth;
         text-align: left;
         margin: 0 auto 2rem;
+        padding: 2rem 3rem;
 
         .title {
             color: @B3;
