@@ -3,6 +3,7 @@
 {{$.Scratch.Set "data_i18_link" "/download"}}
 {{$.Scratch.Set "data_i18_cn" true }}
 {{- partial "head/preload-css" (dict "href" "/css/download-cn.css") -}}
+{{ $.Scratch.Set "metaTitle" "下载试用" }}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" />
 {{- end -}}
 
@@ -143,8 +144,16 @@
 
     $(document).ready(function () {
         $('.dropdown').click(function () {
+            $('.dropdown').not(this).removeClass('is-active')
             $(this).toggleClass('is-active')
         })
+
+        $(document).on('click', function (event) {
+            var $trigger = $('.dropdown');
+            if ($trigger !== event.target && !$trigger.has(event.target).length) {
+                $('.dropdown').removeClass('is-active');
+            }
+        });
 
         $('.version .dropdown-item').click(function () {
             $('#version')[0].innerText = $(this)[0].innerText

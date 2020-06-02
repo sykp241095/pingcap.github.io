@@ -3,6 +3,7 @@
 {{$.Scratch.Set "data_i18_link" "/download"}}
 {{$.Scratch.Set "data_i18_cn" true }}
 {{- partial "head/preload-css" (dict "href" "/css/download-cn.css") -}}
+{{ $.Scratch.Set "metaTitle" "下载试用" }}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" />
 {{- end -}}
 
@@ -35,6 +36,12 @@
                     </div>
                     <div class="field">
                         <div class="control">
+                            <input class="input" id="email" name="email" type="text" placeholder="公司邮箱"
+                                autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
                             <input class="input" id="company" name="company" type="text" placeholder="公司名称"
                                 autocomplete="off">
                         </div>
@@ -46,7 +53,7 @@
 
             <div class="feedback-wrapper">
                 <div class="title-field">
-                    <div class="title">
+                    <div class="title center">
                         <img class="check-icon" src="/images/download-cn/check-circle.svg" alt="check circle icon" />
                         <p>成功提交！</p>
                     </div>
@@ -71,10 +78,11 @@
     });
 </script>
 <script type="text/javascript">
-    function validateForm(name, phone, company) {
+    function validateForm(name, phone, email, company) {
         $('.tips')[0].innerText = ''
         let errArr = []
         const phoneRegx = /^1[3456789]\d{9}$/
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         // check name validation
         if (name == '') {
@@ -90,6 +98,12 @@
             errArr.push('请输入正确手机号')
         }
 
+        if (email == '') {
+            errArr.push('邮箱为必填选项')
+        } else if (!re.test(String(email).toLowerCase())){
+            errArr.push('请输入正确邮箱')
+        }
+
         // check company
         if (company == '') {
             errArr.push('公司名称为必填选项')
@@ -102,8 +116,8 @@
 
     function submit() {
         $('.wrong-tips').css('display', 'none')
-        const data = { 'name': $('#name').val(), 'phone': $('#phone').val(), 'company': $('#company').val() }
-        const errMsg = validateForm($('#name').val(), $('#phone').val(), $('#company').val())
+        const data = { 'name': $('#name').val(), 'phone': $('#phone').val(), 'email': $('#email').val(), 'company': $('#company').val() }
+        const errMsg = validateForm($('#name').val(), $('#phone').val(), $('#email').val(), $('#company').val())
 
         if (errMsg.length == 0) {
             $.ajax({
