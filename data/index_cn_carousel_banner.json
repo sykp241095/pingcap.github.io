@@ -1,20 +1,12 @@
 {
     "banners": [
         {
-            "link": "https://pingcap.com/community-cn/devcon2020",
-            "gaTrackEventClass": "devcon2020_view",
-            "gaTrackEventLabel": "homepage-devcon2020",
-            "img": "/images/community/devcon2020/devcon2020-banner-mobile.jpg",
-            "alt": "TiDB Hug Hunting banner",
-            "newTab": false
-        },
-        {
-            "link": "https://pingcap.com/community-cn/tidb-bug-hunting/",
-            "gaTrackEventClass": "tidb-bug-hunting_view",
-            "gaTrackEventLabel": "homepage-tidb-bug-hunting",
-            "img": "https://download.pingcap.com/images/community/activities/bug-hunting-mobile.jpg",
-            "alt": "TiDB Hug Hunting banner",
-            "newTab": false
+            "link": "http://www.vldb.org/pvldb/vol13/p3072-huang.pdf",
+            "gaTrackEventClass": "pingcap-vldb_paper",
+            "gaTrackEventLabel": "homepage-vldb-paper",
+            "img": "https://download.pingcap.com/images/vldb-paper.jpg",
+            "alt": "VLDB paper banner",
+            "newTab": true
         },
         {
             "link": "https://university.pingcap.com/",

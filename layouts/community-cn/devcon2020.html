@@ -1,12 +1,12 @@
 {{- define "title" -}}
-{{ $.Scratch.Set "metaTitle" "DevCon 2019" }}
+{{ $.Scratch.Set "metaTitle" "DevCon 2020" }}
 DevCon 2020
 {{- end -}}
 
 {{- define "headTpl" -}}
 {{ $.Scratch.Set "data_i18_cn" true }}
 {{ $.Scratch.Set "nav_active" "community" }}
-{{ $.Scratch.Set "data_i18_link" "/community/organization" }}
+{{ $.Scratch.Set "data_i18_link" "/community/devcon2020" }}
 {{- partial "head/preload-css" (dict "href" "/css/community/devcon2020.css") -}}
 {{- partial "head/preload-css" (dict "href" "/css/community/hackathon2019.css") -}}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" />
@@ -25,17 +25,16 @@ DevCon 2020
 {{- end -}}
 
 {{- define "main" -}}
-<div class="devCon devCon2020">
+<div class="devCon devCon2020 devCon-cn">
     <div class="banner__section devcon2020-banner">
-        <a class="sigup-btn" href="#sign-up">
-            立即报名
-        </a>
+        <div class="sigup-btn" href="#sign-up" style="cursor: not-allowed;">
+            活动已结束
+        </div>
     </div>
 
     <section class="activity-breif">
-        TiDB DevCon 是 PingCAP 团队面向 TiDB 社区推出的技术会议，每年在北京举办。本届 DevCon 将在 2
-        天的时间里，以线上直播的方式，为大家展示 TiDB 近一年的产品技术蜕变，分享最新的海内外生态进展。并将邀请来自全球的 50+
-        位用户，分享他们的实战经验和开源思考，覆盖金融、制造业、电信、电商、物流、能源、快消、新零售、云计算等多个领域。
+        TiDB DevCon 是 PingCAP 团队面向 TiDB 社区推出的技术会议，每年在北京举办。本届 DevCon 在 6 月 6 ～ 7 日举办，以线上直播的方式，为大家展示 TiDB
+        近一年的产品技术蜕变，分享最新的海内外生态进展，并邀请了来自全球的 80+ 位开发者、用户及合作伙伴，分享他们的实战经验和开源思考，覆盖金融、制造业、电信、电商、物流、能源、快消、新零售、云计算等多个领域。
     </section>
 
     <div class="agenda-wrapper">
@@ -121,7 +120,7 @@ DevCon 2020
     </section>
 
 
-    <div class="sign-up" id="sign-up">
+    <!-- <div class="sign-up" id="sign-up">
         <section>
             <h1 class="dc20-title">立即报名</h1>
             <p>
@@ -135,7 +134,7 @@ DevCon 2020
             <img class="lazy" src="/images/svgs/loader-spinner.svg"
                 data-original="/images/community/devcon2020/qrCode.jpg" />
         </section>
-    </div>
+    </div> -->
 
     <div class="reviews">
         {{- partial "community-cn/activities-review.html" (dict "review_posts" .Site.Data.devcon.reviews_2019 "type" "devcon2020") -}}

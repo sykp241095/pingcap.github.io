@@ -1,5 +1,35 @@
 [
   {
+    "title": "How TiDB's HTAP Makes Truly Hybrid Workloads Possible",
+    "logo": "/images/news/dzone-logo.png",
+    "link": "https://dzone.com/articles/how-tidbs-htap-makes-truly-hybrid-workloads-possib",
+    "date": "2020-07-30"
+  },
+  {
+    "title": "Emerging Startups 2020: Database Technology",
+    "logo": "/images/news/tracxn-logo.png",
+    "link": "https://tracxn.com/d/emerging-startups/database-technology-startups-2020",
+    "date": "2020-07-11"
+  },
+  {
+    "title": "Cluster Diagnostics: Troubleshoot Cluster Issues Using Only SQL Queries",
+    "logo": "/images/news/dzone-logo.png",
+    "link": "https://dzone.com/articles/cluster-diagnostics-troubleshoot-cluster-issues-us-6",
+    "date": "2020-07-06"
+  },
+  {
+    "title": "PingCAP Announces TiDB Cloud, Bringing Fully-Managed TiDB Service to AWS and GCP",
+    "logo": "/images/news/cision-logo.png",
+    "link": "https://www.prnewswire.com/news-releases/pingcap-announces-tidb-cloud-bringing-fully-managed-tidb-service-to-aws-and-gcp-301082155.html",
+    "date": "2020-06-23"
+  },
+  {
+    "title": "TiDB Dashboard: Easier Troubleshooting for Distributed Databases",
+    "logo": "/images/news/dzone-logo.png",
+    "link": "https://dzone.com/articles/tidb-dashboard-easier-troubleshooting-for-distribu",
+    "date": "2020-06-11"
+  },
+  {
     "title": "Large Transactions in TiDB",
     "logo": "/images/news/dzone-logo.png",
     "link": "https://dzone.com/articles/large-transactions-in-tidb",
