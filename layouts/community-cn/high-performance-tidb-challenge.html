@@ -6,7 +6,7 @@ High Performance TiDB Challenge
 {{- define "headTpl" -}}
 {{ $.Scratch.Set "nav_active" "community" }}
 {{ $.Scratch.Set "data_i18_cn" true }}
-{{ $.Scratch.Set "data_i18_link" "/community/organization" }}
+{{ $.Scratch.Set "data_i18_link" "/community/events/high-performance-tidb-challenge" }}
 {{- partial "head/preload-css" (dict "href" "/css/community/high-performance-tidb-challenge.css") -}}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" />
 <link
@@ -21,7 +21,7 @@ High Performance TiDB Challenge
       <div class="slogan">
         <div class="title-wrapper">
           <div class="date">
-            2020.09.17-2020.11.21
+            2020.09.17-2020.12.05
           </div>
         </div>
 
@@ -129,7 +129,7 @@ High Performance TiDB Challenge
         </div>
         <div class="step">
           <div class="label">Step 1</div>
-          <div class="step-title">报名组队 （即日起至 2020.11.15）</div>
+          <div class="step-title">报名组队 （即日起至 2020.11.29）</div>
           <div class="detail">请仔细阅读
             <a href="https://github.com/pingcap/community/blob/master/challenge-programs/high-performance-tidb-challenge-cn.md#%E6%B4%BB%E5%8A%A8%E8%A7%84%E5%88%99"
               target="_blank">「参赛须知」</a>
@@ -142,7 +142,7 @@ High Performance TiDB Challenge
         </div>
         <div class="step">
           <div class="label">Step 2</div>
-          <div class="step-title">实现任务 （ 2020.09.17-2020.11.15）</div>
+          <div class="step-title">实现任务 （ 2020.09.17-2020.11.29）</div>
           <div class="detail">Workload 优化：在小组顾问的指导下，大家围绕本小组场景主题，进行性能瓶颈判断及针对性的优化。对优化点提出 issue 并解决即可获得相应分数。<br />
             固定性能优化相关大 issue：在小组顾问的指导下解决 issue 后获得相应的分数。</div>
           <a
@@ -152,16 +152,17 @@ High Performance TiDB Challenge
         </div>
         <div class="step">
           <div class="label">Step 3</div>
-          <div class="step-title">提交成果（ 2020.11.15 之前）</div>
-          <div class="detail">所有参赛小组需在 11.15 日之前提交竞赛成果。11.15 日之后合并的 PR 将不得分。 </div>
+          <div class="step-title">提交成果（ 2020.11.29 之前）</div>
+          <div class="detail">所有参赛小组需在 11.29 日之前提交竞赛成果。11.29 日之后合并的 PR 将不得分。 </div>
         </div>
         <div class="step">
           <div class="label">Step 4</div>
-          <div class="step-title">现场答辩 （2020.11.21）</div>
-          <div class="detail">答辩时间为 11.21 日下午 13:00-17:00。所有参赛小组必须在 11.20 日上午 10:00 之前提交答辩 PPT。组长需在 PingCAP
+          <div class="step-title">现场答辩 （2020.12.05）</div>
+          <div class="detail">答辩时间为 12.05 日下午 13:00-17:00。所有参赛小组必须在 12.04 日上午 10:00 之前提交答辩 PPT。组长需在 PingCAP
             各地办公室同步进行现场答辩（海外队伍可线上进行答辩）。</div>
           <button class="button grading-btn">评分标准</button>
           <div class="grading">
+            <div class="close">X</div>
             <div class="grading-title">评分标准</div>
             <div class="item">
               <p class="criterion">性能提升度 （65%）</p>
@@ -201,46 +202,77 @@ High Performance TiDB Challenge
       </div>
       <div class="content">
         <div class="award">
-          <div class="award-level">一等奖</div>
+          <div class="award-level">第一名</div>
           <div class="detail">每支参赛队伍 <span class="strong">5 万元</span> RMB + 团队顾问个人奖金 <span class="strong">1 万元</span>
             RMB</div>
         </div>
         <div class="award">
-          <div class="award-level">二等奖</div>
+          <div class="award-level">第二名</div>
           <div class="detail">每支参赛队伍 <span class="strong">3 万元</span> RMB + 团队顾问个人奖金 <span class="strong">1 万元</span>
             RMB</div>
         </div>
         <div class="award">
-          <div class="award-level">三等奖</div>
+          <div class="award-level">第三名</div>
           <div class="detail">每支参赛队伍 <span class="strong">1 万元</span> RMB</div>
         </div>
+        <div class="award">
+          <div class="award-level">新增四重大礼包</div>
+          <div class="detail">除了一二三等奖的现金奖励，组委会决定增设竞赛大礼包；5 万云端资源免费用、10 万 TiDB Cloud
+            代金券送不停、更有知名企业内推和社区周边大礼等你来拿。具体活动规则请参见<a
+              href="https://github.com/pingcap/community/blob/master/challenge-programs/high-performance-tidb-challenge-cn.md"
+              target="_blank">
+              竞赛细则
+            </a></div>
+        </div>
         <div class="annotation">
-          注：获奖队伍最终由评委判定，总共不超过 5 支。所有完赛选手都可以获得神秘纪念周边一个～如获奖队伍没有顾问，则顾问奖金分发到参赛小组。
+          注：所有完赛选手都可以获得神秘纪念周边一个～如获奖队伍没有顾问，则顾问奖金分发到参赛小组。如果本次没有足够的项目完成比赛，奖金将会累积到第二季比赛和 hackathon 共享奖金池。
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- <section class="judges">
-  <div class="container">
-    <div class="judge">
-      <div class="avatar"></div>
-      <div class="name"></div>
-      <div class="title"></div>
-    </div>
-    <div class="judge">
-      <div class="avatar"></div>
-      <div class="name"></div>
-      <div class="title"></div>
-    </div>
-    <div class="judge">
-      <div class="avatar"></div>
-      <div class="name"></div>
-      <div class="title"></div>
+<section class="judges">
+  <div class="judges-body">
+    <div class="container">
+      <div class="title-wrapper">
+        <div class="title">评委</div>
+      </div>
+      <div class="judge-list">
+        <div class="judge">
+          <img class="avatar"
+            src="https://download.pingcap.com//images/community/high-performance-tidb/huangdongxu.png"></img>
+          <div class="name">黄东旭 PingCAP</div>
+          <div class="desc">联合创始人兼 CTO</div>
+        </div>
+        <div class="judge">
+          <img class="avatar"
+            src="https://download.pingcap.com//images/community/high-performance-tidb/wangyang.png"></img>
+          <div class="name">汪洋 平安科技</div>
+          <div class="desc">数据库产品部门总经理</div>
+        </div>
+        <div class="judge">
+          <img class="avatar"
+            src="https://download.pingcap.com//images/community/high-performance-tidb/sunxiaoguang.png"></img>
+          <div class="name">孙晓光 知乎</div>
+          <div class="desc">技术平台负责人</div>
+        </div>
+        <div class="judge">
+          <img class="avatar"
+            src="https://download.pingcap.com//images/community/high-performance-tidb/xuchengxuan.png"></img>
+          <div class="name">徐成选 伴鱼</div>
+          <div class="desc">基础架构负责人</div>
+        </div>
+        <div class="judge">
+          <img class="avatar"
+            src="https://download.pingcap.com//images/community/high-performance-tidb/tangliu.png"></img>
+          <div class="name">唐刘 PingCAP</div>
+          <div class="desc">首席架构师</div>
+        </div>
+      </div>
     </div>
   </div>
-</section> -->
+</section>
 
 <section class="learning-materials">
   <div class="learning-body">
@@ -329,7 +361,7 @@ High Performance TiDB Challenge
           <div class="detail detail-js detail-1">
             <div class="item">
               <p class="numb">1.</p>
-              <p class="desc">参赛选手必须以小组形式参赛，小组人数不超过五人，每一名参赛队员只能选择一个优化方向，且只能参加一个小组。</p>
+              <p class="desc">参赛选手必须以小组形式参赛，小组人数最多六人（包括顾问和队长），每一名参赛队员只能选择一个优化方向，且只能参加一个小组。</p>
             </div>
             <div class="item">
               <p class="numb">2.</p>
@@ -376,6 +408,10 @@ High Performance TiDB Challenge
               <p class="numb">3.</p>
               <p class="desc">没有顾问的小组可以与组委会进行协调，但不保证每个小组都有顾问。</p>
             </div>
+            <div class="item">
+              <p class="numb">4.</p>
+              <p class="desc">技术顾问也是队伍成员之一，可以参与团队奖金分配。</p>
+            </div>
           </div>
         </div>
       </div>
@@ -400,6 +436,42 @@ High Performance TiDB Challenge
             <img src="https://download.pingcap.com/images/community/high-performance-tidb/performance.svg" />
           </a>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="partners">
+  <div class="partners-body">
+    <div class="container">
+      <div class="title-wrapper">
+        <div class="title">合作伙伴</div>
+      </div>
+      <div class="ucloud">
+        <h2 class="sponsor-type">云计算基础设施支持</h2>
+        <div class="logo-list">
+          <img class="lazy" data-original="/images/community/high-performance-tidb/ucloud.svg"
+            src="/images/svgs/loader-spinner.svg" alt="sponsor logo">
+          <img class="lazy" data-original="/images/community/high-performance-tidb/pingankeji.png"
+            src="/images/svgs/loader-spinner.svg" alt="sponsor logo">
+        </div>
+      </div>
+      <h2 class="sponsor-type">社区支持</h2>
+      <div class="logo-list">
+        <img class="lazy" data-original="/images/community/high-performance-tidb/oschina.svg"
+          src="/images/svgs/loader-spinner.svg" alt="sponsor logo">
+        <img class="lazy" data-original="/images/community/high-performance-tidb/juejin.svg"
+          src="/images/svgs/loader-spinner.svg" alt="sponsor logo">
+        <img class="lazy" data-original="/images/community/high-performance-tidb/segmentfault.png"
+          src="/images/svgs/loader-spinner.svg" alt="sponsor logo">
+        <img class="lazy" data-original="/images/community/high-performance-tidb/datafun.svg"
+          src="/images/svgs/loader-spinner.svg" alt="sponsor logo">
+        <img class="lazy" data-original="/images/community/high-performance-tidb/csdn.svg"
+          src="/images/svgs/loader-spinner.svg" alt="sponsor logo">
+        <img class="lazy" data-original="/images/community/high-performance-tidb/gocn.svg"
+          src="/images/svgs/loader-spinner.svg" alt="sponsor logo">
+          <img class="lazy" data-original="/images/community/high-performance-tidb/banyu.png"
+            src="/images/svgs/loader-spinner.svg" alt="sponsor logo">
       </div>
     </div>
   </div>

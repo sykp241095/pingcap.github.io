@@ -10,6 +10,7 @@
   - [TiDB 研发工程师](engineering/tidb-engineer.md)
   - [Tools 研发工程师](engineering/tools-engineer.md)
   - [Cloud 研发工程师](engineering/cloud-engineer.md)
+  - [Cloud 研发工程师（Operator）](engineering/cloud-operator-engineer.md)
   - [前端开发工程师](engineering/fe-engineer.md)
   - [Chaos Mesh 研发工程师](engineering/chaosmesh-engineer.md)
   - [研发工程师 - 测试基础设施开发](engineering/test-develop-engineer.md)
@@ -22,7 +23,7 @@
   - [运维工程师](engineering/sa-engineer.md)
   - [资深安全工程师](engineering/security-engineer.md)
 - Business
-  - [高级行业方案架构师](business/senior-solution-architect.md)
+  - [高级解决方案架构师](business/senior-solution-architect-overseas.md)
   - [资深商务经理](business/senior-business-manager.md)
   - [资深行业销售总监](business/sales-director.md)
   - [资深销售经理（TiDB, Cloud）](business/global-sales-manager.md)
@@ -32,12 +33,20 @@
   - [资深/高级/中级 TiDB 交付 DBA](business/tidb-delivery-dba.md)
   - [资深渠道合作总监](business/channel-sales-director.md)
   - [Customer Success Engineer](business/customer-success-engineer.md)
+  - [Inside Sales](business/commercial-sales.md)
+  - [Sales Development Representative](business/commercial-sdr.md)
+- Solution & Architecture
+  - [高级应用架构师 (Java 方向)](solution-architecture/senior-solution-architect-java.md)
+  - [高级数据库架构师](solution-architecture/senior-solution-architect-db.md)
+  - [行业高级架构师 (金融方向)](solution-architecture/senior-solution-architect-f.md)
+  - [行业高级架构师 (零售/物流/制造/电商方向)](solution-architecture/senior-solution-architect-mul.md)
 - User Ecosystem
   - [资深互联网架构师](user-ecosystem/internet-architect.md)
   - [用户生态技术运营](user-ecosystem/user-ecosystem-technical-operations.md)
   - [PingCAP University 培训专家](user-ecosystem/tidb-training-expert.md)
   - [资深/高级/中级 TiDB DBA](user-ecosystem/tidb-dba.md)
   - [社区 BD 总监](user-ecosystem/bd-director.md)
+  - [数据分析师](user-ecosystem/bi.md)
 - Product & Design
   - [数据库产品经理](product-design/database-product-manager.md)
   - [网站产品经理](product-design/website-product-manager.md)
@@ -65,3 +74,4 @@
   - [招聘主管](general-administrative/hr-manager.md)
   - [分公司行政主管](general-administrative/office-admin.md)
   - [法务专员／主管](general-administrative/inhouse-legal.md)
+  - [知识产权法务专家](general-administrative/Intellectual-property-legal.md)

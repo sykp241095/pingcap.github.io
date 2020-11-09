@@ -28,14 +28,14 @@ function renderData() {
           ).appendTo('#ranking-list')
         })
     } else {
-      $('<div>本排行榜积分更新时间为 2020.9.17 至 2020.11.15 </div>').appendTo(
+      $('<div>本排行榜积分更新时间为 2020.9.17 至 2020.12.04 </div>').appendTo(
         '#ranking-list'
       )
     }
   })
 }
 
-function getURLParams() {
+function getURLParams(lang) {
   let utmSource = 'pingcap'
   let utmMediuBanner = 'banner'
   let utmMediumStep = 'step'
@@ -55,7 +55,7 @@ function getURLParams() {
   }
 
   let registerBtnURLBanner =
-    'https://forms.pingcap.com/f/high-performance-challenge-cn?' +
+    `https://forms.pingcap.com/f/high-performance-challenge-${lang}?` +
     'utm_source=' +
     utmSource +
     '&utm_medium=' +
@@ -64,7 +64,7 @@ function getURLParams() {
     utmCampaign
 
   let registerBtnURLStep =
-    'https://forms.pingcap.com/f/high-performance-challenge-cn?' +
+    `https://forms.pingcap.com/f/high-performance-challenge-${lang}?` +
     'utm_source=' +
     utmSource +
     '&utm_medium=' +
@@ -77,8 +77,9 @@ function getURLParams() {
 }
 
 $(document).ready(function() {
+  const lang = $('body').data('lang')
   renderData()
-  getURLParams()
+  getURLParams(lang)
 
   $('.list-card').click(function() {
     $('.detail-js').css('display', 'none')
@@ -89,5 +90,14 @@ $(document).ready(function() {
 
     let index = $('.list-card').index($(this)) + 1
     $('.detail-' + index).css('display', 'block')
+  })
+
+  $('.grading-btn').click(function() {
+    $('.grading').css('display', 'block')
+  })
+
+  $('.close').click(function() {
+    console.log('click close')
+    $('.grading').css('display', 'none')
   })
 })
