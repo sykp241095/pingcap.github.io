@@ -17,10 +17,9 @@ function renderData(sigName, membership) {
   Object.keys(membership).forEach((member) =>
     membership[member].forEach((m) =>
       $(
-        '<a class="member flex-lists" href="https://github.com/' + m.githubName + '">\
+        '<a class="member flex-lists member-hover" href="https://github.com/' + m.githubName + '">\
             <img class="lazy avatar" src="https://github.com/' + m.githubName + '.png" alt="avatar" />\
             <div class="member-info">\
-              <p>' + m.githubName + '</p>\
               <div class="github-icon"><p>' + m.githubName + '</p></div>\
             </div>\
         </a>'
