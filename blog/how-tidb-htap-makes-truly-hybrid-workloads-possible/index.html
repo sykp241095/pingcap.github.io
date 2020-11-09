@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta name="robots" content="noindex"><meta charset="utf-8"/><meta content="IE=edge" http-equiv="X-UA-Compatible"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport"/>
+<script>
+window.ga =
+    window.ga ||
+    function() {
+        ;(ga.q = ga.q || []).push(arguments)
+    }
+ga.l = +new Date()
+ga('create', 'UA-99991864-4', 'auto')
+ga('send', 'pageview')
+</script>
+<script async="" src="https://download.pingcap.com/js/ga-analytics.js"></script>
+<link href="https://download.pingcap.com/style/github-markdown.css" rel="stylesheet"/>
+<link href="/css/doc.css" rel="stylesheet"/>
+<title>How TiDB's HTAP Makes Truly Hybrid Workloads Possible | TiDB</title><link href="/images/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon"/>
+<meta content="This post introduces the design details of the HTAP architecture of TiDB, including the real-time updatable columnar engine, the multi-Raft replication strategy, and smart selection." name="description"/>
+<meta content="noodp" name="robots"/>
+<meta content="TiDB, MySQL, HTAP, Open Source, Cloud-Native, NewSQL, Aurora Alternative" name="keywords"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="website" property="og:type"/>
+<meta content="How TiDB's HTAP Makes Truly Hybrid Workloads Possible | TiDB" property="og:title"/>
+<meta content="This post introduces the design details of the HTAP architecture of TiDB, including the real-time updatable columnar engine, the multi-Raft replication strategy, and smart selection." property="og:description"/>
+<meta content="https://pingcap.com/blog/how-tidb-htap-makes-truly-hybrid-workloads-possible/" property="og:url"/>
+<meta content="MySQL at Scale. No more manual sharding" property="og:site_name"/>
+<meta content="/images/blog/htap-database.jpg" property="og:image"/>
+<meta content="/images/blog/htap-database.jpg" property="og:image:secure_url"/><meta content="summary_large_image" name="twitter:card"/>
+<meta content="1200" name="og:image:width"/>
+<meta content="600" name="og:image:height"/><meta content="This post introduces the design details of the HTAP architecture of TiDB, including the real-time updatable columnar engine, the multi-Raft replication strategy, and smart selection." name="twitter:description"/>
+<meta content="How TiDB's HTAP Makes Truly Hybrid Workloads Possible | TiDB" name="twitter:title"/>
+<meta content="@pingcap" name="twitter:site"/>
+<meta content="https://download.pingcap.com/images/blog/htap-database.jpg" name="twitter:image"/><meta content="@pingcap" name="twitter:creator"/>
+<script type="application/ld+json">
+{
+    "@context": "http:\/\/schema.org",
+    "@type": "WebSite",
+    "url": "https:\/\/pingcap.com\/",
+    "name": "PingCAP",
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https:\/\/pingcap.com\/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    }
+}
+</script>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+<script async="" src="https://accounts.pingcap.com/static/pingcap_sso/js/track.beta.js" type="text/javascript"></script>
+<link as="font" crossorigin="anonymous" href="https://download.pingcap.com/fonts/lato/lato-regular-webfont.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="anonymous" href="https://download.pingcap.com/fonts/lato/lato-regular-webfont.woff" rel="preload" type="font/woff"/>
+<link as="font" crossorigin="anonymous" href="https://download.pingcap.com/fonts/lato/lato-regular-webfont.ttf" rel="preload" type="font/ttf"/>
+<link as="font" crossorigin="anonymous" href="https://download.pingcap.com/fonts/titilliumweb/titilliumweb-regular-webfont.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="anonymous" href="https://download.pingcap.com/fonts/titilliumweb/titilliumweb-regular-webfont.woff" rel="preload" type="font/woff"/>
+<link as="font" crossorigin="anonymous" href="https://download.pingcap.com/fonts/titilliumweb/titilliumweb-regular-webfont.ttf" rel="preload" type="font/ttf"/>
+<link as="script" href="https://download.pingcap.com/js/jquery.min.js" rel="preload"/>
+<link href="/css/main.css" rel="stylesheet"/>
+<link href="https://download.pingcap.com/style/docsearch.min.css" rel="stylesheet"/>
+<script type="text/javascript">
+var trackOutboundLink = function(url) {
+  var redirectTriggered = false
+  ga('send', 'event', 'outbound', 'click', url, {
+    hitCallback: function() {
+      redirectTriggered = true
+      document.location = url
+    }
+  })
+  setTimeout(function() {
+    if (!redirectTriggered) {
+      document.location = url
+    }
+  }, 1500)
+}
+
+var trackViews = function(btn_type, event_category) {
+  var event_label = btn_type
+  var eventCategory = event_category
+  ga('send', 'event', {
+    'eventCategory': eventCategory,
+    'eventAction': 'click',
+    'eventLabel': event_label,
+    'transport': 'beacon'
+  });
+}
+</script>
+<script>if (location.pathname === '/') {
+        if (location.hostname === 'pingcap.github.io') {
+            location.href = '/en/'
+        }
+    }</script></head> <body data-lang="en"><div id="page-content">
+<header class="fixed-top" role="navigation">
+<div class="container">
+<a class="nav-brand" href="/en"><img alt="PingCAP" src="/images/pingcap-logo.png"/></a>
+<div class="nav-wrapper">
+<div class="navigation">
+<ul>
+<li><a class="a-en" href="https://en.pingcap.com">Cloud</a></li>
+<li><a class="a-en" href="/tidb-academy">TiDB Academy</a></li>
+<li class="docs-type-selector " id="docsTypeSelector">
+<a class="header-doc-nav" href="#">Docs</a>
+<div class="header-dropdown-menu" id="docsTypeSelectorItem">
+<a class="header-dropdown-item" href="/docs/stable/">TiDB</a>
+<a class="header-dropdown-item" href="/docs/tidb-in-kubernetes/stable/">TiDB in Kubernetes</a>
+<a class="header-dropdown-item" href="/docs/tidb-data-migration/stable/">TiDB Data Migration (DM)</a>
+</div>
+</li>
+<li><a class="a-en" href="/success-stories">Success
+                    Stories</a></li>
+<li class="sel"><a class="a-en" href="/blog">Blog</a></li>
+<li><a class="link-download link-download-en" href="/download">Free Download</a></li>
+</ul>
+</div>
+<div class="global-search">
+<div class="search-wrapper">
+<span class="icon-search"><svg fill="#fff" height="18" viewbox="0 0 67.125 67.125" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M23.902 0C11.01 0 .523 10.488.523 23.38c0 12.891 10.487 23.379 23.379 23.379a23.258 23.258 0 0 0 14.471-5.037l24.816 24.817c.391.391.902.586 1.414.586s1.023-.195 1.414-.586a2 2 0 0 0 0-2.828L41.293 38.985c3.721-4.142 5.989-9.613 5.989-15.605C47.282 10.488 36.794 0 23.902 0zM4.523 23.38C4.523 12.694 13.216 4 23.902 4c10.687 0 19.38 8.694 19.38 19.38 0 5.396-2.221 10.279-5.791 13.795a1.959 1.959 0 0 0-.488.349 2.003 2.003 0 0 0-.271.343C33.31 40.9 28.825 42.76 23.903 42.76c-10.686-.001-19.38-8.695-19.38-19.38z"></path><path d="M24.075 8.591c-8.25 0-14.962 6.712-14.962 14.962a2 2 0 0 0 4 0c0-6.044 4.918-10.962 10.962-10.962a2 2 0 0 0 0-4z"></path></svg></span>
+<input data-lang="en" data-type="" id="search-input" name="q" placeholder="Search TiDB Docs" type="search"/>
+</div>
+<script>
+    const inputNode = document.getElementById("search-input")
+
+    inputNode.addEventListener('keyup', ({key}) => {
+        if (key === "Enter") {
+            if ($('#search-input').data('lang') == 'cn') {
+                lang = 'zh'
+            }
+
+            const query = $('#search-input').val()
+            if (query) {
+                url = "https://docs.pingcap.com/" + (lang == 'zh' ? 'zh/' : '') + "search/?lang=" + lang + "&type=tidb&version=v4.0&q=" + query
+                window.location.href = url
+            }
+        }
+    })
+</script>
+</div>
+</div>
+<div class="nav-btn nav-slider">
+<i class="material-icons"><svg height="16" viewbox="0 0 459 459" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M0 382.5h459v-51H0v51zM0 255h459v-51H0v51zM0 76.5v51h459v-51H0z" fill="#FFF"></path></svg></i>
+</div>
+</div>
+</header>
+<nav class="mobile-sidebar">
+<div class="nav-header">
+<div class="logo-wrap">
+<a class="nav-brand" href="/en"><img alt="PingCAP" src="/images/pingcap-logo.png"/></a>
+</div>
+</div>
+<ul class="ul-base">
+<li><a href="https://en.pingcap.com/">Cloud</a></li>
+<li><a class="tidb-academy" href="/tidb-academy">TiDB Academy</a></li>
+<li class="docs-type-selector " id="docsTypeSelector">
+<p class="header-doc-nav">Docs</p>
+<div class="header-dropdown-menu" id="docsTypeSelectorItem">
+<a class="header-dropdown-item" href="/docs/stable/">TiDB</a>
+<a class="header-dropdown-item" href="/docs/tidb-in-kubernetes/stable/">TiDB in Kubernetes</a>
+<a class="header-dropdown-item" href="/docs/tidb-data-migration/stable/">TiDB Data Migration (DM)</a>
+</div>
+</li>
+<li><a href="/success-stories">Success Stories</a></li>
+<li class="sel"><a href="/blog">Blog</a></li>
+<li><a class="link-download" href="/download">Free Download</a></li>
+</ul>
+<div class="nav-footer">
+<div class="contact-list-wrap">
+<div class="flex-list">
+<h4 class="list-title"><strong>Contact</strong></h4>
+<ul class="social ul-base">
+<li><a class="twitter" href="https://twitter.com/PingCAP" target="_blank"><svg height="18" viewbox="0 0 612 612" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M612 116.258a250.714 250.714 0 0 1-72.088 19.772c25.929-15.527 45.777-40.155 55.184-69.411-24.322 14.379-51.169 24.82-79.775 30.48-22.907-24.437-55.49-39.658-91.63-39.658-69.334 0-125.551 56.217-125.551 125.513 0 9.828 1.109 19.427 3.251 28.606-104.326-5.24-196.835-55.223-258.75-131.174-10.823 18.51-16.98 40.078-16.98 63.101 0 43.559 22.181 81.993 55.835 104.479a125.556 125.556 0 0 1-56.867-15.756v1.568c0 60.806 43.291 111.554 100.693 123.104-10.517 2.83-21.607 4.398-33.08 4.398-8.107 0-15.947-.803-23.634-2.333 15.985 49.907 62.336 86.199 117.253 87.194-42.947 33.654-97.099 53.655-155.916 53.655-10.134 0-20.116-.612-29.944-1.721 55.567 35.681 121.536 56.485 192.438 56.485 230.948 0 357.188-191.291 357.188-357.188l-.421-16.253c24.666-17.593 46.005-39.697 62.794-64.861z"></path></svg></a></li>
+<li><a class="linkedin" href="https://www.linkedin.com/company/pingcap/" target="_blank"><svg height="18" viewbox="0 0 438.536 438.535" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M5.424 145.895H99.64v282.932H5.424zM408.842 171.739c-19.791-21.604-45.967-32.408-78.512-32.408-11.991 0-22.891 1.475-32.695 4.427-9.801 2.95-18.079 7.089-24.838 12.419-6.755 5.33-12.135 10.278-16.129 14.844-3.798 4.337-7.512 9.389-11.136 15.104v-40.232h-93.935l.288 13.706c.193 9.139.288 37.307.288 84.508 0 47.205-.19 108.777-.572 184.722h93.931V270.942c0-9.705 1.041-17.412 3.139-23.127 4-9.712 10.037-17.843 18.131-24.407 8.093-6.572 18.13-9.855 30.125-9.855 16.364 0 28.407 5.662 36.117 16.987 7.707 11.324 11.561 26.98 11.561 46.966V428.82h93.931V266.664c-.007-41.688-9.897-73.328-29.694-94.925zM53.103 9.708c-15.796 0-28.595 4.619-38.4 13.848C4.899 32.787 0 44.441 0 58.529 0 72.42 4.758 84.034 14.275 93.358c9.514 9.325 22.078 13.99 37.685 13.99h.571c15.99 0 28.887-4.661 38.688-13.99 9.801-9.324 14.606-20.934 14.417-34.829-.19-14.087-5.047-25.742-14.561-34.973C81.562 14.323 68.9 9.708 53.103 9.708z"></path></svg></a></li>
+<li><a class="reddit" href="https://www.reddit.com/r/TiDB/" target="_blank"><svg height="18" viewbox="0 0 279.748 279.748" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M279.748 133.142c0-19.299-15.701-35-35-35-10.768 0-20.674 4.812-27.279 13.064-18.532-8.431-39.663-13.626-62.015-15.271l19.206-60.692 42.895 9.294c3.285 12.782 14.901 22.258 28.693 22.258 16.336 0 29.627-13.29 29.627-29.626 0-16.336-13.291-29.627-29.627-29.627-11.801 0-21.999 6.941-26.759 16.95l-49.497-10.725a10.002 10.002 0 0 0-11.651 6.756L134.636 95.43c-26.164.638-50.988 6.053-72.356 15.775-6.606-8.251-16.512-13.063-27.28-13.063-19.299 0-35 15.701-35 35 0 9.373 3.683 18.173 10.222 24.709-3.9 8.37-5.875 17.076-5.875 25.936 0 24.048 14.396 46.492 40.538 63.199 25.447 16.264 59.183 25.221 94.989 25.221 35.808 0 69.542-8.957 94.989-25.221 26.142-16.707 40.538-39.151 40.538-63.199 0-8.859-1.975-17.565-5.875-25.936 6.539-6.537 10.222-15.336 10.222-24.709zM15.369 145.139c-2.212-3.59-3.369-7.688-3.369-11.997 0-12.682 10.317-23 23-23 5.444 0 10.558 1.851 14.649 5.258-14.622 8.302-26.132 18.289-34.28 29.739zm52.671 20.266c0-13.785 11.215-25 25-25s25 11.215 25 25-11.215 25-25 25-25-11.215-25-25zm123.119 57.054c-9.745 10.637-29.396 17.244-51.285 17.244-21.888 0-41.539-6.607-51.284-17.244a9.937 9.937 0 0 1-2.617-7.192 9.933 9.933 0 0 1 3.235-6.937 9.974 9.974 0 0 1 6.754-2.627c2.797 0 5.484 1.183 7.373 3.244 5.803 6.333 20.827 10.756 36.539 10.756s30.737-4.423 36.539-10.756a10.022 10.022 0 0 1 7.374-3.244c2.508 0 4.906.933 6.755 2.627a9.928 9.928 0 0 1 3.234 6.937 9.933 9.933 0 0 1-2.617 7.192zm-4.451-32.054c-13.785 0-25-11.215-25-25s11.215-25 25-25 25 11.215 25 25-11.215 25-25 25zm77.671-45.266c-8.147-11.45-19.657-21.436-34.28-29.739 4.092-3.408 9.205-5.258 14.649-5.258 12.683 0 23 10.318 23 23 0 4.309-1.157 8.407-3.369 11.997z"></path></svg></a></li>
+<li><a class="google-plus" href="https://groups.google.com/forum/#!forum/tidb-user" target="_blank"><svg height="18" viewbox="0 0 491.858 491.858" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M377.472 224.957H201.319v58.718H308.79c-16.032 51.048-63.714 88.077-120.055 88.077-69.492 0-125.823-56.335-125.823-125.824 0-69.492 56.333-125.823 125.823-125.823 34.994 0 66.645 14.289 89.452 37.346l42.622-46.328c-34.04-33.355-80.65-53.929-132.074-53.929C84.5 57.193 0 141.693 0 245.928s84.5 188.737 188.736 188.737c91.307 0 171.248-64.844 188.737-150.989v-58.718l-.001-.001zM491.858 224.857h-36.031v-36.031h-30.886v36.031H388.91v30.883h36.031v36.032h30.886V255.74h36.031z"></path></svg></a></li>
+<li><a class="stack-overflow" href="https://stackoverflow.com/questions/tagged/tidb" target="_blank"><svg height="18" viewbox="0 0 547.597 547.597" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M140.81 475.111h.024l189.91-.269c8.434-.013 15.3-6.886 15.3-15.318v-21.298c0-8.428-6.854-15.288-15.3-15.288l-189.91.264c-8.433.012-15.3 6.885-15.3 15.318v21.31c.001 8.427 6.855 15.281 15.276 15.281z"></path><path d="M58.667 517.854c.073 29.26.073 29.449 3.072 29.449h.055l10.612.294h.086s85.814 0 171.629-.036c42.914-.019 85.821-.05 118-.092 16.09-.019 29.505-.043 38.887-.074 17.803-.055 17.803-.055 17.803-3.072l.3-10.697V333.299c0-8.434-6.866-15.3-15.3-15.3h-11.909c-8.434 0-15.3 6.866-15.3 15.3V496.22c0 5.062-4.119 9.18-9.181 9.18H110.51c-5.061 0-9.18-4.118-9.18-9.18V333.299c0-8.434-6.867-15.3-15.3-15.3H73.82c-8.433 0-15.3 6.86-15.3 15.3 0 23.342.012 76.084.055 122.981.019 23.447.05 45.442.092 61.574z"></path><path d="M142.322 397.399l189.402 17.467c.478.043.948.062 1.413.062 7.956 0 14.468-5.985 15.159-13.917l1.83-21.096c.729-8.396-5.508-15.851-13.898-16.628l-189.102-17.461c-8.593-.795-15.869 5.441-16.653 13.825l-1.97 21.108a15.172 15.172 0 0 0 3.452 11.181 15.19 15.19 0 0 0 10.367 5.459zM437.636 208.849a15.253 15.253 0 0 0 17.694 12.443l21.065-3.678c8.311-1.451 13.898-9.395 12.454-17.706l-32.504-187.23c-1.42-8.207-9.21-13.917-17.692-12.448l-21.065 3.678c-8.311 1.451-13.898 9.395-12.454 17.705l32.502 187.236zM190.333 194.375l163.6 96.708a15.28 15.28 0 0 0 7.778 2.136c5.393 0 10.447-2.876 13.183-7.509l10.876-18.36c2.08-3.519 2.674-7.631 1.658-11.591a15.18 15.18 0 0 0-7.032-9.358l-163.6-96.714c-7.014-4.149-16.836-1.597-20.967 5.374l-10.869 18.36a15.2 15.2 0 0 0-1.658 11.591 15.21 15.21 0 0 0 7.031 9.363zM387.525 240.501a15.276 15.276 0 0 0 12.626 6.659c3.091 0 6.077-.924 8.635-2.681l17.405-11.934c6.953-4.768 8.752-14.314 4.015-21.292L323.29 54.104c-4.584-6.732-14.498-8.623-21.236-3.984l-17.737 12.21c-6.945 4.779-8.727 14.327-3.971 21.291l107.179 156.88zM154.482 302.319l183.465 49.156c1.298.349 2.632.526 3.966.526 6.903 0 12.98-4.67 14.762-11.347l5.508-20.624c2.179-8.152-2.681-16.555-10.826-18.74l-183.465-49.162c-8.017-2.148-16.604 2.852-18.728 10.826l-5.508 20.63c-2.179 8.142 2.68 16.551 10.826 18.735z"></path></svg></a></li>
+</ul>
+</div>
+<div class="subscribe">
+<a href="https://share.hsforms.com/1e2W03wLJQQKPd1d9rCbj_Q2npzm"><button class="btn btn-subscribe f-tc" style="margin-left: 0.75rem;">Subscribe to Blog</button></a>
+</div>
+</div>
+<div class="container">
+<a class="btn-lang" href="/blog-cn" id="lang">中文</a>
+</div>
+</div>
+</nav>
+<div class="blog">
+<div class="blogArticle__container">
+<div class="archive"><div class="article-nav">
+<a href="/blog/#HTAP">BLOG HOME</a> <span> &gt; </span>HTAP</div><div class="content markdown-body">
+<h1 class="title">How TiDB's HTAP Makes Truly Hybrid Workloads Possible</h1>
+<ul class="blog-post-meta">
+<li class="meta-item">
+<img alt="Date icon" src="/images/svgs/icon-date.svg"/>Thu, Jul 16, 2020</li>
+<li class="meta-item">
+<img alt="Pen icon" src="/images/svgs/icon-writer.svg"/>Shawn Ma</li>
+</ul>
+<div class="blog-text"><p><img alt="HTAP database" class="lazy" data-original="https://download.pingcap.com/images/blog/htap-database.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<p><a href="https://docs.pingcap.com/tidb/dev/overview">TiDB</a> is an open-source, distributed SQL database that supports <a href="https://en.wikipedia.org/wiki/HTAP">Hybrid Transactional/Analytical Processing</a> (HTAP) workloads.</p>
+<p>We're excited and proud about two recent TiDB milestones. First, our latest release, <a href="https://docs.pingcap.com/tidb/v4.0/release-4.0-ga">TiDB 4.0</a>, is now generally available. It introduces a new columnar engine, <a href="https://docs.pingcap.com/tidb/v4.0/tiflash-overview">TiFlash</a>, which is the key to TiDB's HTAP architecture. If you'd like to try TiDB 4.0, contact us at <a href="mailto:info@pingcap.com">info@pingcap.com</a> or join our <a href="https://slack.tidb.io/invite?team=tidb-community&amp;channel=everyone&amp;ref=pingcap-blog">community on Slack.</a></p>
+<p>Also, this August, the <em>Proceedings of the VLDB Endowment</em> (PLVB) will publish our paper “TiDB: A Raft-based HTAP Database.” This paper, authored by several <a href="https://pingcap.com/">PingCAP</a> engineers, is the most technically-detailed description of TiDB yet. Having our paper accepted by a top conference proves our “HTAP” is not a self-proclaimed marketing buzzword, but the real deal. PingCAP has been nurtured by papers from other organizations, and we're happy to do the same thing in return.</p>
+<h2 id="what-well-cover-here">What we'll cover here</h2>
+<p>Today, we'll look at the design details of TiDB's HTAP architecture. If you want to understand TiDB's design in its entirety, be sure to read our paper in August's <em>PVLDB</em>. This blog post covers:</p>
+<ul>
+<li><a href="#tidb-htap-storage">The real-time updatable columnar engine</a></li>
+<li><a href="#tidbs-log-replication">The multi-Raft replication strategy</a></li>
+<li><a href="#smart-selection">Smart selection</a></li>
+</ul>
+<p>I will go deep into these topics one by one below.</p>
+<h2 id="tidb-htap-storage">TiDB HTAP storage</h2>
+<h3 id="a-design-based-on-disk-instead-of-memory">A design based on disk instead of memory</h3>
+<p><a href="https://en.wikipedia.org/wiki/Online_transaction_processing">Online transactional processing</a> (OLTP) and <a href="https://en.wikipedia.org/wiki/Online_analytical_processing">online analytical processing</a> (OLAP) workloads prefer different storage formats. OLTP uses row format, and OLAP uses columnar format. However, because the differences are not significant in memory, Hasso Plattner, the author of <a href="https://en.wikipedia.org/wiki/SAP_HANA">SAP HANA</a>, proposed using the in-memory columnar format for both scenarios. Later, in 2014, Gartner invented the word “HTAP,” mainly targeting in-memory technologies.</p>
+<p>On disk, columnar format is not good at OLTP use cases. Why?</p>
+<p>Efficient data access relies on “locality,” which means putting all the data to access as close together as possible. By doing so, you avoid extra seek and cache inefficiency. Row and columnar formats, despite the factors of encoding and compression, essentially are about providing suitable locality for different access patterns:</p>
+<ul>
+<li>The row format stores row data together and makes single row access perform well.</li>
+<li>The columnar format puts data for each column together and makes accessing a few columns in batch very efficient.</li>
+</ul>
+<p>On the other hand, we traditionally think it is expensive to update columnar data. This is partly because naively splitting a row by its column and putting data in the right position is very expensive and results in disastrous write speed. Those effects are obvious on disk but are mitigated in memory. This is part of the reasons for all these years when we referred to HTAP, we were actually talking about in-memory databases.</p>
+<p>Although the price of memory chips is gradually dropping, it's still expensive. Research firms claim that HTAP simplifies your architecture and is potentially cheaper. But in fact, in-memory databases are limited to certain applications: unless architects require extremely low latency in their scenarios, they still have to convince their bosses whether the benefit brought by HTAP is worth an in-memory database.</p>
+<p>Therefore, our design is based on disk instead of memory.</p>
+<h3 id="modular-architecture">Modular architecture</h3>
+<p>We are definitely not the first to try a hybrid data format. It might be a mixture of column and row format like PAX, or a smart algorithm to glue them together. No matter how much engineering effort is devoted to improving performance, the locality problem still exists: it's hard to achieve top performance for both sides at the same time, and, needless to say, there is engineering complexity in dealing with both.</p>
+<p>To remove these engineering issues, we use modularization. We separate TiDB's SQL layer (the <a href="https://docs.pingcap.com/tidb/stable/architecture#tidb-server">TiDB servers</a>) from TiDB's storage engine (the <a href="https://docs.pingcap.com/tidb/dev/architecture#tikv-server">TiKV servers</a>, with data in row format). Instead of tightly coupling the two formats in one engine, we chose <a href="https://raft.github.io/">the Raft algorithm</a> to split-fuse row and column formats. This loosely-coupled approach has these advantages:</p>
+<ul>
+<li>We can consider one scenario (OLTP or OLAP) at a time. This only requires minimal changes to the current engine.</li>
+<li>Modularization makes it easier to adopt other open-source projects (such as <a href="https://en.wikipedia.org/wiki/ClickHouse">ClickHouse</a>) inside ours.</li>
+</ul>
+<p>Other designs also use a tightly-coupled approach, such as sharing the memtable of a log-structured merge-tree (LSM tree) and generating a dual format when flushing the disk. It's true that LSM helps in-column updates, and we tried this as well. But due to read performance, we abandoned such a design. We will touch on this later.</p>
+<h3 id="a-columnar-system-that-can-be-updated-in-real-time">A columnar system that can be updated in real time</h3>
+<p>Because of the loosely-coupled design, we need to focus on a single question for our storage engine: how to build a columnar system that can be updated in real-time using the primary key.</p>
+<p>In some cases, the columnar format <em>does</em> support updating. But generally, this kind of update is implemented by overwriting a large range of data all together. This is why a lot of times we have <a href="https://www.investopedia.com/terms/t/tplus1.asp">T+1</a> updating in data warehouses. If we ignore updating by primary key, the engine will be free from sorting and ordering: storing by the primary key is not just for fast seek but for fast update as well. If you need to update a row, the engine needs to achieve dedupe as fast as possible. It doesn't matter if the dedupe happens on writes or on reads. Most analytical databases or Hadoop drop the support for it and in turn gain higher loading and reading performance. However, this does not meet our requirement. To reach the goal of HTAP, TiDB has to <strong>support real-time updates and match TiKV's write performance</strong>.</p>
+<p>We are surely not the first to try updatable columnar stores. The database community has a common approach called delta-main for this purpose. Since columnar engines are not write-optimized, our idea is to store newly-written data in a write-optimized area and gradually move it to a read-optimized columnar area. As long as data moves frequently enough, the majority of data is in the read-optimized format and performance is acceptable.</p>
+<p>This is a simple idea dated to the “ancient time” of <a href="https://en.wikipedia.org/wiki/C-Store">C-Store</a>. As the pioneer of columnar databases, C-Store uses a row engine as the write-optimized area, where data is gradually compacted into columnar format areas.</p>
+<p>Our updatable columnar engine follows a similar approach. On the macro level, DeltaTree cuts data by primary key into segments like TiKV's <a href="https://docs.pingcap.com/tidb/dev/glossary#regionpeerraft-group">Regions</a>, using the range partition strategy. When data physically exceeds a certain threshold, each segment splits.</p>
+<p><img alt="DeltaTree" class="lazy" data-original="https://download.pingcap.com/images/blog/deltatree.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> DeltaTree </div>
+<p>On the micro level, as shown in the diagram above, each segment consists of a delta space and a stable space. Delta space is mainly optimized for writes. It's formed by small batches in the order of writes. Since data is appended to the tail, storing by the written order instead of the key order makes it a lot faster to write. Each time deltas accumulate to a certain threshold, they are compacted to stable space.</p>
+<p>The stable space is similar to what <a href="https://en.wikipedia.org/wiki/Apache_Parquet">Parquet</a> looks like: data is gathered in row groups, cut vertically by column, and stored in compressed format. The stable space is read-optimized. Without deltas, reading the stable area is blazingly fast. But in reality, data in the delta might need to overwrite older versions in the stable space. Therefore, the read operation is a two-way merging on the fly. To speed up the merging operation, the engine builds an auxiliary <a href="https://en.wikipedia.org/wiki/B%2B_tree">B+ tree</a> index for delta data in memory. Although delta data itself is not physically ordered (keeping such an order physically drastically harms the write performance), it is still logically ordered. This reduces the merging cost. At the same time, due to the range split at the segment level, the compaction operation touches only a small range of the whole data each time. This alleviates write amplification.</p>
+<p>Let's go back to the LSM + columnar format solution. In fact, you can consider LSM sort of a “delta-main” approach. When data is written into the memtable, it is in an append-only form. Regarding this, why not make LSM support updating in the column format? We tried, and it's viable. However, the read performance is not as good as the delta tree design. When LSM scans a range, it needs a heavy multi-way merge due to the overlap between layers: an N-Layer LSM might require an N-Way merge. We did an experiment on the LSM design based on a modified version of ClickHouse's merge tree engine, and the read speed is almost two times slower.</p>
+<table>
+<tr>
+<td rowspan="2"><strong>Tuple number</strong>
+</td>
+<td rowspan="2"><strong>Storage engine</strong>
+</td>
+<td colspan="4"><strong>Transactions per second</strong>
+</td>
+</tr>
+<tr>
+<td><strong>150</strong>
+</td>
+<td><strong>1,300</strong>
+</td>
+<td><strong>8,000</strong>
+</td>
+<td><strong>14,000</strong>
+</td>
+</tr>
+<tr>
+<td rowspan="2">100 M
+   </td>
+<td>Delta tree
+   </td>
+<td>0.49
+   </td>
+<td>0.48
+   </td>
+<td>0.50
+   </td>
+<td>0.45
+   </td>
+</tr>
+<tr>
+<td>LSM tree
+   </td>
+<td>1.01
+   </td>
+<td>0.97
+   </td>
+<td>0.94
+   </td>
+<td>0.95
+   </td>
+</tr>
+<tr>
+<td rowspan="2">200 M
+   </td>
+<td>Delta tree
+   </td>
+<td>0.71
+   </td>
+<td>0.74
+   </td>
+<td>0.72
+   </td>
+<td>0.75
+   </td>
+</tr>
+<tr>
+<td>LSM tree
+   </td>
+<td>1.59
+   </td>
+<td>1.63
+   </td>
+<td>1.67
+   </td>
+<td>1.64
+   </td>
+</tr>
+</table>
+<p>Now, we have solved the columnar format updating problem.</p>
+<h2 id="tidbs-log-replication">TiDB's log replication</h2>
+<h3 id="lower-level-log-replication">Lower-level log replication</h3>
+<p>As we chose a loosely-coupled design in the storage layer and column and row formats stay in different modules, the problem becomes how to replicate data between engines. Traditionally, in a primary-secondary replication database architecture, we tend to use high-level replication strategies like MySQL binlog. In fact, this was also our first prototype design. Since replication details are well hidden at such a high level, we just need to make TiFlash replay logs. By replicating based on the binlog, we built the first prototype very fast. It leveraged the binlog to bridge two worlds.</p>
+<p>However, for production, we need to further build our own fault-tolerant and rebalancing strategies like in TiKV. To make things worse, TiDB is a multi-primary system. Each TiDB server instance generates its own binlog. To keep data in order, we have to introduce a sorting node. Otherwise, we run the risk of overwriting newer data with older versions. This instantly degrades the system from a distributed design into single-node design, and latency surges. Also because of that, prototype TiFlash cannot provide cross-engine queries: reading from both engines in a single query will lead to subtle data inconsistency.</p>
+<p>Then, we turned to <strong>lower-level log replication. Yes, it's the Raft layer.</strong> The benefit is obvious: Raft logs preserved all details required for data replication. We made TiFlash a special TiKV node, and it inherited all the strengths of the multi-Raft system: data rebalances between nodes transparently, and Raft handles fault-tolerance. If a replica is lost, the storage layer automatically heals the lost data, and Raft ensures consistency between replicas. Replication from a lower level has its own great cost. We need to implement everything supporting multi-Raft design, such as splitting, merging, and transferring Regions, and fault-tolerant reads.</p>
+<h3 id="advantages-of-lower-level-log-replication">Advantages of lower-level log replication</h3>
+<p>The new design is the key to our HTAP architecture. <strong>It provides transparent and seamless integration between TiFlash and the whole storage layer</strong>: the same replication and scheduling strategies, the same transaction, and the same consistency design. And the replication channel is fully distributed, load balanced, and fault-tolerant.</p>
+<p>Compared to primary-secondary or dual format within the same node, <strong>TiFlash's OLTP and OLAP nodes can be completely independent, and they can scale separately</strong>. If you need more OLAP power, just add more TiFlash machines to your cluster. They do not interfere with each other's workloads or computing resources.</p>
+<p>At the same time, <strong>the replication naturally achieves load balancing and point-to-point (P2P) style</strong>. Each Region leader directly sends data to its columnar replica without any intermediate node. When a Region becomes too large and splits, the columnar replica splits as well. When replicas are transferred by scheduling, the replication channels transfer accordingly. It sounds futuristic, but these are just basic multi-Raft features.</p>
+<p><img alt="Multi-Raft storage architecture" class="lazy" data-original="https://download.pingcap.com/images/blog/multi-raft-storage-architecture.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> Multi-Raft storage architecture </div>
+<p>Most importantly, the greatest benefit of multi-Raft is the <strong>coexistence of consistency and asynchronized replication</strong>.</p>
+<p>Traditionally, if we want all replicas to be consistent, we must introduce synchronized replication. By doing so, an OLTP workload is impacted when columnar nodes suffer high pressure or network latency. To keep the replicas consistent, transactions on the row engine must wait for replication to finish; otherwise, a node crash causes data loss or inconsistency. Moreover, more columnar nodes introduce higher network latency. Although lots of other HTAP products entirely ignore workload interference, we still hope that delicate OLTP workloads enjoy better sheltering from OLAP workloads.</p>
+<p>Luckily, Raft solves the workload interference issue. TiFlash acts as the learner role in the Raft hierarchy. This exempts columnar replicas from voting and disrupting the OLTP workload. Transactions in the row engine return as if there are no columnar replicas.</p>
+<p>You might be wondering: is there no consistency or no guarantee in data arrival? Actually, we don't need physical consistency. All we need is logical consistency on reads.</p>
+<p>This is also a key feature of Raft: although not all replicas are consistent at the same time, read consistency is still ensured. When a read operation occurs, a columnar replica sends a replication progress check request to the leader replica. When the leader receives this request, it returns the latest log sequence number. TiFlash waits until the latest data catches up. This approach ensures that TiFlash always reads the latest data that's consistent. It guarantees that the latest write can be retrieved from TiFlash, and this forms a standard of freshness required by read transactions. When TiFlash asynchronously replicates data, it filters the data by reading the timestamp and provides the same transaction consistency that TiKV does. This makes TiFlash more than a heterogeneous replication system. It behaves more like a special index, since it is able to serve queries mixed with TiKV, without worrying about subtle and untraceable errors.</p>
+<p><img alt="TiFlash reads the latest and consistent data" class="lazy" data-original="https://download.pingcap.com/images/blog/read-latest-and-consistent-data.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> TiFlash always reads the latest and consistent data </div>
+<h2 id="smart-selection">Smart selection</h2>
+<p>In TiDB 4.0, the most important enhancement is access path auto-selection based on cost. Just as the common approach to select the right index is based on statistics, we apply a cost function as if the columnar engine is another sort of index and pick up the access path that costs the lowest. It does not matter which engine data is read from; it's just an ordinary access path.</p>
+<p>This technique is known as “smart scan,” and almost all databases have used it for decades. It might be one of the most popular features for TiDB 4.0. TiDB HTAP uses smart selection to extend its scenarios from OLTP plus business intelligence (BI) reports to more hybrid cases. Using TiFlash can greatly simplify TiDB's hybrid architecture.</p>
+<p>For example, one of our clients used it in a logistics application. They wanted to do high concurrent queries on detailed orders as well as low concurrent shipping analysis, aggregating data for specific locations and time periods in real time. Without a columnar store, multi-dimensional analysis on large dataset is a lot slower compared to analytical databases. Empowered by TiFlash, TiDB blurs the boundary between OLTP and OLAP. In contrast, TiSpark, a thin layer built for running Apache Spark on top of TiDB to answer complex OLAP queries, still aligns with the team's bigdata. DBAs and business application teams prefer accessing TiFlash via TiDB.</p>
+<h2 id="give-tidb-a-try">Give TiDB a try</h2>
+<p>This post took an in-depth look at TiDB's HTAP architecture. If you want a full analysis of TiDB, be sure to read “TiDB: A Raft-based HTAP Database,” which will be published this August in the <em>Proceedings of the VLDB Endowment</em>, Volume 13, Issue 12.</p>
+<p>You're welcome to <a href="https://docs.pingcap.com/tidb/v4.0/release-4.0-ga">try TiDB</a>, join our <a href="https://slack.tidb.io/invite?team=tidb-community&amp;channel=everyone&amp;ref=pingcap-blog">community on Slack</a>, and send us your feedback. After all, TiDB is a product shaped by the entire community. To us, your feedback is as important as contributing code.</p>
+</div>
+</div>
+<div class="article-toc"></div><div class="ssba-wrap">
+<div class="ssba">
+<a class="ssba_twitter_share" data-site="" href="http://twitter.com/share?url=https%3a%2f%2fpingcap.com%2fblog%2fhow-tidb-htap-makes-truly-hybrid-workloads-possible%2f" target="_blank">
+<img alt="Twitter icon" src="/images/svgs/twitter-icon.svg"/>
+</a>
+<a class="ssba_reddit_share" data-site="reddit" href="http://reddit.com/submit?url=https%3a%2f%2fpingcap.com%2fblog%2fhow-tidb-htap-makes-truly-hybrid-workloads-possible%2f&amp;title=How%20TiDB%27s%20HTAP%20Makes%20Truly%20Hybrid%20Workloads%20Possible" target="_blank">
+<img alt="Reddit icon" src="/images/svgs/reddit-icon.svg"/>
+</a>
+<a class="ssba_facebook_share" data-site="" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fpingcap.com%2fblog%2fhow-tidb-htap-makes-truly-hybrid-workloads-possible%2f" target="_blank">
+<img alt="Fackbook icon" src="/images/svgs/facebook-icon.svg"/>
+</a>
+<a class="ssba_linkedin_share" data-site="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fpingcap.com%2fblog%2fhow-tidb-htap-makes-truly-hybrid-workloads-possible%2f" target="_blank">
+<img alt="Linkedin icon" src="/images/svgs/linkedin-icon.svg"/>
+</a>
+<a class="ssba_hackernews_share" data-site="hackernews" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fpingcap.com%2fblog%2fhow-tidb-htap-makes-truly-hybrid-workloads-possible%2f&amp;t=How%20TiDB%27s%20HTAP%20Makes%20Truly%20Hybrid%20Workloads%20Possible" target="_blank">
+<img alt="Hacker News icon" src="/images/svgs/hacker-news-icon.svg"/>
+</a>
+</div>
+</div>
+<div class="trackable-btns">
+<a href="/download" onclick="trackViews('How TiDB\x27s HTAP Makes Truly Hybrid Workloads Possible', 'download-tidb-btn-bottom')"><button>Download
+                        TiDB</button></a>
+<a href="https://share.hsforms.com/1e2W03wLJQQKPd1d9rCbj_Q2npzm" onclick="trackViews('How TiDB\x27s HTAP Makes Truly Hybrid Workloads Possible', 'subscribe-blog-btn-bottom')"><button>Subscribe to
+                        Blog</button></a>
+</div>
+</div>
+<div class="sidebar-page">
+<div class="sticky-sidebar">
+<p class="toc-title">What’s on this page</p>
+<div id="smart_toc_wrapper"></div>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div class="container">
+<div class="flex-list-wrap">
+<div class="flex-list">
+<h4 class="list-title"><strong>Product</strong></h4>
+<ul>
+<li><a href="/docs/v3.0/">TiDB</a></li>
+<li><a href="/docs/v3.0/reference/tispark/">TiSpark</a></li>
+<li><a href="/docs/v3.0/roadmap/">Roadmap</a></li>
+</ul>
+</div>
+<div class="flex-list">
+<h4 class="list-title"><strong>Docs</strong></h4>
+<ul>
+<li><a href="/docs/stable/quick-start-with-tidb/">Quick Start</a></li>
+<li><a href="/blog/2017-07-24-tidbbestpractice/">Best Practices</a></li>
+<li><a href="/docs/stable/faq/tidb/">FAQ</a></li>
+<li><a href="/docs/stable/reference/tools/user-guide/">TiDB Tools</a></li>
+<li><a href="/docs/dev/releases/rn/">Release Notes</a></li>
+</ul>
+</div>
+<div class="flex-list">
+<h4 class="list-title"><strong>Resources</strong></h4>
+<ul>
+<li><a href="/blog/">Blog</a></li>
+<li><a href="/weekly/">Monthly</a></li>
+<li><a href="https://github.com/pingcap" target="_blank">GitHub</a></li>
+<li><a href="/community">TiDB Community</a></li>
+</ul>
+</div>
+<div class="flex-list">
+<h4 class="list-title"><strong>Company</strong></h4>
+<ul>
+<li><a href="/about/">About</a></li>
+<li><a href="https://angel.co/pingcap-1/jobs" target="_blank">Careers</a></li>
+<li><a href="/news/">News</a></li>
+<li><a href="/contact-us/">Contact Us</a></li>
+<li><a href="/privacy-policy/">Privacy Policy</a></li>
+<li><a href="/terms-of-service/">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="contact-list-wrap">
+<div class="flex-list">
+<h4 class="list-title"><strong>Connect</strong></h4>
+<ul>
+<li><a class="twitter" href="https://twitter.com/PingCAP" target="_blank"><svg height="19" viewbox="0 0 612 612" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M612 116.258a250.714 250.714 0 0 1-72.088 19.772c25.929-15.527 45.777-40.155 55.184-69.411-24.322 14.379-51.169 24.82-79.775 30.48-22.907-24.437-55.49-39.658-91.63-39.658-69.334 0-125.551 56.217-125.551 125.513 0 9.828 1.109 19.427 3.251 28.606-104.326-5.24-196.835-55.223-258.75-131.174-10.823 18.51-16.98 40.078-16.98 63.101 0 43.559 22.181 81.993 55.835 104.479a125.556 125.556 0 0 1-56.867-15.756v1.568c0 60.806 43.291 111.554 100.693 123.104-10.517 2.83-21.607 4.398-33.08 4.398-8.107 0-15.947-.803-23.634-2.333 15.985 49.907 62.336 86.199 117.253 87.194-42.947 33.654-97.099 53.655-155.916 53.655-10.134 0-20.116-.612-29.944-1.721 55.567 35.681 121.536 56.485 192.438 56.485 230.948 0 357.188-191.291 357.188-357.188l-.421-16.253c24.666-17.593 46.005-39.697 62.794-64.861z"></path></svg> Twitter</a></li>
+<li><a class="linkedin" href="https://www.linkedin.com/company/pingcap/" target="_blank"><svg height="16" viewbox="0 0 438.536 438.535" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M5.424 145.895H99.64v282.932H5.424zM408.842 171.739c-19.791-21.604-45.967-32.408-78.512-32.408-11.991 0-22.891 1.475-32.695 4.427-9.801 2.95-18.079 7.089-24.838 12.419-6.755 5.33-12.135 10.278-16.129 14.844-3.798 4.337-7.512 9.389-11.136 15.104v-40.232h-93.935l.288 13.706c.193 9.139.288 37.307.288 84.508 0 47.205-.19 108.777-.572 184.722h93.931V270.942c0-9.705 1.041-17.412 3.139-23.127 4-9.712 10.037-17.843 18.131-24.407 8.093-6.572 18.13-9.855 30.125-9.855 16.364 0 28.407 5.662 36.117 16.987 7.707 11.324 11.561 26.98 11.561 46.966V428.82h93.931V266.664c-.007-41.688-9.897-73.328-29.694-94.925zM53.103 9.708c-15.796 0-28.595 4.619-38.4 13.848C4.899 32.787 0 44.441 0 58.529 0 72.42 4.758 84.034 14.275 93.358c9.514 9.325 22.078 13.99 37.685 13.99h.571c15.99 0 28.887-4.661 38.688-13.99 9.801-9.324 14.606-20.934 14.417-34.829-.19-14.087-5.047-25.742-14.561-34.973C81.562 14.323 68.9 9.708 53.103 9.708z"></path></svg> LinkedIn</a></li>
+<li><a class="reddit" href="https://www.reddit.com/r/TiDB/" target="_blank"><svg height="18" viewbox="0 0 279.748 279.748" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M279.748 133.142c0-19.299-15.701-35-35-35-10.768 0-20.674 4.812-27.279 13.064-18.532-8.431-39.663-13.626-62.015-15.271l19.206-60.692 42.895 9.294c3.285 12.782 14.901 22.258 28.693 22.258 16.336 0 29.627-13.29 29.627-29.626 0-16.336-13.291-29.627-29.627-29.627-11.801 0-21.999 6.941-26.759 16.95l-49.497-10.725a10.002 10.002 0 0 0-11.651 6.756L134.636 95.43c-26.164.638-50.988 6.053-72.356 15.775-6.606-8.251-16.512-13.063-27.28-13.063-19.299 0-35 15.701-35 35 0 9.373 3.683 18.173 10.222 24.709-3.9 8.37-5.875 17.076-5.875 25.936 0 24.048 14.396 46.492 40.538 63.199 25.447 16.264 59.183 25.221 94.989 25.221 35.808 0 69.542-8.957 94.989-25.221 26.142-16.707 40.538-39.151 40.538-63.199 0-8.859-1.975-17.565-5.875-25.936 6.539-6.537 10.222-15.336 10.222-24.709zM15.369 145.139c-2.212-3.59-3.369-7.688-3.369-11.997 0-12.682 10.317-23 23-23 5.444 0 10.558 1.851 14.649 5.258-14.622 8.302-26.132 18.289-34.28 29.739zm52.671 20.266c0-13.785 11.215-25 25-25s25 11.215 25 25-11.215 25-25 25-25-11.215-25-25zm123.119 57.054c-9.745 10.637-29.396 17.244-51.285 17.244-21.888 0-41.539-6.607-51.284-17.244a9.937 9.937 0 0 1-2.617-7.192 9.933 9.933 0 0 1 3.235-6.937 9.974 9.974 0 0 1 6.754-2.627c2.797 0 5.484 1.183 7.373 3.244 5.803 6.333 20.827 10.756 36.539 10.756s30.737-4.423 36.539-10.756a10.022 10.022 0 0 1 7.374-3.244c2.508 0 4.906.933 6.755 2.627a9.928 9.928 0 0 1 3.234 6.937 9.933 9.933 0 0 1-2.617 7.192zm-4.451-32.054c-13.785 0-25-11.215-25-25s11.215-25 25-25 25 11.215 25 25-11.215 25-25 25zm77.671-45.266c-8.147-11.45-19.657-21.436-34.28-29.739 4.092-3.408 9.205-5.258 14.649-5.258 12.683 0 23 10.318 23 23 0 4.309-1.157 8.407-3.369 11.997z"></path></svg>Reddit</a></li>
+<li><a class="google-plus" href="https://groups.google.com/forum/#!forum/tidb-user" target="_blank"><svg height="20" viewbox="0 0 491.858 491.858" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M377.472 224.957H201.319v58.718H308.79c-16.032 51.048-63.714 88.077-120.055 88.077-69.492 0-125.823-56.335-125.823-125.824 0-69.492 56.333-125.823 125.823-125.823 34.994 0 66.645 14.289 89.452 37.346l42.622-46.328c-34.04-33.355-80.65-53.929-132.074-53.929C84.5 57.193 0 141.693 0 245.928s84.5 188.737 188.736 188.737c91.307 0 171.248-64.844 188.737-150.989v-58.718l-.001-.001zM491.858 224.857h-36.031v-36.031h-30.886v36.031H388.91v30.883h36.031v36.032h30.886V255.74h36.031z"></path></svg>Google Group</a></li>
+<li><a class="stack-overflow" href="https://stackoverflow.com/questions/tagged/tidb" target="_blank"><svg height="17" viewbox="0 0 547.597 547.597" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M140.81 475.111h.024l189.91-.269c8.434-.013 15.3-6.886 15.3-15.318v-21.298c0-8.428-6.854-15.288-15.3-15.288l-189.91.264c-8.433.012-15.3 6.885-15.3 15.318v21.31c.001 8.427 6.855 15.281 15.276 15.281z"></path><path d="M58.667 517.854c.073 29.26.073 29.449 3.072 29.449h.055l10.612.294h.086s85.814 0 171.629-.036c42.914-.019 85.821-.05 118-.092 16.09-.019 29.505-.043 38.887-.074 17.803-.055 17.803-.055 17.803-3.072l.3-10.697V333.299c0-8.434-6.866-15.3-15.3-15.3h-11.909c-8.434 0-15.3 6.866-15.3 15.3V496.22c0 5.062-4.119 9.18-9.181 9.18H110.51c-5.061 0-9.18-4.118-9.18-9.18V333.299c0-8.434-6.867-15.3-15.3-15.3H73.82c-8.433 0-15.3 6.86-15.3 15.3 0 23.342.012 76.084.055 122.981.019 23.447.05 45.442.092 61.574z"></path><path d="M142.322 397.399l189.402 17.467c.478.043.948.062 1.413.062 7.956 0 14.468-5.985 15.159-13.917l1.83-21.096c.729-8.396-5.508-15.851-13.898-16.628l-189.102-17.461c-8.593-.795-15.869 5.441-16.653 13.825l-1.97 21.108a15.172 15.172 0 0 0 3.452 11.181 15.19 15.19 0 0 0 10.367 5.459zM437.636 208.849a15.253 15.253 0 0 0 17.694 12.443l21.065-3.678c8.311-1.451 13.898-9.395 12.454-17.706l-32.504-187.23c-1.42-8.207-9.21-13.917-17.692-12.448l-21.065 3.678c-8.311 1.451-13.898 9.395-12.454 17.705l32.502 187.236zM190.333 194.375l163.6 96.708a15.28 15.28 0 0 0 7.778 2.136c5.393 0 10.447-2.876 13.183-7.509l10.876-18.36c2.08-3.519 2.674-7.631 1.658-11.591a15.18 15.18 0 0 0-7.032-9.358l-163.6-96.714c-7.014-4.149-16.836-1.597-20.967 5.374l-10.869 18.36a15.2 15.2 0 0 0-1.658 11.591 15.21 15.21 0 0 0 7.031 9.363zM387.525 240.501a15.276 15.276 0 0 0 12.626 6.659c3.091 0 6.077-.924 8.635-2.681l17.405-11.934c6.953-4.768 8.752-14.314 4.015-21.292L323.29 54.104c-4.584-6.732-14.498-8.623-21.236-3.984l-17.737 12.21c-6.945 4.779-8.727 14.327-3.971 21.291l107.179 156.88zM154.482 302.319l183.465 49.156c1.298.349 2.632.526 3.966.526 6.903 0 12.98-4.67 14.762-11.347l5.508-20.624c2.179-8.152-2.681-16.555-10.826-18.74l-183.465-49.162c-8.017-2.148-16.604 2.852-18.728 10.826l-5.508 20.63c-2.179 8.142 2.68 16.551 10.826 18.735z"></path></svg>Stack Overflow</a></li>
+</ul>
+</div>
+<div class="subscribe">
+<a href="https://share.hsforms.com/1e2W03wLJQQKPd1d9rCbj_Q2npzm"><button class="btn btn-subscribe f-tc">Subscribe to Blog</button></a>
+</div>
+</div>
+</div>
+<div class="container copyright-container">
+<p class="copyright">© 2020 PingCAP. All Rights Reserved.</p>
+<a class="copyright-btn-lang" href="/blog-cn" id="lang">中文</a>
+</div>
+</footer>
+<button class="back-to-top" type="button"><svg height="512" viewbox="0 0 284.929 284.929" width="512" xmlns="http://www.w3.org/2000/svg"><path d="M282.082 195.285L149.028 62.24c-1.901-1.903-4.088-2.856-6.562-2.856s-4.665.953-6.567 2.856L2.856 195.285C.95 197.191 0 199.378 0 201.853c0 2.474.953 4.664 2.856 6.566l14.272 14.271c1.903 1.903 4.093 2.854 6.567 2.854s4.664-.951 6.567-2.854l112.204-112.202 112.208 112.209c1.902 1.903 4.093 2.848 6.563 2.848 2.478 0 4.668-.951 6.57-2.848l14.274-14.277c1.902-1.902 2.847-4.093 2.847-6.566.001-2.476-.944-4.666-2.846-6.569z" fill="#FFF"></path></svg>
+</button>
+</div><div class="overlay"></div><script src="https://download.pingcap.com/js/jquery.min.js"></script><script src="/js/vendor/lazyload.min.js" type="text/javascript"></script>
+<script src="/js/doc.js" type="text/javascript"></script>
+<script src="/js/anchor.js" type="text/javascript"></script><script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script crossorigin="anonymous" integrity="sha384-jbFinqIbKkHNg+QL+yxB4VrBC0EAPTuaLGeRT0T+NfEV89YC6u1bKxHLwoo+/xxY" src="https://browser.sentry-cdn.com/5.11.0/bundle.min.js"></script><script>Sentry.init({ 
+            dsn: 'https://3f28ed393c5545daa74496b3cdb2e9ba@sentry.io/1887163' 
+        });</script><script src="/js/app.js"></script></body></html>

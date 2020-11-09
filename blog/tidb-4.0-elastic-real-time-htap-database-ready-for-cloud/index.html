@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta name="robots" content="noindex"><meta charset="utf-8"/><meta content="IE=edge" http-equiv="X-UA-Compatible"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport"/>
+<script>
+window.ga =
+    window.ga ||
+    function() {
+        ;(ga.q = ga.q || []).push(arguments)
+    }
+ga.l = +new Date()
+ga('create', 'UA-99991864-4', 'auto')
+ga('send', 'pageview')
+</script>
+<script async="" src="https://download.pingcap.com/js/ga-analytics.js"></script>
+<link href="https://download.pingcap.com/style/github-markdown.css" rel="stylesheet"/>
+<link href="/css/doc.css" rel="stylesheet"/>
+<title>TiDB 4.0: An Elastic, Real-Time HTAP Database Ready for the Cloud | TiDB</title><link href="/images/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon"/>
+<meta content="At TiDB DevCon 2020, Max Liu, CEO at PingCAP, gave a keynote speech. He believes that today's database should be more flexible, more real-time, and easier to use, and TiDB, an elastic, cloud-native, real-time HTAP database, is exactly that kind of database." name="description"/>
+<meta content="noodp" name="robots"/>
+<meta content="TiDB, MySQL, HTAP, Open Source, Cloud-Native, NewSQL, Aurora Alternative" name="keywords"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="website" property="og:type"/>
+<meta content="TiDB 4.0: An Elastic, Real-Time HTAP Database Ready for the Cloud | TiDB" property="og:title"/>
+<meta content="At TiDB DevCon 2020, Max Liu, CEO at PingCAP, gave a keynote speech. He believes that today's database should be more flexible, more real-time, and easier to use, and TiDB, an elastic, cloud-native, real-time HTAP database, is exactly that kind of database." property="og:description"/>
+<meta content="https://pingcap.com/blog/tidb-4.0-elastic-real-time-htap-database-ready-for-cloud/" property="og:url"/>
+<meta content="MySQL at Scale. No more manual sharding" property="og:site_name"/>
+<meta content="/images/blog/cloud-native-distributed-sql-database.jpg" property="og:image"/>
+<meta content="/images/blog/cloud-native-distributed-sql-database.jpg" property="og:image:secure_url"/><meta content="summary_large_image" name="twitter:card"/>
+<meta content="1200" name="og:image:width"/>
+<meta content="600" name="og:image:height"/><meta content="At TiDB DevCon 2020, Max Liu, CEO at PingCAP, gave a keynote speech. He believes that today's database should be more flexible, more real-time, and easier to use, and TiDB, an elastic, cloud-native, real-time HTAP database, is exactly that kind of database." name="twitter:description"/>
+<meta content="TiDB 4.0: An Elastic, Real-Time HTAP Database Ready for the Cloud | TiDB" name="twitter:title"/>
+<meta content="@pingcap" name="twitter:site"/>
+<meta content="https://download.pingcap.com/images/blog/cloud-native-distributed-sql-database.jpg" name="twitter:image"/><meta content="@pingcap" name="twitter:creator"/>
+<script type="application/ld+json">
+{
+    "@context": "http:\/\/schema.org",
+    "@type": "WebSite",
+    "url": "https:\/\/pingcap.com\/",
+    "name": "PingCAP",
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https:\/\/pingcap.com\/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    }
+}
+</script>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+<script async="" src="https://accounts.pingcap.com/static/pingcap_sso/js/track.beta.js" type="text/javascript"></script>
+<link as="font" crossorigin="anonymous" href="https://download.pingcap.com/fonts/lato/lato-regular-webfont.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="anonymous" href="https://download.pingcap.com/fonts/lato/lato-regular-webfont.woff" rel="preload" type="font/woff"/>
+<link as="font" crossorigin="anonymous" href="https://download.pingcap.com/fonts/lato/lato-regular-webfont.ttf" rel="preload" type="font/ttf"/>
+<link as="font" crossorigin="anonymous" href="https://download.pingcap.com/fonts/titilliumweb/titilliumweb-regular-webfont.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="anonymous" href="https://download.pingcap.com/fonts/titilliumweb/titilliumweb-regular-webfont.woff" rel="preload" type="font/woff"/>
+<link as="font" crossorigin="anonymous" href="https://download.pingcap.com/fonts/titilliumweb/titilliumweb-regular-webfont.ttf" rel="preload" type="font/ttf"/>
+<link as="script" href="https://download.pingcap.com/js/jquery.min.js" rel="preload"/>
+<link href="/css/main.css" rel="stylesheet"/>
+<link href="https://download.pingcap.com/style/docsearch.min.css" rel="stylesheet"/>
+<script type="text/javascript">
+var trackOutboundLink = function(url) {
+  var redirectTriggered = false
+  ga('send', 'event', 'outbound', 'click', url, {
+    hitCallback: function() {
+      redirectTriggered = true
+      document.location = url
+    }
+  })
+  setTimeout(function() {
+    if (!redirectTriggered) {
+      document.location = url
+    }
+  }, 1500)
+}
+
+var trackViews = function(btn_type, event_category) {
+  var event_label = btn_type
+  var eventCategory = event_category
+  ga('send', 'event', {
+    'eventCategory': eventCategory,
+    'eventAction': 'click',
+    'eventLabel': event_label,
+    'transport': 'beacon'
+  });
+}
+</script>
+<script>if (location.pathname === '/') {
+        if (location.hostname === 'pingcap.github.io') {
+            location.href = '/en/'
+        }
+    }</script></head> <body data-lang="en"><div id="page-content">
+<header class="fixed-top" role="navigation">
+<div class="container">
+<a class="nav-brand" href="/en"><img alt="PingCAP" src="/images/pingcap-logo.png"/></a>
+<div class="nav-wrapper">
+<div class="navigation">
+<ul>
+<li><a class="a-en" href="https://en.pingcap.com">Cloud</a></li>
+<li><a class="a-en" href="/tidb-academy">TiDB Academy</a></li>
+<li class="docs-type-selector " id="docsTypeSelector">
+<a class="header-doc-nav" href="#">Docs</a>
+<div class="header-dropdown-menu" id="docsTypeSelectorItem">
+<a class="header-dropdown-item" href="/docs/stable/">TiDB</a>
+<a class="header-dropdown-item" href="/docs/tidb-in-kubernetes/stable/">TiDB in Kubernetes</a>
+<a class="header-dropdown-item" href="/docs/tidb-data-migration/stable/">TiDB Data Migration (DM)</a>
+</div>
+</li>
+<li><a class="a-en" href="/success-stories">Success
+                    Stories</a></li>
+<li class="sel"><a class="a-en" href="/blog">Blog</a></li>
+<li><a class="link-download link-download-en" href="/download">Free Download</a></li>
+</ul>
+</div>
+<div class="global-search">
+<div class="search-wrapper">
+<span class="icon-search"><svg fill="#fff" height="18" viewbox="0 0 67.125 67.125" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M23.902 0C11.01 0 .523 10.488.523 23.38c0 12.891 10.487 23.379 23.379 23.379a23.258 23.258 0 0 0 14.471-5.037l24.816 24.817c.391.391.902.586 1.414.586s1.023-.195 1.414-.586a2 2 0 0 0 0-2.828L41.293 38.985c3.721-4.142 5.989-9.613 5.989-15.605C47.282 10.488 36.794 0 23.902 0zM4.523 23.38C4.523 12.694 13.216 4 23.902 4c10.687 0 19.38 8.694 19.38 19.38 0 5.396-2.221 10.279-5.791 13.795a1.959 1.959 0 0 0-.488.349 2.003 2.003 0 0 0-.271.343C33.31 40.9 28.825 42.76 23.903 42.76c-10.686-.001-19.38-8.695-19.38-19.38z"></path><path d="M24.075 8.591c-8.25 0-14.962 6.712-14.962 14.962a2 2 0 0 0 4 0c0-6.044 4.918-10.962 10.962-10.962a2 2 0 0 0 0-4z"></path></svg></span>
+<input data-lang="en" data-type="" id="search-input" name="q" placeholder="Search TiDB Docs" type="search"/>
+</div>
+<script>
+    const inputNode = document.getElementById("search-input")
+
+    inputNode.addEventListener('keyup', ({key}) => {
+        if (key === "Enter") {
+            if ($('#search-input').data('lang') == 'cn') {
+                lang = 'zh'
+            }
+
+            const query = $('#search-input').val()
+            if (query) {
+                url = "https://docs.pingcap.com/" + (lang == 'zh' ? 'zh/' : '') + "search/?lang=" + lang + "&type=tidb&version=v4.0&q=" + query
+                window.location.href = url
+            }
+        }
+    })
+</script>
+</div>
+</div>
+<div class="nav-btn nav-slider">
+<i class="material-icons"><svg height="16" viewbox="0 0 459 459" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M0 382.5h459v-51H0v51zM0 255h459v-51H0v51zM0 76.5v51h459v-51H0z" fill="#FFF"></path></svg></i>
+</div>
+</div>
+</header>
+<nav class="mobile-sidebar">
+<div class="nav-header">
+<div class="logo-wrap">
+<a class="nav-brand" href="/en"><img alt="PingCAP" src="/images/pingcap-logo.png"/></a>
+</div>
+</div>
+<ul class="ul-base">
+<li><a href="https://en.pingcap.com/">Cloud</a></li>
+<li><a class="tidb-academy" href="/tidb-academy">TiDB Academy</a></li>
+<li class="docs-type-selector " id="docsTypeSelector">
+<p class="header-doc-nav">Docs</p>
+<div class="header-dropdown-menu" id="docsTypeSelectorItem">
+<a class="header-dropdown-item" href="/docs/stable/">TiDB</a>
+<a class="header-dropdown-item" href="/docs/tidb-in-kubernetes/stable/">TiDB in Kubernetes</a>
+<a class="header-dropdown-item" href="/docs/tidb-data-migration/stable/">TiDB Data Migration (DM)</a>
+</div>
+</li>
+<li><a href="/success-stories">Success Stories</a></li>
+<li class="sel"><a href="/blog">Blog</a></li>
+<li><a class="link-download" href="/download">Free Download</a></li>
+</ul>
+<div class="nav-footer">
+<div class="contact-list-wrap">
+<div class="flex-list">
+<h4 class="list-title"><strong>Contact</strong></h4>
+<ul class="social ul-base">
+<li><a class="twitter" href="https://twitter.com/PingCAP" target="_blank"><svg height="18" viewbox="0 0 612 612" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M612 116.258a250.714 250.714 0 0 1-72.088 19.772c25.929-15.527 45.777-40.155 55.184-69.411-24.322 14.379-51.169 24.82-79.775 30.48-22.907-24.437-55.49-39.658-91.63-39.658-69.334 0-125.551 56.217-125.551 125.513 0 9.828 1.109 19.427 3.251 28.606-104.326-5.24-196.835-55.223-258.75-131.174-10.823 18.51-16.98 40.078-16.98 63.101 0 43.559 22.181 81.993 55.835 104.479a125.556 125.556 0 0 1-56.867-15.756v1.568c0 60.806 43.291 111.554 100.693 123.104-10.517 2.83-21.607 4.398-33.08 4.398-8.107 0-15.947-.803-23.634-2.333 15.985 49.907 62.336 86.199 117.253 87.194-42.947 33.654-97.099 53.655-155.916 53.655-10.134 0-20.116-.612-29.944-1.721 55.567 35.681 121.536 56.485 192.438 56.485 230.948 0 357.188-191.291 357.188-357.188l-.421-16.253c24.666-17.593 46.005-39.697 62.794-64.861z"></path></svg></a></li>
+<li><a class="linkedin" href="https://www.linkedin.com/company/pingcap/" target="_blank"><svg height="18" viewbox="0 0 438.536 438.535" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M5.424 145.895H99.64v282.932H5.424zM408.842 171.739c-19.791-21.604-45.967-32.408-78.512-32.408-11.991 0-22.891 1.475-32.695 4.427-9.801 2.95-18.079 7.089-24.838 12.419-6.755 5.33-12.135 10.278-16.129 14.844-3.798 4.337-7.512 9.389-11.136 15.104v-40.232h-93.935l.288 13.706c.193 9.139.288 37.307.288 84.508 0 47.205-.19 108.777-.572 184.722h93.931V270.942c0-9.705 1.041-17.412 3.139-23.127 4-9.712 10.037-17.843 18.131-24.407 8.093-6.572 18.13-9.855 30.125-9.855 16.364 0 28.407 5.662 36.117 16.987 7.707 11.324 11.561 26.98 11.561 46.966V428.82h93.931V266.664c-.007-41.688-9.897-73.328-29.694-94.925zM53.103 9.708c-15.796 0-28.595 4.619-38.4 13.848C4.899 32.787 0 44.441 0 58.529 0 72.42 4.758 84.034 14.275 93.358c9.514 9.325 22.078 13.99 37.685 13.99h.571c15.99 0 28.887-4.661 38.688-13.99 9.801-9.324 14.606-20.934 14.417-34.829-.19-14.087-5.047-25.742-14.561-34.973C81.562 14.323 68.9 9.708 53.103 9.708z"></path></svg></a></li>
+<li><a class="reddit" href="https://www.reddit.com/r/TiDB/" target="_blank"><svg height="18" viewbox="0 0 279.748 279.748" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M279.748 133.142c0-19.299-15.701-35-35-35-10.768 0-20.674 4.812-27.279 13.064-18.532-8.431-39.663-13.626-62.015-15.271l19.206-60.692 42.895 9.294c3.285 12.782 14.901 22.258 28.693 22.258 16.336 0 29.627-13.29 29.627-29.626 0-16.336-13.291-29.627-29.627-29.627-11.801 0-21.999 6.941-26.759 16.95l-49.497-10.725a10.002 10.002 0 0 0-11.651 6.756L134.636 95.43c-26.164.638-50.988 6.053-72.356 15.775-6.606-8.251-16.512-13.063-27.28-13.063-19.299 0-35 15.701-35 35 0 9.373 3.683 18.173 10.222 24.709-3.9 8.37-5.875 17.076-5.875 25.936 0 24.048 14.396 46.492 40.538 63.199 25.447 16.264 59.183 25.221 94.989 25.221 35.808 0 69.542-8.957 94.989-25.221 26.142-16.707 40.538-39.151 40.538-63.199 0-8.859-1.975-17.565-5.875-25.936 6.539-6.537 10.222-15.336 10.222-24.709zM15.369 145.139c-2.212-3.59-3.369-7.688-3.369-11.997 0-12.682 10.317-23 23-23 5.444 0 10.558 1.851 14.649 5.258-14.622 8.302-26.132 18.289-34.28 29.739zm52.671 20.266c0-13.785 11.215-25 25-25s25 11.215 25 25-11.215 25-25 25-25-11.215-25-25zm123.119 57.054c-9.745 10.637-29.396 17.244-51.285 17.244-21.888 0-41.539-6.607-51.284-17.244a9.937 9.937 0 0 1-2.617-7.192 9.933 9.933 0 0 1 3.235-6.937 9.974 9.974 0 0 1 6.754-2.627c2.797 0 5.484 1.183 7.373 3.244 5.803 6.333 20.827 10.756 36.539 10.756s30.737-4.423 36.539-10.756a10.022 10.022 0 0 1 7.374-3.244c2.508 0 4.906.933 6.755 2.627a9.928 9.928 0 0 1 3.234 6.937 9.933 9.933 0 0 1-2.617 7.192zm-4.451-32.054c-13.785 0-25-11.215-25-25s11.215-25 25-25 25 11.215 25 25-11.215 25-25 25zm77.671-45.266c-8.147-11.45-19.657-21.436-34.28-29.739 4.092-3.408 9.205-5.258 14.649-5.258 12.683 0 23 10.318 23 23 0 4.309-1.157 8.407-3.369 11.997z"></path></svg></a></li>
+<li><a class="google-plus" href="https://groups.google.com/forum/#!forum/tidb-user" target="_blank"><svg height="18" viewbox="0 0 491.858 491.858" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M377.472 224.957H201.319v58.718H308.79c-16.032 51.048-63.714 88.077-120.055 88.077-69.492 0-125.823-56.335-125.823-125.824 0-69.492 56.333-125.823 125.823-125.823 34.994 0 66.645 14.289 89.452 37.346l42.622-46.328c-34.04-33.355-80.65-53.929-132.074-53.929C84.5 57.193 0 141.693 0 245.928s84.5 188.737 188.736 188.737c91.307 0 171.248-64.844 188.737-150.989v-58.718l-.001-.001zM491.858 224.857h-36.031v-36.031h-30.886v36.031H388.91v30.883h36.031v36.032h30.886V255.74h36.031z"></path></svg></a></li>
+<li><a class="stack-overflow" href="https://stackoverflow.com/questions/tagged/tidb" target="_blank"><svg height="18" viewbox="0 0 547.597 547.597" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M140.81 475.111h.024l189.91-.269c8.434-.013 15.3-6.886 15.3-15.318v-21.298c0-8.428-6.854-15.288-15.3-15.288l-189.91.264c-8.433.012-15.3 6.885-15.3 15.318v21.31c.001 8.427 6.855 15.281 15.276 15.281z"></path><path d="M58.667 517.854c.073 29.26.073 29.449 3.072 29.449h.055l10.612.294h.086s85.814 0 171.629-.036c42.914-.019 85.821-.05 118-.092 16.09-.019 29.505-.043 38.887-.074 17.803-.055 17.803-.055 17.803-3.072l.3-10.697V333.299c0-8.434-6.866-15.3-15.3-15.3h-11.909c-8.434 0-15.3 6.866-15.3 15.3V496.22c0 5.062-4.119 9.18-9.181 9.18H110.51c-5.061 0-9.18-4.118-9.18-9.18V333.299c0-8.434-6.867-15.3-15.3-15.3H73.82c-8.433 0-15.3 6.86-15.3 15.3 0 23.342.012 76.084.055 122.981.019 23.447.05 45.442.092 61.574z"></path><path d="M142.322 397.399l189.402 17.467c.478.043.948.062 1.413.062 7.956 0 14.468-5.985 15.159-13.917l1.83-21.096c.729-8.396-5.508-15.851-13.898-16.628l-189.102-17.461c-8.593-.795-15.869 5.441-16.653 13.825l-1.97 21.108a15.172 15.172 0 0 0 3.452 11.181 15.19 15.19 0 0 0 10.367 5.459zM437.636 208.849a15.253 15.253 0 0 0 17.694 12.443l21.065-3.678c8.311-1.451 13.898-9.395 12.454-17.706l-32.504-187.23c-1.42-8.207-9.21-13.917-17.692-12.448l-21.065 3.678c-8.311 1.451-13.898 9.395-12.454 17.705l32.502 187.236zM190.333 194.375l163.6 96.708a15.28 15.28 0 0 0 7.778 2.136c5.393 0 10.447-2.876 13.183-7.509l10.876-18.36c2.08-3.519 2.674-7.631 1.658-11.591a15.18 15.18 0 0 0-7.032-9.358l-163.6-96.714c-7.014-4.149-16.836-1.597-20.967 5.374l-10.869 18.36a15.2 15.2 0 0 0-1.658 11.591 15.21 15.21 0 0 0 7.031 9.363zM387.525 240.501a15.276 15.276 0 0 0 12.626 6.659c3.091 0 6.077-.924 8.635-2.681l17.405-11.934c6.953-4.768 8.752-14.314 4.015-21.292L323.29 54.104c-4.584-6.732-14.498-8.623-21.236-3.984l-17.737 12.21c-6.945 4.779-8.727 14.327-3.971 21.291l107.179 156.88zM154.482 302.319l183.465 49.156c1.298.349 2.632.526 3.966.526 6.903 0 12.98-4.67 14.762-11.347l5.508-20.624c2.179-8.152-2.681-16.555-10.826-18.74l-183.465-49.162c-8.017-2.148-16.604 2.852-18.728 10.826l-5.508 20.63c-2.179 8.142 2.68 16.551 10.826 18.735z"></path></svg></a></li>
+</ul>
+</div>
+<div class="subscribe">
+<a href="https://share.hsforms.com/1e2W03wLJQQKPd1d9rCbj_Q2npzm"><button class="btn btn-subscribe f-tc" style="margin-left: 0.75rem;">Subscribe to Blog</button></a>
+</div>
+</div>
+<div class="container">
+<a class="btn-lang" href="/blog-cn" id="lang">中文</a>
+</div>
+</div>
+</nav>
+<div class="blog">
+<div class="blogArticle__container">
+<div class="archive"><div class="article-nav">
+<a href="/blog/#Engineering">BLOG HOME</a> <span> &gt; </span>Engineering</div><div class="content markdown-body">
+<h1 class="title">TiDB 4.0: An Elastic, Real-Time HTAP Database Ready for the Cloud</h1>
+<ul class="blog-post-meta">
+<li class="meta-item">
+<img alt="Date icon" src="/images/svgs/icon-date.svg"/>Thu, Aug 6, 2020</li>
+<li class="meta-item">
+<img alt="Pen icon" src="/images/svgs/icon-writer.svg"/>Max Liu</li>
+</ul>
+<div class="blog-text"><p>Author: Max Liu (CEO at PingCAP)</p>
+<p><img alt="An Elastic, Real-Time HTAP Database Ready for the Cloud" class="lazy" data-original="https://download.pingcap.com/images/blog/cloud-native-distributed-sql-database.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<p>TiDB is an open-source, distributed, <a href="https://en.wikipedia.org/wiki/HTAP">Hybrid Transactional/Analytical Processing</a> (HTAP) database built by <a href="https://pingcap.com/">PingCAP</a> and its open-source community. At <a href="https://pingcap.com/community/devcon2020/">TiDB DevCon 2020</a>, the TiDB community's annual technical conference, more than 80 developers, TiDB users, and partners online from all over the world shared their first-hand development and practical experience with TiDB. The topics covered finance, telecommunications, e-commerce, logistics, video, information, education, medical care, and many other industries. At the meeting, we showed <a href="https://docs.pingcap.com/tidb/stable/release-4.0-ga">TiDB 4.0</a>‘s general availability (GA) technical details and its performance in a production environment. More than 3,000 people signed up to watch the live broadcast and exchanged their ideas in the group.</p>
+<p>This post is based on the keynote speech Max Liu, CEO at PingCAP, gave at this conference. The slides are <a href="https://www.slideshare.net/PingCAP-TiDB/tidb-devcon-2020-opening-keynote">here</a>.</p>
+<p> </p>
+<p>Last year, at TiDB DevCon 2019, we released <a href="https://pingcap.com/blog/tidb-3.0-beta-stability-at-scale">TiDB 3.0 Beta</a>. Today, at TiDB DevCon 2020, I'm so excited to show you <a href="https://docs.pingcap.com/tidb/stable/release-4.0-ga">TiDB 4.0 GA</a>‘s cutting-edge features and functionalities.</p>
+<p><img alt="TiDB 4.0 highlights" class="lazy" data-original="https://download.pingcap.com/images/blog/tidb-4.0-highlights.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> TiDB 4.0 highlights </div>
+<p>I've always believed that, in this day and age, databases should be more real-time, more flexible, and easier to use. TiDB 4.0, an elastic, cloud-native, real-time HTAP database, is exactly that kind of database, because it provides:</p>
+<ul>
+<li>Serverless TiDB</li>
+<li>Real-time HTAP</li>
+<li>Cloud-native TiDB</li>
+</ul>
+<p>They are the most exciting and appealing characteristics to TiDB users. They distinguish TiDB from other databases.</p>
+<h2 id="serverless-tidb">Serverless TiDB</h2>
+<p><a href="https://en.wikipedia.org/wiki/Serverless_computing">Serverless computing</a> is a very important concept in the field of cloud services. If you use a large-scale TiDB cluster, you might want to reduce costs. Now, with serverless capabilities, TiDB 4.0 can automatically scale in or out in Kubernetes based on your application load.</p>
+<p><img alt="Serverless TiDB" class="lazy" data-original="https://download.pingcap.com/images/blog/serverless-tidb.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> Serverless TiDB </div>
+<p>Serverless TiDB brings you these advantages:</p>
+<ul>
+<li><strong>Being automatically elastically scalable on the cloud reduces costs.</strong> In the past, when you wanted to launch a system, the first task was capacity planning: assessing how many servers you needed. However, even the best plans can be inaccurate in practice. For example, you may have prepared 50 servers, but after the system ran in the production environment for a month, you found that 5 machines were enough. This led to a lot of wasted resources. Now, the entire system can elastically scale in the cloud, ensuring the most efficient use of your database resources.</li>
+<li>More importantly, TiDB's elastic scaling means that <strong>you never need to provision system resources according to your application's peak load</strong>. For example, when you have two load peaks in the morning and evening, you provision to peak capacity for 24 hours. But in fact, each peak lasts for only about 2 hours. That is to say, your application peaks are a total of 4 hours but you pay for 24 hours of peak capacity resources. Now with serverless TiDB, you can save resources and costs during off-peak hours. You can save about 70% of the costs, or even more.</li>
+</ul>
+<p>In addition, TiDB can automatically scale based on your application needs to handle unpredictable workloads. For example, no one knows when a commodity will be hot. If you give the system permission to automatically scale based on the actual situation, this may be “life-saving” for a business, since human intervention is often too slow and too late.</p>
+<p><img alt="Serverless scaling" class="lazy" data-original="https://download.pingcap.com/images/blog/serverless-scaling.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> Serverless scaling </div>
+<h2 id="real-time-htap-analytics">Real-time HTAP analytics</h2>
+<p>In TiDB 4.0, we introduce <a href="https://docs.pingcap.com/tidb/v4.0/tiflash-overview">TiFlash</a>, an extended analytical engine and columnar store for TiDB. A TiDB database that incorporates TiFlash lets you perform real-time HTAP analytics.</p>
+<h3 id="why-real-time-htap-analytics">Why real-time HTAP analytics?</h3>
+<p>In today's world, everyone wants everything to be faster and simpler. But if you still use a database in the traditional way to gain insights from large volumes of data, you can't meet this “faster, simpler” demand. This is because in the traditional way, you need to go through a series of complicated processes to extract the changing information, events, and logs from the database and then analyze the data. In this process, a long delay often occurs. Working with outdated information can mean poor decisions and economic losses.</p>
+<p>TiFlash is seamlessly integrated with TiDB, and it inherits TiDB's easy-to-maintain characteristics, such as online data definition language (DDL), seamless scalability, and automatic fault tolerance. And TiFlash can be synchronized with the row-store engine automatically in real time.</p>
+<p>With TiFlash, TiDB 4.0 can be at least 10 times faster than TiDB 3.0 in scenarios with a large number of complex data analytics, and you never need to worry about data inconsistency. <strong>No matter whether TiFlash processes simple Online Transactional Processing (OLTP) workloads or complex Online Analytical Processing (OLAP) workloads, it always guarantees data consistency and freshness. It also can automatically scale in or out.</strong></p>
+<h3 id="a-case-for-real-time-htap-analytics">A case for real-time HTAP analytics</h3>
+<p>Now let's see an example. Look at the architecture diagram below. Almost all companies with a certain scale of data used this architecture. I know a TiDB user who once built a complex system like this architecture in a scenario with only dozens of TB of data. He did this just to be able to deal with OLTP workloads and make a report query. In this process, he had to connect to Kafka and an extract, transform, load (ETL) tool, reserialize the report query results, and then store the results in a storage system such as HBase. Is there a method to simplify the entire architecture?</p>
+<p><img alt="A complex architecture" class="lazy" data-original="https://download.pingcap.com/images/blog/a-complex-architecture.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> A complex architecture </div>
+<p>When we recommended TiDB 4.0 to them, they accepted and deployed it in their production environment. As shown in the diagram below, we put TiDB in the middle layer, and the system complexity was greatly reduced.</p>
+<p><img alt="TiDB's real-time HTAP architecture" class="lazy" data-original="https://download.pingcap.com/images/blog/tidb-real-time-htap-architecture.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> TiDB's real-time HTAP architecture </div>
+<p><img alt="The TiDB HTAP architecture saves costs" class="lazy" data-original="https://download.pingcap.com/images/blog/tidb-htap-architecture-saves-costs.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> The TiDB HTAP architecture saves costs </div>
+<p>From the user's perspective, it doesn't matter whether a workload is a long or short query. To save costs, improve development efficiency, and create more value, users just want to get query results as soon as possible and reduce operation complexity as much as possible.</p>
+<h2 id="cloud-native-tidb">Cloud-native TiDB</h2>
+<p>We're thrilled to release the beta version of <a href="https://pingcap.com/products/tidbcloud">TiDB Cloud</a>, the fully-managed TiDB service delivered by <a href="https://pingcap.com/">PingCAP</a>. TiDB Cloud is the easiest, most economical, and most resilient way to unlock the full power of TiDB in the cloud, allowing the users to deploy and run TiDB clusters with just a few clicks.</p>
+<p>Two years ago, we began to develop TiDB Cloud. Today, it can seamlessly “dance in the cloud.”</p>
+<p><img alt="TiDB Cloud" class="lazy" data-original="https://download.pingcap.com/images/blog/tidb-cloud.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> TiDB Cloud </div>
+<p>If you don't want to install or maintain TiDB, you can <a href="https://pingcap.com/products/tidbcloud/trial">try TiDB Cloud</a>. Currently, TiDB Cloud supports two cloud platforms, Amazon Web Services (AWS) and Google Cloud Platform (GCP). If you're using AWS or GCP, you can easily use TiDB with just a few clicks. It's truly an “out of the box” solution. We're also developing TiDB Cloud to make it support other cloud platforms.</p>
+<p><img alt="Out-of-the-box TiDB Cloud" class="lazy" data-original="https://download.pingcap.com/images/blog/out-of-the-box-tidb-cloud.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> Out-of-the-box TiDB Cloud </div>
+<p>In TiDB 4.0, we introduce more than 70 new features. To learn more about them, you can read <a href="https://pingcap.com/blog/tidb-4.0-ga-gearing-you-up-for-an-unpredictable-world-with-real-time-htap-database">TiDB 4.0 GA, Gearing You Up for an Unpredictable World with a Real-Time HTAP Database</a>.</p>
+<h2 id="tidb-dashboard-a-visual-troubleshooting-tool">TiDB Dashboard, a visual troubleshooting tool</h2>
+<p>TiDB 4.0 introduces <a href="https://docs.pingcap.com/tidb/stable/dashboard-intro">TiDB Dashboard</a>, a graphical interface with various built-in widgets that let you easily diagnose, monitor, and manage your clusters. In a single interface, you can check a distributed cluster's runtime status and manage the cluster.</p>
+<p>Even if you're an inexperienced DBA, you can solve most cluster problems in the graphical interface. In TiDB Dashboard, you can identify hotspots and slow queries in the system and observe application load. With TiDB Dashboard, you can locate most of your system problems within 10 seconds!</p>
+<p><img alt="TiDB Dashboard" class="lazy" data-original="https://download.pingcap.com/images/blog/tidb-dashboard.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> TiDB Dashboard </div>
+<h2 id="tidb-performance-faster-and-faster">TiDB performance: faster and faster</h2>
+<p>Performance is always an “exciting” issue. Compared with version 3.0, <a href="https://pingcap.com/blog/how-we-improved-tpcc-performance-50-percent-and-tpch-performance-100-percent">TiDB 4.0's TPC-C performance improved by about 50%, and TPC-H performance increased by about 100%</a>. For aggregate queries, compared with version 3.0, TiDB 4.0's performance improved by 10 times—and in many scenarios even more.</p>
+<p>These achievements are attributed to contributions from the TiDB open-source community. At the end of 2019, we launched the TiDB Challenge Program, an on-going community effort to bring TiDB to a new level of stability, performance, and usability. A total of 165 participants joined in this campaign, including 23 teams and 122 individual developers. We'd like to thank them for helping us shape TiDB into a competitive product in the database industry.</p>
+<h2 id="tiup-get-a-tidb-cluster-up-in-only-one-minute">TiUP: get a TiDB cluster up in only one minute</h2>
+<p>Some users told us TiDB could be challenging to install. It could take them from several hours to an entire day to deploy the system. Now, this is about to change. TiDB 4.0 introduces <a href="https://pingcap.com/docs/stable/how-to/deploy/orchestrated/tiup/">TiUP</a>, a component manager that streamlines installing and configuring a TiDB cluster into a few easy commands. With TiUP, you can <a href="https://pingcap.com/blog/get-tidb-cluster-up-in-only-one-minute">get your cluster up in just one minute</a>! To deploy a 15-node production cluster, it takes only 45 seconds. Whatever your need or experience level, TiUP will get your cluster up and running quickly with a minimal learning curve.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl https://tiup-mirrors.pingcap.com/install.sh | sh  <span style="color:#f92672">&amp;&amp;</span> tiup playground nightly --monitor
+</code></pre></div><h2 id="security-matters">Security matters!</h2>
+<p><img alt="TiDB security" class="lazy" data-original="https://download.pingcap.com/images/blog/tidb-security.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> TiDB security </div>
+<p>Not only are more enterprises using TiDB, they are using TiDB in more critical scenarios. There's a lot of focus on data security, so we provide security features to meet the security and privacy compliance requirements of each country.</p>
+<p>In TiDB clusters (including the ecosystem tools), data is encrypted both in-flight and at-rest. Neither PingCAP nor any other cloud vendor can violate the data privacy or security of TiDB users. When TiDB runs in the cloud, no one can see the database, and no one can intercept the data from the communication process.</p>
+<h2 id="tidb-40-is-ready-for-production">TiDB 4.0 is ready for production</h2>
+<p>You might wonder: is TiDB 4.0 <em>really</em> ready for production? Let's see a real-world case.</p>
+<p><img alt="TiDB 4.0 in Zhihu" class="lazy" data-original="https://download.pingcap.com/images/blog/tidb-in-zhihu.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> TiDB 4.0 in Zhihu </div>
+<p><a href="https://en.wikipedia.org/wiki/Zhihu">Zhihu</a>, which means “Do you know?” in classical Chinese, is the Quora of China: a question-and-answer website where all kinds of questions are created, answered, edited, and organized by the community of its users. It is <a href="https://walkthechat.com/zhihu-chinas-largest-qa-platform-content-marketers-dream/">China's biggest knowledge sharing platform</a>.</p>
+<p>Last year, Zhihu adopted TiDB in their Moneta application (which stores posts users have already read), and they published a <a href="https://pingcap.com/case-studies/lesson-learned-from-queries-over-1.3-trillion-rows-of-data-within-milliseconds-of-response-time-at-zhihu">post</a> that showed how they kept their query response times at milliseconds levels despite having over 1.3 trillion rows of data.</p>
+<p>Recently, Zhihu upgraded to TiDB 4.0. Their cluster has a capacity of 1 PB, and they've stored 471 TB of data in the cluster.</p>
+<p>I was shocked when I first saw this, not only because of the data scale, but also shocked and moved by Zhihu's confidence in 4.0. <strong>They upgraded to TiDB 4.0 only four days after the GA release.</strong> When we saw this, our confidence grew stronger. TiDB not only supports such a large data scale, but more importantly, it has greatly improved the Moneta application's computing capability and reduced the system latency.</p>
+<p><img alt="Reduced latency" class="lazy" data-original="https://download.pingcap.com/images/blog/reduced-latency.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> Reduced latency </div>
+<p>As we can see in these diagrams, compared with TiDB 3.0, TiDB 4.0 has reduced latency by 40%. In other words, if Zhihu maintains the same latency as before, they can reduce their costs by 40%.</p>
+<h2 id="why-is-tidb-so-popular">Why is TiDB so popular?</h2>
+<p>In the last year, we were often asked, “Why is TiDB so popular?”</p>
+<p><img alt="The TiDB project's stars on GitHub" class="lazy" data-original="https://download.pingcap.com/images/blog/tidb-stars-on-github.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> The TiDB project's stars on GitHub </div>
+<p>We're grateful for the success of TiDB around the world and thrilled that our customers find TiDB so valuable. But the credit doesn't entirely belong to PingCAP. We gladly share it with the open-source community. After all, PingCAP is just part of that community. It's because of developers around the world—like Square, Azure, and Zoom in the United States, Dailymotion in France, and PayPay in Japan—who give us their feedback, file pull requests, and contribute code, that we can shape TiDB into what it is today and build TiDB's active open-source community.</p>
+<p>When 4.0 was released, we made a word cloud to show the organizations that contribute to TiDB. We discovered that many organizations continually contribute to the TiDB community:</p>
+<p><img alt="TiDB contributors’ organizations" class="lazy" data-original="https://download.pingcap.com/images/blog/tidb-contributors-organizations.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> TiDB contributors' organizations </div>
+<p>At the same time, what surprises me is the community's creativity. For example, TiDB Contributor Dongpo Liu visualized the <a href="https://rustin-liu.github.io/Ti2020/">top 100 contributors</a> like this:</p>
+<p><img alt="TiDB's top 100 contributors" class="lazy" data-original="https://download.pingcap.com/images/blog/tidb-top-100-contributors.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> TiDB's top 100 contributors </div>
+<p>If you want to learn more about TiDB, you can attend online or offline training courses through <a href="https://university.pingcap.com">PingCAP University</a>.</p>
+<p>You might be ambitious and want to write a distributed database of your own. No problem. Our <a href="https://github.com/pingcap/talent-plan">Talent Plan</a> program offers courses in how to build a distributed database's computing and storage layers step by step. There will be tutors from all over the world to help you review your code or tasks.</p>
+<h2 id="bonus-chaos-meshsup-sup">Bonus: Chaos Mesh®<sup> </sup></h2>
+<p>Finally, let's talk about our experience in chaos engineering. There is a common understanding in the software field that all foreseeable accidents will eventually occur. We must accept the fact that complex systems are unavoidable, and we must do our best to keep them stable and resilient. Today, the complexity of the entire system is not only limited to the database, but extends to all parts of the business, and ultimately settles in the quality of services the system provides to users.</p>
+<p><img alt="Amazon's and Netflix's microservices" class="lazy" data-original="https://download.pingcap.com/images/blog/amazon-and-netflix-microservices.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> Amazon's and Netflix's microservices </div>
+<p>The figure above graphically represents the connections within Amazon's and Netflix's microservices. These connections are actually much more complicated than spider webs. Therefore, we need a system to simulate all possible faults, let the faults happen continuously, and take precautions to enhance the robustness of the system.</p>
+<p>Therefore, when we were developing TiDB, we built a system called <strong><a href="https://github.com/pingcap/chaos-mesh">Chaos Mesh®</a>, a cloud-native Chaos Engineering platform that orchestrates chaos experiments in Kubernetes environments. It features all-around fault injection methods for complex systems in Kubernetes, covering faults in the Pod, the network, the file system, and even the kernel</strong>.</p>
+<p>For example, Chaos Mesh can simulate a disk failure. In our test environment, if the disk breaks every minute, the network is isolated every minute. Although this situation rarely occurs in reality, if it does, it causes a catastrophic failure.</p>
+<p><img alt="Chaos Mesh® designed for cloud-native systems" class="lazy" data-original="https://download.pingcap.com/images/blog/chaos-mesh-designed-for-cloud-native-systems.jpg" src="/images/svgs/loader-spinner.svg"/></p>
+<div class="caption-center"> Chaos Mesh® designed for cloud-native systems </div>
+<p>When we're developing TiDB, we use Chaos Mesh to test TiDB. TiDB 4.0 received very good feedback from test users, partly due to Chaos Mesh's “crazy and brutal” tests on TiDB. We invite you to use Chaos Mesh to test and improve your own systems.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>TiDB is no longer just a database product. It has become the cornerstone of many systems. Before you use it, you can refer to other people's <a href="https://pingcap.com/case-studies">experiences or solutions</a>. We'll be posting more articles about <a href="https://pingcap.com/community/devcon2020/">TiDB DevCon 2020</a>, so stay tuned.</p>
+<p>You're welcome to <a href="https://docs.pingcap.com/tidb/v4.0/release-4.0-ga">try TiDB</a>, join our <a href="https://slack.tidb.io/invite?team=tidb-community&amp;channel=everyone&amp;ref=pingcap-blog">community on Slack</a>, and send us your feedback.</p>
+</div>
+</div>
+<div class="article-toc"></div><div class="ssba-wrap">
+<div class="ssba">
+<a class="ssba_twitter_share" data-site="" href="http://twitter.com/share?url=https%3a%2f%2fpingcap.com%2fblog%2ftidb-4.0-elastic-real-time-htap-database-ready-for-cloud%2f" target="_blank">
+<img alt="Twitter icon" src="/images/svgs/twitter-icon.svg"/>
+</a>
+<a class="ssba_reddit_share" data-site="reddit" href="http://reddit.com/submit?url=https%3a%2f%2fpingcap.com%2fblog%2ftidb-4.0-elastic-real-time-htap-database-ready-for-cloud%2f&amp;title=TiDB%204.0%3a%20An%20Elastic%2c%20Real-Time%20HTAP%20Database%20Ready%20for%20the%20Cloud" target="_blank">
+<img alt="Reddit icon" src="/images/svgs/reddit-icon.svg"/>
+</a>
+<a class="ssba_facebook_share" data-site="" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fpingcap.com%2fblog%2ftidb-4.0-elastic-real-time-htap-database-ready-for-cloud%2f" target="_blank">
+<img alt="Fackbook icon" src="/images/svgs/facebook-icon.svg"/>
+</a>
+<a class="ssba_linkedin_share" data-site="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fpingcap.com%2fblog%2ftidb-4.0-elastic-real-time-htap-database-ready-for-cloud%2f" target="_blank">
+<img alt="Linkedin icon" src="/images/svgs/linkedin-icon.svg"/>
+</a>
+<a class="ssba_hackernews_share" data-site="hackernews" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fpingcap.com%2fblog%2ftidb-4.0-elastic-real-time-htap-database-ready-for-cloud%2f&amp;t=TiDB%204.0%3a%20An%20Elastic%2c%20Real-Time%20HTAP%20Database%20Ready%20for%20the%20Cloud" target="_blank">
+<img alt="Hacker News icon" src="/images/svgs/hacker-news-icon.svg"/>
+</a>
+</div>
+</div>
+<div class="trackable-btns">
+<a href="/download" onclick="trackViews('TiDB 4.0: An Elastic, Real-Time HTAP Database Ready for the Cloud', 'download-tidb-btn-bottom')"><button>Download
+                        TiDB</button></a>
+<a href="https://share.hsforms.com/1e2W03wLJQQKPd1d9rCbj_Q2npzm" onclick="trackViews('TiDB 4.0: An Elastic, Real-Time HTAP Database Ready for the Cloud', 'subscribe-blog-btn-bottom')"><button>Subscribe to
+                        Blog</button></a>
+</div>
+</div>
+<div class="sidebar-page">
+<div class="sticky-sidebar">
+<p class="toc-title">What’s on this page</p>
+<div id="smart_toc_wrapper"></div>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div class="container">
+<div class="flex-list-wrap">
+<div class="flex-list">
+<h4 class="list-title"><strong>Product</strong></h4>
+<ul>
+<li><a href="/docs/v3.0/">TiDB</a></li>
+<li><a href="/docs/v3.0/reference/tispark/">TiSpark</a></li>
+<li><a href="/docs/v3.0/roadmap/">Roadmap</a></li>
+</ul>
+</div>
+<div class="flex-list">
+<h4 class="list-title"><strong>Docs</strong></h4>
+<ul>
+<li><a href="/docs/stable/quick-start-with-tidb/">Quick Start</a></li>
+<li><a href="/blog/2017-07-24-tidbbestpractice/">Best Practices</a></li>
+<li><a href="/docs/stable/faq/tidb/">FAQ</a></li>
+<li><a href="/docs/stable/reference/tools/user-guide/">TiDB Tools</a></li>
+<li><a href="/docs/dev/releases/rn/">Release Notes</a></li>
+</ul>
+</div>
+<div class="flex-list">
+<h4 class="list-title"><strong>Resources</strong></h4>
+<ul>
+<li><a href="/blog/">Blog</a></li>
+<li><a href="/weekly/">Monthly</a></li>
+<li><a href="https://github.com/pingcap" target="_blank">GitHub</a></li>
+<li><a href="/community">TiDB Community</a></li>
+</ul>
+</div>
+<div class="flex-list">
+<h4 class="list-title"><strong>Company</strong></h4>
+<ul>
+<li><a href="/about/">About</a></li>
+<li><a href="https://angel.co/pingcap-1/jobs" target="_blank">Careers</a></li>
+<li><a href="/news/">News</a></li>
+<li><a href="/contact-us/">Contact Us</a></li>
+<li><a href="/privacy-policy/">Privacy Policy</a></li>
+<li><a href="/terms-of-service/">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="contact-list-wrap">
+<div class="flex-list">
+<h4 class="list-title"><strong>Connect</strong></h4>
+<ul>
+<li><a class="twitter" href="https://twitter.com/PingCAP" target="_blank"><svg height="19" viewbox="0 0 612 612" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M612 116.258a250.714 250.714 0 0 1-72.088 19.772c25.929-15.527 45.777-40.155 55.184-69.411-24.322 14.379-51.169 24.82-79.775 30.48-22.907-24.437-55.49-39.658-91.63-39.658-69.334 0-125.551 56.217-125.551 125.513 0 9.828 1.109 19.427 3.251 28.606-104.326-5.24-196.835-55.223-258.75-131.174-10.823 18.51-16.98 40.078-16.98 63.101 0 43.559 22.181 81.993 55.835 104.479a125.556 125.556 0 0 1-56.867-15.756v1.568c0 60.806 43.291 111.554 100.693 123.104-10.517 2.83-21.607 4.398-33.08 4.398-8.107 0-15.947-.803-23.634-2.333 15.985 49.907 62.336 86.199 117.253 87.194-42.947 33.654-97.099 53.655-155.916 53.655-10.134 0-20.116-.612-29.944-1.721 55.567 35.681 121.536 56.485 192.438 56.485 230.948 0 357.188-191.291 357.188-357.188l-.421-16.253c24.666-17.593 46.005-39.697 62.794-64.861z"></path></svg> Twitter</a></li>
+<li><a class="linkedin" href="https://www.linkedin.com/company/pingcap/" target="_blank"><svg height="16" viewbox="0 0 438.536 438.535" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M5.424 145.895H99.64v282.932H5.424zM408.842 171.739c-19.791-21.604-45.967-32.408-78.512-32.408-11.991 0-22.891 1.475-32.695 4.427-9.801 2.95-18.079 7.089-24.838 12.419-6.755 5.33-12.135 10.278-16.129 14.844-3.798 4.337-7.512 9.389-11.136 15.104v-40.232h-93.935l.288 13.706c.193 9.139.288 37.307.288 84.508 0 47.205-.19 108.777-.572 184.722h93.931V270.942c0-9.705 1.041-17.412 3.139-23.127 4-9.712 10.037-17.843 18.131-24.407 8.093-6.572 18.13-9.855 30.125-9.855 16.364 0 28.407 5.662 36.117 16.987 7.707 11.324 11.561 26.98 11.561 46.966V428.82h93.931V266.664c-.007-41.688-9.897-73.328-29.694-94.925zM53.103 9.708c-15.796 0-28.595 4.619-38.4 13.848C4.899 32.787 0 44.441 0 58.529 0 72.42 4.758 84.034 14.275 93.358c9.514 9.325 22.078 13.99 37.685 13.99h.571c15.99 0 28.887-4.661 38.688-13.99 9.801-9.324 14.606-20.934 14.417-34.829-.19-14.087-5.047-25.742-14.561-34.973C81.562 14.323 68.9 9.708 53.103 9.708z"></path></svg> LinkedIn</a></li>
+<li><a class="reddit" href="https://www.reddit.com/r/TiDB/" target="_blank"><svg height="18" viewbox="0 0 279.748 279.748" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M279.748 133.142c0-19.299-15.701-35-35-35-10.768 0-20.674 4.812-27.279 13.064-18.532-8.431-39.663-13.626-62.015-15.271l19.206-60.692 42.895 9.294c3.285 12.782 14.901 22.258 28.693 22.258 16.336 0 29.627-13.29 29.627-29.626 0-16.336-13.291-29.627-29.627-29.627-11.801 0-21.999 6.941-26.759 16.95l-49.497-10.725a10.002 10.002 0 0 0-11.651 6.756L134.636 95.43c-26.164.638-50.988 6.053-72.356 15.775-6.606-8.251-16.512-13.063-27.28-13.063-19.299 0-35 15.701-35 35 0 9.373 3.683 18.173 10.222 24.709-3.9 8.37-5.875 17.076-5.875 25.936 0 24.048 14.396 46.492 40.538 63.199 25.447 16.264 59.183 25.221 94.989 25.221 35.808 0 69.542-8.957 94.989-25.221 26.142-16.707 40.538-39.151 40.538-63.199 0-8.859-1.975-17.565-5.875-25.936 6.539-6.537 10.222-15.336 10.222-24.709zM15.369 145.139c-2.212-3.59-3.369-7.688-3.369-11.997 0-12.682 10.317-23 23-23 5.444 0 10.558 1.851 14.649 5.258-14.622 8.302-26.132 18.289-34.28 29.739zm52.671 20.266c0-13.785 11.215-25 25-25s25 11.215 25 25-11.215 25-25 25-25-11.215-25-25zm123.119 57.054c-9.745 10.637-29.396 17.244-51.285 17.244-21.888 0-41.539-6.607-51.284-17.244a9.937 9.937 0 0 1-2.617-7.192 9.933 9.933 0 0 1 3.235-6.937 9.974 9.974 0 0 1 6.754-2.627c2.797 0 5.484 1.183 7.373 3.244 5.803 6.333 20.827 10.756 36.539 10.756s30.737-4.423 36.539-10.756a10.022 10.022 0 0 1 7.374-3.244c2.508 0 4.906.933 6.755 2.627a9.928 9.928 0 0 1 3.234 6.937 9.933 9.933 0 0 1-2.617 7.192zm-4.451-32.054c-13.785 0-25-11.215-25-25s11.215-25 25-25 25 11.215 25 25-11.215 25-25 25zm77.671-45.266c-8.147-11.45-19.657-21.436-34.28-29.739 4.092-3.408 9.205-5.258 14.649-5.258 12.683 0 23 10.318 23 23 0 4.309-1.157 8.407-3.369 11.997z"></path></svg>Reddit</a></li>
+<li><a class="google-plus" href="https://groups.google.com/forum/#!forum/tidb-user" target="_blank"><svg height="20" viewbox="0 0 491.858 491.858" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M377.472 224.957H201.319v58.718H308.79c-16.032 51.048-63.714 88.077-120.055 88.077-69.492 0-125.823-56.335-125.823-125.824 0-69.492 56.333-125.823 125.823-125.823 34.994 0 66.645 14.289 89.452 37.346l42.622-46.328c-34.04-33.355-80.65-53.929-132.074-53.929C84.5 57.193 0 141.693 0 245.928s84.5 188.737 188.736 188.737c91.307 0 171.248-64.844 188.737-150.989v-58.718l-.001-.001zM491.858 224.857h-36.031v-36.031h-30.886v36.031H388.91v30.883h36.031v36.032h30.886V255.74h36.031z"></path></svg>Google Group</a></li>
+<li><a class="stack-overflow" href="https://stackoverflow.com/questions/tagged/tidb" target="_blank"><svg height="17" viewbox="0 0 547.597 547.597" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M140.81 475.111h.024l189.91-.269c8.434-.013 15.3-6.886 15.3-15.318v-21.298c0-8.428-6.854-15.288-15.3-15.288l-189.91.264c-8.433.012-15.3 6.885-15.3 15.318v21.31c.001 8.427 6.855 15.281 15.276 15.281z"></path><path d="M58.667 517.854c.073 29.26.073 29.449 3.072 29.449h.055l10.612.294h.086s85.814 0 171.629-.036c42.914-.019 85.821-.05 118-.092 16.09-.019 29.505-.043 38.887-.074 17.803-.055 17.803-.055 17.803-3.072l.3-10.697V333.299c0-8.434-6.866-15.3-15.3-15.3h-11.909c-8.434 0-15.3 6.866-15.3 15.3V496.22c0 5.062-4.119 9.18-9.181 9.18H110.51c-5.061 0-9.18-4.118-9.18-9.18V333.299c0-8.434-6.867-15.3-15.3-15.3H73.82c-8.433 0-15.3 6.86-15.3 15.3 0 23.342.012 76.084.055 122.981.019 23.447.05 45.442.092 61.574z"></path><path d="M142.322 397.399l189.402 17.467c.478.043.948.062 1.413.062 7.956 0 14.468-5.985 15.159-13.917l1.83-21.096c.729-8.396-5.508-15.851-13.898-16.628l-189.102-17.461c-8.593-.795-15.869 5.441-16.653 13.825l-1.97 21.108a15.172 15.172 0 0 0 3.452 11.181 15.19 15.19 0 0 0 10.367 5.459zM437.636 208.849a15.253 15.253 0 0 0 17.694 12.443l21.065-3.678c8.311-1.451 13.898-9.395 12.454-17.706l-32.504-187.23c-1.42-8.207-9.21-13.917-17.692-12.448l-21.065 3.678c-8.311 1.451-13.898 9.395-12.454 17.705l32.502 187.236zM190.333 194.375l163.6 96.708a15.28 15.28 0 0 0 7.778 2.136c5.393 0 10.447-2.876 13.183-7.509l10.876-18.36c2.08-3.519 2.674-7.631 1.658-11.591a15.18 15.18 0 0 0-7.032-9.358l-163.6-96.714c-7.014-4.149-16.836-1.597-20.967 5.374l-10.869 18.36a15.2 15.2 0 0 0-1.658 11.591 15.21 15.21 0 0 0 7.031 9.363zM387.525 240.501a15.276 15.276 0 0 0 12.626 6.659c3.091 0 6.077-.924 8.635-2.681l17.405-11.934c6.953-4.768 8.752-14.314 4.015-21.292L323.29 54.104c-4.584-6.732-14.498-8.623-21.236-3.984l-17.737 12.21c-6.945 4.779-8.727 14.327-3.971 21.291l107.179 156.88zM154.482 302.319l183.465 49.156c1.298.349 2.632.526 3.966.526 6.903 0 12.98-4.67 14.762-11.347l5.508-20.624c2.179-8.152-2.681-16.555-10.826-18.74l-183.465-49.162c-8.017-2.148-16.604 2.852-18.728 10.826l-5.508 20.63c-2.179 8.142 2.68 16.551 10.826 18.735z"></path></svg>Stack Overflow</a></li>
+</ul>
+</div>
+<div class="subscribe">
+<a href="https://share.hsforms.com/1e2W03wLJQQKPd1d9rCbj_Q2npzm"><button class="btn btn-subscribe f-tc">Subscribe to Blog</button></a>
+</div>
+</div>
+</div>
+<div class="container copyright-container">
+<p class="copyright">© 2020 PingCAP. All Rights Reserved.</p>
+<a class="copyright-btn-lang" href="/blog-cn" id="lang">中文</a>
+</div>
+</footer>
+<button class="back-to-top" type="button"><svg height="512" viewbox="0 0 284.929 284.929" width="512" xmlns="http://www.w3.org/2000/svg"><path d="M282.082 195.285L149.028 62.24c-1.901-1.903-4.088-2.856-6.562-2.856s-4.665.953-6.567 2.856L2.856 195.285C.95 197.191 0 199.378 0 201.853c0 2.474.953 4.664 2.856 6.566l14.272 14.271c1.903 1.903 4.093 2.854 6.567 2.854s4.664-.951 6.567-2.854l112.204-112.202 112.208 112.209c1.902 1.903 4.093 2.848 6.563 2.848 2.478 0 4.668-.951 6.57-2.848l14.274-14.277c1.902-1.902 2.847-4.093 2.847-6.566.001-2.476-.944-4.666-2.846-6.569z" fill="#FFF"></path></svg>
+</button>
+</div><div class="overlay"></div><script src="https://download.pingcap.com/js/jquery.min.js"></script><script src="/js/vendor/lazyload.min.js" type="text/javascript"></script>
+<script src="/js/doc.js" type="text/javascript"></script>
+<script src="/js/anchor.js" type="text/javascript"></script><script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script crossorigin="anonymous" integrity="sha384-jbFinqIbKkHNg+QL+yxB4VrBC0EAPTuaLGeRT0T+NfEV89YC6u1bKxHLwoo+/xxY" src="https://browser.sentry-cdn.com/5.11.0/bundle.min.js"></script><script>Sentry.init({ 
+            dsn: 'https://3f28ed393c5545daa74496b3cdb2e9ba@sentry.io/1887163' 
+        });</script><script src="/js/app.js"></script></body></html>

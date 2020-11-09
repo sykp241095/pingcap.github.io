@@ -1,0 +1,1136 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>招贤纳士 on SQL at Scale</title>
+    <link>https://pingcap.com/about-cn/recruit/</link>
+    <description>Recent content in 招贤纳士 on SQL at Scale</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://pingcap.com/about-cn/recruit/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://pingcap.com/about-cn/recruit/join/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/join/</guid>
+      <description>PingCAP 是一个年轻开放、崇尚自由的团队，集合了一群充满好奇心、有追求、技艺高超、梦想用科技改变世界的小伙伴。你，要加入进来么？</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://pingcap.com/about-cn/recruit/qa/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/qa/</guid>
+      <description>PingCAP 是一个年轻开放、崇尚自由的团队，集合了一群充满好奇心、有追求、技艺高超、梦想用科技改变世界的小伙伴。你，要加入进来么？</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://pingcap.com/about-cn/recruit/TOC/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/TOC/</guid>
+      <description>PingCAP 招聘 目录  Engineering  分布式存储系统研发经理 分布式调度研发工程师 数据库内核开发（优化器方向） 分析引擎研发工程师 TiDB 研发工程师 Tools 研发工程师 Cloud 研发工程师 Cloud 研发工程师（Operator） 前端开发工程师 Chaos Mesh 研发工程师 研发工程师 - 测试基础设施开发 数据库测试工程师 TiDB 数据库白盒测试 工程师 / 专家 CI 工程师 Engineering Manager, TiDB Cloud DBaas 测试工程师 工程效率研发工程师 运维工程师 资深安全工程师   Business  高级解决方案架构师 资深商务经理 资深行业销售总监 资深销售经理（TiDB, Cloud） 海外资深商务经理 资深售前技术总监 首席项目经理 资深/高级/中级 TiDB 交付 DBA 资深渠道合作总监 Customer Success Engineer Inside Sales Sales Development Representative   Solution &amp;amp; Architecture  高级应用架构师 (Java 方向) 高级数据库架构师 行业高级架构师 (金融方向) 行业高级架构师 (零售/物流/制造/电商方向)   User Ecosystem  资深互联网架构师 用户生态技术运营 PingCAP University 培训专家 资深/高级/中级 TiDB DBA 社区 BD 总监 数据分析师   Product &amp;amp; Design  数据库产品经理 网站产品经理 平面视觉设计师   I18N  Content Strategist Demand Generation Specialist   MKT  高级产品市场经理 社区运营   Campus  Infrastructure Engineer Cloud 研发工程师 前端开发工程师 网站可靠性工程师 UI/UX 交互设计师 Content Strategist Marketing Specialist Community Marketing Specialist TiDB DBA Infrastructure Engineer Intern HR Intern Content Strategist Intern   General &amp;amp; Administrative  招聘主管 分公司行政主管 法务专员／主管 知识产权法务专家    </description>
+    </item>
+    
+    <item>
+      <title>Chaos Mesh 研发工程师</title>
+      <link>https://pingcap.com/about-cn/recruit/engineering/chaosmesh-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/engineering/chaosmesh-engineer/</guid>
+      <description>TiDB 商业工具开发，完善 TiDB 的周边生态，提升用户使用体验； 建设高度智能的自动化测试系统，进行各种破坏性测试，验证 TiDB 的可靠性。</description>
+    </item>
+    
+    <item>
+      <title>CI 工程师</title>
+      <link>https://pingcap.com/about-cn/recruit/engineering/ci-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/engineering/ci-engineer/</guid>
+      <description>负责 PingCAP CI/CD 系统的设计、开发和维护工作；优化 CI/CD 系统，提升环境稳定性，提高问题诊断效率。</description>
+    </item>
+    
+    <item>
+      <title>Cloud 研发工程师</title>
+      <link>https://pingcap.com/about-cn/recruit/campus/campus-2021-cloud-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/campus/campus-2021-cloud-engineer/</guid>
+      <description>负责构建和维护基于公有云和 Kubernetes 的 TiDB DataBase as a Service (DBaaS) 平台。</description>
+    </item>
+    
+    <item>
+      <title>Cloud 研发工程师</title>
+      <link>https://pingcap.com/about-cn/recruit/engineering/cloud-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/engineering/cloud-engineer/</guid>
+      <description>Cloud 研发工程师 岗位职责：
+  开发基于 Kubernetes 的 TiDB Cloud 版自动化部署和运维工具；
+  开发基于 Kubernetes 的企业版 TiDB 自动化部署工具；
+  负责搭建基于 Kubernetes 和 TiDB 的企业级数据库云 DBaaS。
+  任职要求：
+  优秀的发现和解决问题能力，良好的沟通能力和团队合作精神；
+  三年以上相关领域开发经验，扎实的编程能力，熟悉 C/C++/Rust/Go/Python 中至少一种；
+  了解各种常见网络协议原理和虚拟化技术；
+  熟悉 Docker 容器原理；
+  熟练使用 Linux 和 Docker 容器；
+  了解 Ansible/SaltStack/Puppet/Terraform 等自动化运维工具；
+  对分布式系统有一定了解。
+  加分项：
+  为 Docker/Kubernetes 等容器相关知名开源项目贡献过代码；
+  自己手动部署过 Kubernetes 集群；</description>
+    </item>
+    
+    <item>
+      <title>Cloud 研发工程师（Operator）</title>
+      <link>https://pingcap.com/about-cn/recruit/engineering/cloud-operator-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/engineering/cloud-operator-engineer/</guid>
+      <description>基于 Kubernetes 开发及维护 TiDB Operator，在云上自动化运维 TiDB；负责 TiDB 在云上运维的解决方案，如跨 Region/数据中心部署、云上的自动伸缩、混合云部署等；负责 Cloud 相关 Repo 的开源社区化运作，打造活跃的开源社区。</description>
+    </item>
+    
+    <item>
+      <title>Community Marketing Specialist</title>
+      <link>https://pingcap.com/about-cn/recruit/campus/campus-2021-community-marketing-specialist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/campus/campus-2021-community-marketing-specialist/</guid>
+      <description>An organized, detail-oriented, process-oriented go-getter;Hands-on experience with social media operation and MarTech tools like HubSpot is a big plus；Strong written and verbal communication skills&amp;hellip;&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Content Strategist</title>
+      <link>https://pingcap.com/about-cn/recruit/campus/campus-2021-content-strategist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/campus/campus-2021-content-strategist/</guid>
+      <description>Communicate with the engineering team and write, review and update technical documents, tutorials and blogs;Building and developing brand awareness in technical communities and social media;Assist in preparing and refining the marketing collaterals;</description>
+    </item>
+    
+    <item>
+      <title>Content Strategist</title>
+      <link>https://pingcap.com/about-cn/recruit/i18n/content-strategist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/i18n/content-strategist/</guid>
+      <description>Content Strategist Qualifications:
+  Bachelor&#39;s degree or above in software, computer science or engineering relevant majors with an understanding of the software industry;
+  Excellent command of both written and oral English;
+  Experience and passion in writing software relevant topics;
+  Experience in marketing research is a strong plus;
+  An excellent communicator with a clear and concise writing style;
+  Detail-oriented with sharp eyes and good troubleshooting skills;</description>
+    </item>
+    
+    <item>
+      <title>Content Strategist Intern</title>
+      <link>https://pingcap.com/about-cn/recruit/campus/content-strategist-intern/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/campus/content-strategist-intern/</guid>
+      <description>Content Strategist Intern Qualifications:
+  Bachelor&#39;s degree or above in software, computer science or engineering relevant majors with an understanding of the software industry;
+  Excellent command of both written and oral English;
+  Experience and passion in writing software relevant topics;
+  Experience in marketing research is a strong plus;
+  An excellent communicator with a clear and concise writing style;
+  Detail-oriented with sharp eyes and good troubleshooting skills;</description>
+    </item>
+    
+    <item>
+      <title>Customer Success Engineer</title>
+      <link>https://pingcap.com/about-cn/recruit/business/customer-success-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/business/customer-success-engineer/</guid>
+      <description>Customer Success Engineer Customer Success Engineers work at the intersection of our client services and engineering teams and drive customer success by helping identify and resolve critical business issues. In this role you’ll interact directly with our customers to provide software development and operations expertise, leveraging deep knowledge of best practices in the use of TiDB, the ecosystem tools and TiDB Cloud. You will be hands on in fixing issues seen by PingCAP customers and contributing fixes back to the open source community.</description>
+    </item>
+    
+    <item>
+      <title>DBaas 测试工程师</title>
+      <link>https://pingcap.com/about-cn/recruit/engineering/dbaas-test-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/engineering/dbaas-test-engineer/</guid>
+      <description>负责 DBaas 的测试，提升 DBaas 质量；理解 TiDB 的基础原理，理解容器技术和公有云的常见故障，设计并实现 DBaas 测试体系；参与线上质量分析，提出质量改进建议；参与新特性的测试，提出测试方案、可测性建议；参与代码 review&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Demand Generation Specialist</title>
+      <link>https://pingcap.com/about-cn/recruit/i18n/demand-generation-specialist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/i18n/demand-generation-specialist/</guid>
+      <description>Demand Generation Specialist What will you be doing?
+  Develop, build and manage marketing demand generation that fuels both short-term and sustainable long-term growth via closed-loop lead generation process;
+  Achieve targets (volume and quality) and daily execution;
+  Leading execution on content social media, design, email, and video to produce effective campaigns;
+  Overseeing lead lifecycle from start to finish, with an emphasis on generating qualified leads that turn into prospects;</description>
+    </item>
+    
+    <item>
+      <title>Engineering Manager, TiDB Cloud</title>
+      <link>https://pingcap.com/about-cn/recruit/engineering/manager-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/engineering/manager-engineer/</guid>
+      <description>负责 TiDB Cloud 产品技术研发和技术团队管理;负责 TiDB Cloud 架构设计、技术难点攻关、核心代码开发，编制相关文档；参与组织、协调和管理技术团队项目任务，以保质保量的完成研发任务。</description>
+    </item>
+    
+    <item>
+      <title>Infrastructure Engineer</title>
+      <link>https://pingcap.com/about-cn/recruit/campus/campus-2021-infrastructure-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/campus/campus-2021-infrastructure-engineer/</guid>
+      <description>如果你： 内心不安，喜欢挑战和创新； 熟悉分布式系统，大数据或者数据库领域； 想和简单有爱的 PingCAP 的工程师们一起做世界级的开源项目。 那么你就是我们要找的人。</description>
+    </item>
+    
+    <item>
+      <title>Inside Sales</title>
+      <link>https://pingcap.com/about-cn/recruit/business/commercial-sales/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/business/commercial-sales/</guid>
+      <description>实现 TiDB 产品销售业绩和利润目标；从 TiDB 社区、inbound 电话和邮件以及主动寻访用户等多种方式，进行销售线索的产生、开发和管理工作；处理销售订单工作，包括合同签署、开发票以及回款工作；执行公司指定的区域或客户的销售计划和商业活动。</description>
+    </item>
+    
+    <item>
+      <title>Marketing Specialist</title>
+      <link>https://pingcap.com/about-cn/recruit/campus/campus-2021-marketing-specialist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/campus/campus-2021-marketing-specialist/</guid>
+      <description>市场营销策略的战术执行和专项营销活动的支持，包括品牌、社区、营销类活动的信息收集，执行和活动后传播及效果汇总；协助社区的用户运营和内容运营，构建及完善社区成员关系网，提升活跃度；跟踪和分析市场运营数据及媒体指标，负责市场类标准信息的定期更新和整理分类；周边衍生品的开发及制作，管理供应商，以及物料的日常分发管理。</description>
+    </item>
+    
+    <item>
+      <title>PingCAP University 培训专家</title>
+      <link>https://pingcap.com/about-cn/recruit/user-ecosystem/tidb-training-expert/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/user-ecosystem/tidb-training-expert/</guid>
+      <description>PingCAP University 培训专家 岗位职责：
+  精通技术培训体系，精通数据库技术，面向企业用户及个人用户，制定、规划 PingCAP University 课程体系、讲师体系；
+  负责课程内容架构设计，协同技术内容专家，完成有趣有料的课程开发；
+  研究技术人员的学习行为和反馈，持续提升课程质量及提升用户学习体验；
+  负责 PingCAP University 运营，包括线上推广、渠道商合作体系建立与管理。
+  任职要求：
+  三年以上数据库领域从业经验；熟悉数据库技术理论、至少精通一种数据库产品（Oracle 、 MySQL 、大数据等），对前沿数据库技术有一定研究；高度认同 NewSQL 技术方向；
+  两年以上技术课程设计和运营经验；
+  熟悉常见培训推广策略，熟悉线上学习平台经验优先；
+  具备较强的系统性思维、跨团队沟通协调能力；执行力强，抗压能力强；拥有良好的用户导向思维；
+  从事过 Oracle、MySQL、HBase 等关系型数据库或者大数据培训经历的优先。
+  待遇：
+15K - 40K ， 13 薪 + 奖金，优秀者可面议
+工作地点：
+北京，上海</description>
+    </item>
+    
+    <item>
+      <title>Sales Development Representative</title>
+      <link>https://pingcap.com/about-cn/recruit/business/commercial-sdr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/business/commercial-sdr/</guid>
+      <description>根据客户发展战略，与市场和销售团队进行高水平的合作，利用公司现有资源和渠道，社区、市场活动、inbound 等多种方式，挖掘新客户和现有客户，协助配合销售人员，outbound 潜在行业/区域客户，为 PingCAP 的产品发掘新的商机，设计并创建客户发展计划。</description>
+    </item>
+    
+    <item>
+      <title>TiDB DBA</title>
+      <link>https://pingcap.com/about-cn/recruit/campus/campus-2021-tidb-dba/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/campus/campus-2021-tidb-dba/</guid>
+      <description>负责对客户进行 TiDB 项目实施、技术支持，包括配置管理、升级、扩容、备份、数据迁移等工作；负责用户 TiDB 集群监控、故障响应、问题跟踪及性能分析处理；负责与用户进行需求沟通、技术培训，介绍 TiDB 的原理、使用方式、最佳实践等；研究 TiDB，对某细分方向，如 TiDB 自动化管理、SQL 优化、故障诊断等有持续产出和贡献。</description>
+    </item>
+    
+    <item>
+      <title>TiDB 数据库白盒测试 工程师 / 专家</title>
+      <link>https://pingcap.com/about-cn/recruit/engineering/tidbtest-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/engineering/tidbtest-engineer/</guid>
+      <description>参与 TiDB 数据库及周边工具的白盒测试工作，提升 TiDB 及周边工具的质量；参与线上质量分析、新特性的测试、代码 review 等。</description>
+    </item>
+    
+    <item>
+      <title>TiDB 研发工程师</title>
+      <link>https://pingcap.com/about-cn/recruit/engineering/tidb-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/engineering/tidb-engineer/</guid>
+      <description>TiDB 研发工程师 岗位职责：
+  负责分布式数据库优化器、执行器、事务引擎、DDL 等相关的设计与开发，文档撰写和新人指导；
+  负责分布式数据库 SQL 层的设计，开发和性能优化；
+  参与分布式数据库内核系统的设计。
+  任职要求：
+  三年以上相关领域开发经验，扎实的编程能力，熟悉 C/C++/Go/Java/Python 中的一种；
+  对分布式系统的架构和原理有深入的了解；
+  熟悉 MySQL/PostgreSQL/Greenplum 等数据库系统实现原理；
+  优秀的发现和解决问题能力，良好的沟通能力，具备团队合作精神。
+  加分项：
+  拥抱开源，对前沿技术有浓厚的热情和探索欲望，有开源项目经历；
+  熟悉 MySQL/PostgreSQL/Greenplum 的查询引擎，并阅读过其中的源码。
+  待遇：
+20K - 45K + 期权，13薪 + 奖金，优秀者可面议
+工作地点：
+北京，上海，广州，杭州，成都，特别优秀可 Remote</description>
+    </item>
+    
+    <item>
+      <title>Tools 研发工程师</title>
+      <link>https://pingcap.com/about-cn/recruit/engineering/tools-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/engineering/tools-engineer/</guid>
+      <description>Tools 研发工程师 岗位职责：
+  TiDB 商业工具开发，完善 TiDB 的周边生态，提升用户使用体验；
+  建设高度智能的自动化测试系统，进行各种破坏性测试，验证 TiDB 的可靠性。
+  任职要求：
+  三年以上相关领域开发经验，扎实的编程能力，熟悉 C/C++/Go/Rust 其中一种编程语言；
+  熟悉大型分布式系统，具备冷静分析复杂问题能力；
+  熟悉常用算法和数据结构；
+  深入了解过操作系统和网络；
+  良好的沟通能力和技巧，以及抗压能力；
+  了解 Automated Reasoning、Static Analysis 等测试方法及工具。
+  加分项：
+  爱折腾，强烈的 Hack 精神；
+  TopCoder、Codeforces 黄色以上。
+  待遇：
+20K - 45K + 期权，13薪 + 奖金，优秀者可面议
+工作地点：
+北京，上海，广州，深圳，杭州，成都，特别优秀可 Remote</description>
+    </item>
+    
+    <item>
+      <title>UI/UX 交互设计师</title>
+      <link>https://pingcap.com/about-cn/recruit/campus/campus-2021-ui-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/campus/campus-2021-ui-engineer/</guid>
+      <description>负责对客户进行 TiDB 项目实施、技术支持，包括配置管理、升级、扩容、备份、数据迁移等工作；负责用户 TiDB 集群监控、故障响应、问题跟踪及性能分析处理；负责与用户进行需求沟通、技术培训，介绍 TiDB 的原理、使用方式、最佳实践等；研究 TiDB，对某细分方向，如 TiDB 自动化管理、SQL 优化、故障诊断等有持续产出和贡献。</description>
+    </item>
+    
+    <item>
+      <title>人力资源实习生</title>
+      <link>https://pingcap.com/about-cn/recruit/campus/hr-intern/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/campus/hr-intern/</guid>
+      <description>人力资源实习生 岗位职责：
+  协助实施招聘工作，发布招聘广告、进行简历筛选、组织面试，评估候选人并提供初步面试报告，出具综合评价意见；
+  协助设计优化招聘流程、面试标准、面试题库，组织实施招聘；
+  总结招聘工作中存在的问题，提出优化招聘制度和流程的合理化建议；
+  总结和统计招聘工作各项数据，完成招聘分析报告；
+  配合完成其它人力资源工作。
+  任职要求：
+  英语好，善于与人交流和收集信息，有计算机相关知识或互联网公司实习经验的优先；
+  认真努力学习，吃苦耐劳，Smart，学习能力强；
+  每周至少实习 3 天，可持续实习 3 个月以上。
+  待遇：
+200 元/天，餐补，零食水果，生日会，Team Building
+联系方式：
+hire@pingcap.com
+工作地点：
+北京</description>
+    </item>
+    
+    <item>
+      <title>分公司行政主管</title>
+      <link>https://pingcap.com/about-cn/recruit/general-administrative/office-admin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/general-administrative/office-admin/</guid>
+      <description>分公司行政主管 岗位职责：
+  负责 Office 日常事务性工作，保障办公区域日常运转；
+  负责 Office 内部环境维护以及到访人员的接待；
+  负责公司办公场地租赁费用，水、电、宽带网络等费用结算、管理工作；
+  负责组织公司活动、对活动所需物品进行询价对比、采购工作；
+  负责 Office 相关人事工作，如新员工入离职手续办理，五险一金缴纳等；
+  完成上级领导安排的其他事项。
+  任职要求:
+  本科及以上学历，2 年以上互联网 / 软件 / IT企业人事行政相关经验；
+  学习能力强，工作细致认真，有较强的责任感；
+  可以接受周末 Oncall。
+  待遇：
+5K - 10K，13薪 + 奖金，优秀者可面议
+联系方式：
+hire@pingcap.com
+工作地点：
+杭州，深圳</description>
+    </item>
+    
+    <item>
+      <title>分布式存储系统研发经理</title>
+      <link>https://pingcap.com/about-cn/recruit/engineering/tikv-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/engineering/tikv-engineer/</guid>
+      <description>分布式存储系统研发经理 岗位职责：
+  负责 TiDB 分布式存储引擎的架构以及研发工作，负责 TiDB 生态工具，效率工具的架构以及研发工作；
+  负责研发 team 管理工作；
+  负责提升整体产品的质量，以及性能；
+  负责新技术的探索以及落地。
+  任职要求：
+  有非常丰富的分布式系统研发架构经验，熟练掌握分布式原理，包括但不限于分布式一致性算法 Paxos 或者 Raft，分布式事务等；
+  有非常丰富的性能调优经验，精通 Linux 系统调优，熟练使用多种性能调优工具，包括但不限于 Linux perf，flamegraph，bcc 等；
+  精通存储引擎，包括但不限于 RocksDB，innodb，WireTiger 等。给上述引擎提交过 PR 者优先；
+  精通 MySQL，了解 MySQL binlog 原理，清楚 MySQL 协议，熟悉 MySQL 多种周边工具，熟悉 ghost，go-mysql，canal 等工具优先；
+  对工具非常重视，喜欢自己写工具来解决实际遇到的各种技术难题，能在 Github 提供相关 tools repositories 的优先；
+  有团队管理经验，有成功项目经验者优先。
+  待遇：</description>
+    </item>
+    
+    <item>
+      <title>分布式调度研发工程师</title>
+      <link>https://pingcap.com/about-cn/recruit/engineering/pd-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/engineering/pd-engineer/</guid>
+      <description>分布式调度研发工程师 岗位职责：
+  负责 TiDB AI 调度的架构与实现；
+  负责在云上通过 AI 技术构建更好的弹性系统，降低用户成本。
+  任职要求：
+  熟悉 ML，AI 等知识，能熟练使用相关算法和工具对系统进行调优和改进；
+  有分布式系统研发经验，熟练掌握分布式原理，包括但不限于分布式一致性算法 Paxos 或者 Raft，分布式事务等；
+  了解 K8s，mesos 等调度系统，从事过调度算法研发者优先。
+  待遇：
+20K - 45K，13薪 + 奖金，优秀者可面议
+工作地点：
+北京，上海，广州，杭州，成都，特别优秀可 Remote</description>
+    </item>
+    
+    <item>
+      <title>分析引擎研发工程师</title>
+      <link>https://pingcap.com/about-cn/recruit/engineering/real-time-analytics-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/engineering/real-time-analytics-engineer/</guid>
+      <description>分析引擎研发工程师 职位描述：
+  负责 TiFlash 列存引擎的设计，开发以及测试
+  发现和解决线上反馈问题
+  任职要求：
+  熟练使用 C++ 语言，有良好的编程能力和风格
+  熟练掌握常用算法和数据结构
+  熟悉至少一种数据库，了解 SQL 语言
+  善于沟通与协作
+  拥有良好的解决问题能力
+  待遇
+20K - 45K + 期权，13薪 + 奖金，优秀者可面议
+联系方式：
+hire@pingcap.com
+工作地点
+北京，上海，杭州，成都，广州</description>
+    </item>
+    
+    <item>
+      <title>前端开发工程师</title>
+      <link>https://pingcap.com/about-cn/recruit/campus/campus-2021-fe-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/campus/campus-2021-fe-engineer/</guid>
+      <description>参与 TiDB 商业产品前端研发，构建功能丰富且流畅易用的 UI 系统，持续提升产品的用户体验；参与构建易于维护的，易于扩展的社区门户网站，丰富 CI 流程，打造高效地发布工具。</description>
+    </item>
+    
+    <item>
+      <title>前端开发工程师</title>
+      <link>https://pingcap.com/about-cn/recruit/engineering/fe-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/engineering/fe-engineer/</guid>
+      <description>前端开发工程师 岗位职责：
+  负责 TiDB 商业产品前端研发，构建功能丰富且流畅易用的 UI 系统，持续提升产品的用户体验；
+  前端组件设计和开发，框架定制和保证快速迭代的效率和质量
+  探索前端开发新规范和模式。
+  任职要求：
+  三年以上相关领域开发经验，扎实的编程基础；
+  优秀的发现和解决问题能力，良好的沟通能力和团队合作精神；
+  熟悉 JavaScript、TypeScript 和新语言规范和语法特性，如 ES2015 等；
+  精通 Webpack 构建，Node 脚本开发和常用 Prettier、ESLint、Babel 等配置；
+  熟悉 React/Angular/Vue 等现代 Web 前端框架使用和实现原理；
+  熟悉富应用 SPA 开发模式，如单向数据流 Flux/Redux，响应式编程 rxjs/cyclejs。
+  加分项：
+  拥抱开源，对前沿技术有浓厚的热情和探索欲望，有开源项目经历；
+  良好的适应和学习能力对自己不设限，挑战如：数据可视化、监控告警 DevOPS；
+  喜欢 SaaS 产品，乐于商业化和工具产品设计等方向；
+  其他例如，您熟悉 Electron、看过 Chromium 源代码、写过一些关于 JavaScript 技术的博客文章等。具体不限，我们愿闻其详。</description>
+    </item>
+    
+    <item>
+      <title>工程效率研发工程师</title>
+      <link>https://pingcap.com/about-cn/recruit/engineering/engineering-efficiency-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/engineering/engineering-efficiency-engineer/</guid>
+      <description>工程效率研发工程师 岗位职责：
+  构建自动化流程及工具，解决研发、测试与产品运维中遇到的各种效率问题；
+  负责公司内部 DevOps 平台的开发和维护；
+  负责 CI/CD 相关基础设施的调优及维护；
+  负责 tidb-ansible 部署工具的功能开发及维护。
+  任职要求：
+  三年以上运维开发或内部工程效率工具开发相关领域经验；
+  熟悉 Go/Python 一种编程语言，熟悉 Shell 和 Linux 常用操作；
+  对容器编排系统有较深入的理解及相关开发或使用经验；
+  对并发编程有较深入的理解；
+  熟悉 Docker 原理及 Docker 的常规操作；
+  具有探索精神，有强烈的责任感及合作精神，具备优秀的学习能力和创新能力。
+  加分项：
+  有分布式系统的测试相关经验；
+  有云平台如 AWS/Azure 等的开发经验；
+  熟悉 K8s/Docker 代码；
+  有 tidb 及其生态工具的使用经验。</description>
+    </item>
+    
+    <item>
+      <title>平面视觉设计师</title>
+      <link>https://pingcap.com/about-cn/recruit/product-design/graphic-designer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/product-design/graphic-designer/</guid>
+      <description>平面视觉设计师 岗位职责：
+  参与并支持线下物料的平面视觉设计，例如易拉宝、海报、Banner、宣传册、T恤、周边等；
+  参与并支持线上产品的 UI 设计，如 Web 端和移动端的界面设计、以及 UI 相关的视觉优化和规范建立、对用户体验有一定把握和了解；
+  支持其他各业务部门的设计需求以及沟通；
+  参与日常的 design critique.
+  任职要求：
+  本科以上学历，多媒体艺术设计、工业设计等相关对口专业，有 2 年以上互联网行业视觉设计相关经验者优先；
+  具备扎实的 UI 视觉设计基础知识，持续关注并了解前沿的设计趋势，有自己的设计作品集；
+  熟练使用平面设计软件如 Illustrator、Xd、Photoshop、Sketch 等工具；
+  良好的沟通和理解能力，思维开阔，有想法，有创意
+  自学能力强，有良好的时间管理能力
+  具备团队合作精神，耐心倾听他人意见，工作态度积极有责任心
+  待遇：
+10K - 30K，13薪 + 奖金，优秀者可面议
+联系方式：
+hire@pingcap.com
+工作地点：
+北京，上海</description>
+    </item>
+    
+    <item>
+      <title>招聘主管</title>
+      <link>https://pingcap.com/about-cn/recruit/general-administrative/hr-manager/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/general-administrative/hr-manager/</guid>
+      <description>招聘主管 岗位职责：
+  负责公司招聘渠道的开拓和维护；
+  实施招聘工作，发布招聘广告、进行简历筛选、组织面试，评估候选人并提供初步面试报告，出具综合评价意见；
+  负责设计优化招聘流程、面试标准、面试题库，组织实施招聘；
+  对招聘渠道开发、维护、拓展，保证人才信息量大、层次丰富、质量高，确保招聘渠道能有效满足公司的用人需求；
+  总结招聘工作中存在的问题，提出优化招聘制度和流程的合理化建议；
+  总结和统计招聘工作各项数据，完成招聘分析报告；
+  配合完成其它人力资源工作。
+  任职要求：
+  本科以上学历，人力资源相关专业，2 年以上招聘工作经验；
+  熟悉 IT 软件、互联网、相关行业人才渠道，有销售类职位猎头招聘经验优先；
+  丰富的招聘经验和技巧，熟悉国家相关法律法规；
+  良好的职业道德及团队合作意识，良好的亲和力；
+  优秀的语言表达能力、沟通协调能力和分析判断力。
+  待遇：
+10K - 30K，13薪 + 奖金，优秀者可面议
+联系方式：
+hire@pingcap.com
+工作地点：
+北京，上海，广州，杭州，成都</description>
+    </item>
+    
+    <item>
+      <title>数据分析师</title>
+      <link>https://pingcap.com/about-cn/recruit/user-ecosystem/bi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/user-ecosystem/bi/</guid>
+      <description>数据分析师 职位描述：
+ 负责以数据驱动产品的用户增长，并以数据分析结论推动优化产品中的各个功能和流程，以及运营； 对用户特征数据、用户行为数据、付费数据进行数据挖掘、统计建模分析，并将分析结果上报； 负责行业数据的跟踪及分析、竞品的数据分析； 基于对业务需求的充分理解，设计数据分析和洞察方案，洞察数据分布规律、变化趋势、关联关系等设计数据分析模型并输出数据分析和策略建议报告。  任职要求：
+ 本科及以上学历，数学、统计、金融等相关专业； 三年左右工作经验，同时具备用户运营和商业分析经验者优先考虑； 熟悉 SQL，熟悉 Python、R、Shell 等至少一种语言，有技术开发背景优先； 能够以客观的数据和严谨的分析过程，形成可靠的分析结论及建议，推动产品进行优化调整； 对数据敏感，善于发现数据中的潜在规律，善于分析问题，有很强的逻辑思维能力和推理能力。  待遇：
+15K - 30K + 期权，13薪 + 奖金，优秀者可面议
+联系方式：
+hire@pingcap.com
+工作地点：
+北京/上海/杭州/成都/深圳/广州</description>
+    </item>
+    
+    <item>
+      <title>数据库产品经理</title>
+      <link>https://pingcap.com/about-cn/recruit/product-design/database-product-manager/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/product-design/database-product-manager/</guid>
+      <description>数据库产品经理 岗位职责：
+  负责制定 TiDB / 工具 / 管理平台的产品规划，产品设计，产品阶段性目标制定，对产品负责；
+  负责跟踪业界动态，完成竞品分析，持续改产品，提升用户体验；
+  负责市场调研，收集外部用户、公司内部售前、售后支持、解决方案架构师、研发等团队的需求，完成需求排序，原型设计，BRD、MRD、PRD、原型图文档的编写；
+  负责协调推动后端各种资源合作及执行达成产品目标；
+  负责产品生命周期管理，协同售前、售后支持、解决方案架构师、研发、运营等团队共同完成产品商业目标。
+  任职要求：
+  3 年以上产品经理相关工作经验，有大型云计算服务商产品经理经验者优先；
+  具备较强产品规划、设计、整合能力；
+  熟悉常用的设计方法，流程，项目管理，协同团队能较好的控制项目进度及质量；
+  熟悉 1 种以上 Relational DBMS / NOSQL / 分析型数据库，了解市场上主流的数据库产品；
+  善于沟通，做事认真、细致，逻辑性强，有责任心和团队合作精神，具备优秀的学习能力和创新能力；
+  具备较强的产品 owner 意识，主动优化产品，执行力强，能承受业务发展带来的压力。
+  加分项：
+  对 TiDB / TiSPark / 周边生态工具等有贡献者优先；
+  有数据库 / 大数据 / 技术型产品经理工作经验者优先；</description>
+    </item>
+    
+    <item>
+      <title>数据库内核开发（优化器方向）</title>
+      <link>https://pingcap.com/about-cn/recruit/engineering/optimizer-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/engineering/optimizer-engineer/</guid>
+      <description>数据库内核开发（优化器方向） 职位描述：
+  通过各种手段，确保优化器做出稳定的执行计划
+  完善优化器内核，使其能够做出稳定的，高效的执行计划
+  任职要求：
+  熟练使用 Go 语言，有良好的编程能力和风格
+  熟练掌握常用算法和数据结构
+  熟悉至少一种数据库，了解 SQL 语言
+  善于沟通与协作
+  拥有良好的解决问题能力
+  加分项：
+  熟悉 TiDB 及其生态
+  有数据库计算以及存储层开发经验，对数据库原理和架构有深刻认识
+  待遇
+20K - 45K + 期权，13薪 + 奖金，优秀者可面议
+联系方式：
+hire@pingcap.com
+工作地点
+北京，上海，杭州，成都，广州</description>
+    </item>
+    
+    <item>
+      <title>数据库开发实习生</title>
+      <link>https://pingcap.com/about-cn/recruit/campus/infrastructure-engineer-intern/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/campus/infrastructure-engineer-intern/</guid>
+      <description>数据库开发实习生 职位描述：
+你能从工作中学习到什么？
+  如何构建一个分布式关系数据库；
+  如何将其包装成为一套完整的商业产品；
+  亲身参与以上过程，并实践你所掌握的开发技术；
+  任职要求：
+  熟悉常用的开发语言，熟悉 Golang/Rust 优先；
+  熟悉分布式系统/数据库系统优先；
+  有开源项目实践经历优先；
+  实习优秀者有机会转正，并有机会获得期权。
+  待遇
+300 元/8 小时，餐补，水果零食，生日会，Team Building
+联系方式：
+hire@pingcap.com
+工作地点
+北京，上海，广州，杭州，成都</description>
+    </item>
+    
+    <item>
+      <title>数据库测试工程师</title>
+      <link>https://pingcap.com/about-cn/recruit/engineering/test-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/engineering/test-engineer/</guid>
+      <description>负责 TiDB 及周边产品的测试，包括但不限于功能测试、性能测试和稳定性测试；站在用户的视角测试数据库的功能，设计高覆盖率的测试用例；参与 bug 的管理和复现工作；参与测试用例和测试脚本的开发。</description>
+    </item>
+    
+    <item>
+      <title>法务专员／主管</title>
+      <link>https://pingcap.com/about-cn/recruit/general-administrative/inhouse-legal/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/general-administrative/inhouse-legal/</guid>
+      <description>起草、审核、修改公司各类法律文件；负责为公司各部门提供日常法律问题咨询及解答；了解公司合同管理等情况，针对合同审批流程提出优化建议；为公司重要合同洽谈及招投标等工作提供法务支持；参与商标、专利等知识产权申请工作，协助处理公司法律纠纷、诉讼等。</description>
+    </item>
+    
+    <item>
+      <title>海外资深商务经理</title>
+      <link>https://pingcap.com/about-cn/recruit/business/global-senior-business-manager/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/business/global-senior-business-manager/</guid>
+      <description>与销售，合作伙伴和其他利益相关者建立商务关系、商务流程、商务授权等，并不断进行优化迭代；配合法务部负责合同模板 / 标准制定及迭代，负责商务合同全流程管理和优化，部门内外协调沟通；负责海外项目投标至合同签署的相关商务工作，包括商务、资质及报价等文档的制作，及投标进度管控；制定并管理海外商务报表的统计及分析，识别报告问题，流程中的差距并推动及时解决。</description>
+    </item>
+    
+    <item>
+      <title>用户生态技术运营</title>
+      <link>https://pingcap.com/about-cn/recruit/user-ecosystem/user-ecosystem-technical-operations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/user-ecosystem/user-ecosystem-technical-operations/</guid>
+      <description>用户生态技术运营 岗位职责：
+  对开源生态、数据库或大数据领域有深度理解，负责制定有效、合理的运营策略，促进 TiDB 在广大用户中的应用深度，培养 TiDB 用户的使用热情，技术传播；
+  建立用户生态运营体系，制定有效、合理的运营推广方案，并快速推动方案落地，具备一定顶层策划思维；
+  有很好的亲和力，具有或者能快速融入数据库或大数据技术圈子，进行各种线上、线下 User Group 的活动策划、组织；
+  内部协调资源，辅助完成 TiDB 培训教学、认证考试等工作。
+  任职要求：
+  熟悉数据库或者大数据领域，高度认同 NewSQL 技术方向；
+  三年以上技术产品用户社区运营、管理经验；
+  有较强的活动策划，有一定的技术沙龙组织经验；
+  具备较好逻辑思维能力和创新能力，具备较好的数据分析能力；
+  高度责任感，具备较强的理解能力和执行力，愿意接受挑战，重视结果；
+  有 DBA 等技术背景者优先；
+  混迹各种 MySQL、Oracle、HBase、MongoDB 等圈子的人优先。
+  待遇：
+10K - 35K ， 13 薪 + 奖金，优秀者可面议
+工作地点：
+北京，上海</description>
+    </item>
+    
+    <item>
+      <title>知识产权法务专家</title>
+      <link>https://pingcap.com/about-cn/recruit/general-administrative/Intellectual-property-legal/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/general-administrative/Intellectual-property-legal/</guid>
+      <description>负责商标的申请、维护、驳回复审等工作；负责商标档案的建立、维护和更新；负责知识产权合同（中文和英文）及合同中知识产权条款的审核和修订、建议；负责与外部专利代理机构协作进行软件专利的挖掘、申请等工作。</description>
+    </item>
+    
+    <item>
+      <title>研发工程师 - 测试基础设施开发</title>
+      <link>https://pingcap.com/about-cn/recruit/engineering/test-develop-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/engineering/test-develop-engineer/</guid>
+      <description>负责 TiDB 及周边产品的测试设计和测试开发；开发和维护数据库自动测试平台，打造业界领先的测试基础设施；参与新测试技术调研和实现；打造软件开发过程的工具链。</description>
+    </item>
+    
+    <item>
+      <title>社区 BD 总监</title>
+      <link>https://pingcap.com/about-cn/recruit/user-ecosystem/bd-director/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/user-ecosystem/bd-director/</guid>
+      <description>社区 BD 总监 职位描述：
+  负责在新经济行业（互联网、互联网+等新兴行业）中，进行用户拓展、管理和维护；
+  制定、执行 TiDB 及相关产品在新经济行业中的拓展计划，协调内部资源，帮助用户上线 TiDB 相关产品并扩大使用；
+  引导用户进行合理资源互换，达到双赢；
+  配合社区、运营等部门完成用户侧相关工作。
+  任职要求：
+  5 年以上软件行业商业拓展或用户拓展经验；
+  熟悉互联网等新经济行业；
+  具有良好的用户拓展能力、丰富的用户资源和管理经验；
+  具有数据库软件等基础软件渠道销售或者拓展经验者优先，有技术背景优先；
+  强烈的责任心、良好的沟通能力、亲和力、团队协作能力，抗压能力强；
+  熟悉云技术行业优先；
+  有良好的英语能力。
+  待遇：
+30K - 60K，13 薪 + 期权 + 丰厚的业绩奖金，优秀者可面议
+联系方式：
+hire@pingcap.com
+工作地点：
+北京</description>
+    </item>
+    
+    <item>
+      <title>社区运营</title>
+      <link>https://pingcap.com/about-cn/recruit/market/community-operation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/market/community-operation/</guid>
+      <description>社区运营 岗位职责：
+  社区活动的维护运营，包括活动的主题策划、内容统筹、人员沟通、现场执行等运营工作；
+  企业自媒体平台的日常运营，包括内容编辑、发布、维护、管理、互动、提高影响力和关注度；
+  了解技术社区用户需求，收集反馈，根据运营数据挖掘和分析用户需求；
+  资料的搜集与编辑整理。
+  任职要求：
+  对 ToB 的商业和市场具备一定的感知，了解 ToB 或技术社区类运营的特点和调性；
+  有亲和力，具有较强的表达与理解能力以及极强的团队合作意识，善于主动发现问题并及时沟通并解决；
+  认真负责，逻辑清晰，有良好的文字和语言表达能力；
+  性格开朗，积极热情，能够快速学习。
+  待遇：
+8K -20K，13薪 + 奖金，优秀者可面议
+工作地点：
+北京</description>
+    </item>
+    
+    <item>
+      <title>网站产品经理</title>
+      <link>https://pingcap.com/about-cn/recruit/product-design/website-product-manager/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/product-design/website-product-manager/</guid>
+      <description>网站产品经理 岗位职责：
+  负责公司官网（包括：论坛，培训等）的规划工作；
+  负责公司官网（包括：论坛，培训等）业务逻辑，用户体验优化；
+  负责用户调研，收集内外部用户需求，完成需求排序，原型设计、BRD、MRD、PRD、原型图文档的编写；
+  负责协调推动后端各种资源合作及执行达成产品目标。
+  任职要求：
+  2 年以上产品经理相关工作经验，对当前国内外流行的互联网产品有深入理解；
+  有大型网站工作经验者优先；
+  具备较好的交互设计能力；
+  善于沟通，做事认真、细致、逻辑性强，有责任心和团队合作精神，具备优秀的学习能力和创新能力；
+  具备较强的产品 owner 意识，主动优化产品，执行力强，能承受业务发展带来的压力。
+  待遇：
+15K - 45K + 期权，13薪 + 奖金，优秀者可面议
+联系方式：
+hire@pingcap.com
+工作地点：
+北京，上海，广州，杭州，成都，深圳</description>
+    </item>
+    
+    <item>
+      <title>网站可靠性工程师</title>
+      <link>https://pingcap.com/about-cn/recruit/campus/campus-2021-sre-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/campus/campus-2021-sre-engineer/</guid>
+      <description>负责公司内外部网络服务搭建和维护；对服务所使用资源的管理，服务的部署与维护，线上故障及时排查处理，和研发一起保证线上服务的稳定性；负责管理云服务和公有云如：DNS/CDN/AWS/Azure/GCP/Aliyun 等.</description>
+    </item>
+    
+    <item>
+      <title>行业高级架构师 (金融方向)</title>
+      <link>https://pingcap.com/about-cn/recruit/solution-architecture/senior-solution-architect-f/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/solution-architecture/senior-solution-architect-f/</guid>
+      <description>行业高级架构师 (金融方向) 职位描述：
+ 深入研究国内外金融行业应用架构及数据中心基础架构发展，设计规划面向金融行业的解决方案，最佳实践及技术指引； 深入研究金融行业及行业战略客户的战略规划的理解与优化引导 为战略金融行业客户提供充分结合业务架构与应用架构的分布式数据处理架构咨询规划，并与技术架构落地对接； 为国内外战略金融行业客户提供数字化转型决策支持； 为公司产品战略管理团队提供产品战略路线图的决策指引及决策支持； 战略客户重大，核心项目的合作推进及支持。  任职要求：
+ 有 8 年以上金融行业(银行，保险，第三方支付，互联网金融）解决方案从业经历； 对至少两个以上金融行业细分解决方案方向的行业知识、业务知识、业务架构、应用架构有整体深刻理解，能够在细分专业领域独立完成客户调研、需求分析、业务设计、架构设计、并在技术架构师的帮助下，完成业务架构的落地方案； 深度参与银行/保险行业核心交易系统，信贷，支付，渠道等核心及重要系统的设计及开发 有2年以上的项目或团队管理经验，有超过两个中大型以上金融行业项目的项目经理经验 (含咨询规划，设计开发，实施交付环节)； 能够独立完成对客户的业务设计和技术选择的影响，能够独立对客户中高层（部门总经理级别以上）的决策产生影响； 精通金融行业联机交易及批量方面的技术架构及实现； 熟悉金融行业业务侧数据库主流访问操作技术和应用开发最佳实践； 对云计算知识，金融科技领域知识熟悉； 具备优秀的文档能力，使用文字、图示清楚地表达架构意图，能够熟练编写各类技术文档； 具有娴熟的沟通技巧，执行力强，具有优秀的团队合作精神、敬业精神；对互联网与云计算行业有清晰的认知和热情； 具备良好的英语书面及口语表达能力。  加分项：
+ 开发团队管理经验 具备微服务建设经验 了解容器与技术 认可及热爱开源技术，熟悉开源软件生态及社区  待遇
+25k-45k +期权，13 薪+奖金，优秀者可面议
+联系方式：
+hire@pingcap.com
+工作地点
+北京，上海</description>
+    </item>
+    
+    <item>
+      <title>行业高级架构师 (零售/物流/制造/电商方向)</title>
+      <link>https://pingcap.com/about-cn/recruit/solution-architecture/senior-solution-architect-mul/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/solution-architecture/senior-solution-architect-mul/</guid>
+      <description>行业高级架构师 (零售/物流/制造/电商方向) 职位描述：
+ 深入研究国内外目标 行业应用架构及数据中心基础架构发展，设计规划面向目标行业的解决方案，最佳实践及技术指引； 深入研究目标行业及行业战略客户的战略规划的理解与优化引导 为战略目标行业客户提供充分结合业务架构与应用架构的分布式数据处理架构咨询规划，并与技术架构落地对接； 为国内外战略目标行业客户提供数字化转型决策支持； 为公司产品战略管理团队提供产品战略路线图的决策指引及决策支持； 战略客户重大，核心项目的合作推进及支持。  任职要求：
+ 有 8 年以上目标行业(零售/新零售，物流，制造，电商）解决方案从业经历； 对至少两个以上目标行业细分解决方案方向的行业知识、业务知识、业务架构、应用架构有整体深刻理解，能够在细分专业领域独立完成客户调研、需求分析、业务设计、架构设计、并在技术架构师的帮助下，完成业务架构的落地方案； 深度参与目标行业 核心交易系统，客户/订单/支付/物流/制造 等核心及重要系统的设计及开发 有 2 年以上的项目或团队管理经验，有超过两个中大型以上目标行业项目的项目经理经验 (含咨询规划，设计开发，实施交付环节)； 能够独立完成对客户的业务设计和技术选择的影响，能够独立对客户中高层（部门总经理级别以上）的决策产生影响； 精通目标行业主流应用技术架构及实现； 熟悉目标行业业务侧数据库主流访问操作技术和应用开发最佳实践； 对云计算知识，金融科技领域知识熟悉； 具备优秀的文档能力，使用文字、图示清楚地表达架构意图，能够熟练编写各类技术文档； 具有娴熟的沟通技巧，执行力强，具有优秀的团队合作精神、敬业精神；对互联网与云计算行业有清晰的认知和热情； 具备良好的英语书面及口语表达能力。  加分项：
+ 开发团队管理经验 具备微服务建设经验 了解容器与技术 认可及热爱开源技术，熟悉开源软件生态及社区  待遇
+25k-45k +期权，13 薪+奖金，优秀者可面议
+联系方式：
+hire@pingcap.com
+工作地点
+北京，上海</description>
+    </item>
+    
+    <item>
+      <title>资深/高级/中级 TiDB DBA</title>
+      <link>https://pingcap.com/about-cn/recruit/user-ecosystem/tidb-dba/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/user-ecosystem/tidb-dba/</guid>
+      <description>资深/高级/中级 TiDB DBA 职位描述：
+  负责对客户进行 TiDB 技术支持（线上为主），包括配置管理、升级、扩容、备份、数据迁移等工作；
+  负责用户 TiDB 集群监控、故障响应、问题跟踪及性能分析处理；
+  负责与用户进行需求沟通、技术培训，介绍 TiDB 的原理、使用方式、最佳实践等；
+  研究 TiDB，对某细分方向，如 TiDB 自动化管理、SQL 优化、故障诊断、数据迁移等有持续产出、贡献；
+  对各种数据库、大数据库技术栈进行调研、测试，对数据库生态工具（如数据迁移等）进行调研、测试，方案落地；
+  熟悉 Docker &amp;amp; Kubernetes 的维护，熟悉 DevOps 脚本开发等优先。
+  任职要求：
+  3 年以上 DBA 相关工作经验（MySQL、Oracle、PostgreSQL 等），或者 3 年以上大数据工作经验（Hadoop、HBase、MongoDB 等）；
+  精通一种关系型数据库的（如 MySQL ）配置、备份、优化、监控、管理；
+  熟悉 Linux 操作系统，如常用命令、文件系统、系统配置等，具有较强的故障定位和问题解决能力，有丰富处理重大故障的经历；
+  熟悉 shell、python、perl 等脚本语言，有 DevOPS 工作经验，或对 Ansible、Cloud、Docker、Prometheus 等技术领域有一定使用经验；</description>
+    </item>
+    
+    <item>
+      <title>资深/高级/中级 TiDB 交付 DBA</title>
+      <link>https://pingcap.com/about-cn/recruit/business/tidb-delivery-dba/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/business/tidb-delivery-dba/</guid>
+      <description>资深/高级/中级 TiDB 交付 DBA 岗位职责：
+  负责客户 POC ，TiDB 项目落地、客户关系、项目管理；
+  负责与用户进行需求沟通、技术培训，介绍 TiDB 的原理、使用方式、最佳实践等；
+  负责客户技术支持，包括配置管理、升级、扩容、备份、数据迁移等工作；
+  负责用户 TiDB 集群监控、故障响应、问题跟踪及性能分析处理；
+  负责 POC 相关文档编写、流程建设、优化；
+  研究 TiDB，对某细分方向，如 TiDB 自动化管理、SQL 优化、故障诊断等有持续产出、贡献。
+  任职要求：
+  3 年以上 DBA 或者 大数据工程师 相关工作经验（MySQL、Oracle、Hadoop等），2 年以上的企业服务工作经验；
+  精通一种关系型数据库的（如 MySQL ）配置、备份、优化、监控、管理；
+  熟悉 Linux 操作系统，如常用命令、文件系统、系统配置等，具有较强的故障定位和问题解决能力，有丰富处理重大故障的经历；
+  丰富的项目管理、项目实施经验，能够独立完成数据库架构设计，标准化建设及 POC 文档编写；
+  良好的沟通、技术演讲、资源协调能力，高度的责任心和团队合作精神；
+  对某一行业比较熟悉，有丰富的企业服务、管理经验。
+  待遇：</description>
+    </item>
+    
+    <item>
+      <title>资深互联网架构师</title>
+      <link>https://pingcap.com/about-cn/recruit/user-ecosystem/internet-architect/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/user-ecosystem/internet-architect/</guid>
+      <description>资深互联网架构师 职位描述：
+  负责 TiDB 技术推广，布道；
+  负责互联网用户的技术交流、数据库架构设计；
+  作为桥梁连通 TiDB 用户与开发，反馈、整理用户需求，调研主流技术和方案；
+  与社区、市场部门密切配合，负责相关的沟通、技术支持、技术文档撰写等工作。
+  任职要求：
+  5 年以上主流互联网公司数据库、大数据等领域工作经历；
+  精通至少两种以上的数据库、大数据产品（如 MySQL、Oracle、各种 NoSQL 等）；
+  对云计算、大数据及数据库前沿领域有深入的认识和实践；
+  熟悉互联网行业，对互联网业务发展、技术演变有比较深刻的理解；
+  优秀的技术演讲，技术文章编写，方案设计、用户交流经验；
+  工作条理性强，具有很强的责任心和团队合作精神。
+  待遇
+Base 20K - 40K，13薪 + 期权 + 丰厚的业绩奖金，优秀者可面议
+联系方式：
+hire@pingcap.com
+工作地点
+北京</description>
+    </item>
+    
+    <item>
+      <title>资深售前技术总监</title>
+      <link>https://pingcap.com/about-cn/recruit/business/presales-director/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/business/presales-director/</guid>
+      <description>资深售前技术总监 岗位职责：
+  负责组织制定公司数据库产品、数据库解决方案的技术方案编写、标书的准备、讲解及用户答疑等工作；
+  负责用户的技术交流、技术支持、POC 等工作，及合作伙伴厂商的技术交流；
+  和产品、市场部门密切配合，负责相关的沟通、技术支持、技术文档撰写等工作。
+  任职要求：
+  5 年以上 IT 领域售前工作经验；
+  熟悉传统商业数据库（如 Oracle）及开源数据库，对云计算、大数据及数据库前沿领域有深入的认识和实践；
+  熟悉 1~2个行业，熟悉行业发展方向、技术趋势、商务模式、行业主流 IT 供应商等，熟悉金融行业尤佳；
+  丰富的方案设计、标书应答、用户交流经验，良好的写作和口才、良好的沟通能力；
+  工作条理性强，具有很强的责任心和团队合作精神。
+  待遇：
+Base 20K - 40K，12薪 + 期权 + 丰厚的业绩奖金，优秀者可面议
+工作地点：
+北京，上海，杭州，广州，深圳，成都</description>
+    </item>
+    
+    <item>
+      <title>资深商务经理</title>
+      <link>https://pingcap.com/about-cn/recruit/business/senior-business-manager/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/business/senior-business-manager/</guid>
+      <description>资深商务经理 岗位职责：
+  配合法务部负责合同模板 / 标准制定及迭代，负责商务合同全流程管理和优化，部门内外协调沟通；
+  负责项目投标至合同签署的相关商务工作，包括商务、资质及报价等文档的制作，及投标进度管控；
+  商业流程优化及商业流程审批（授权）；
+  商业报表统计和分析等 sales operation 工作。
+  任职要求：
+  5 年以上工作经验，工作细致，熟悉销售及销售运营管理等业务流程
+  有丰富的企业服务软件类公司工作经验。
+  具备极强的责任感、工作热情以及优秀的组织、沟通、协调能力和团队精神。
+  待遇：
+10K - 25K，13 薪 + 奖金，优秀者可面议
+工作地点：
+北京</description>
+    </item>
+    
+    <item>
+      <title>资深安全工程师</title>
+      <link>https://pingcap.com/about-cn/recruit/engineering/security-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/engineering/security-engineer/</guid>
+      <description>资深安全工程师 职位描述：
+  作为公司产品安全专家为研发团队提供产品安全模型设计和规划；
+  为公司业务部门提供外部项目的安全评估及防范解决方案；
+  配合评审机构完成公司内外部的安全合规检查和评审工作，跟踪合规性评估进程；
+  支持公司在海外业务中涉及的安全类合规审计，规划设计、评估、加固实施等工作；
+  支持业务部门对安全相关的重大事件进行应急响应和处置。
+  任职要求：
+  三年以上安全规划、安全策略设计和安全服务等相关经验，有网络/主机/应用/数据库安全评估、安全审查、安全加固经验者优先；
+  熟悉及掌握国内外安全领域的技术动向；
+  有协助企业完成国内外安全类的行业性安全测试认证，合规审计类工作经验者优先；
+  有实际 BCP/DRP 项目规划和实施经验者优先；
+  了解信息安全等级保护，熟悉 ISO27001、PCI-DSS 等国际安全标准和规范；
+  具有相关资格认证者（如 CISP、CISSP、CISA 等）者优先；
+  熟悉国内外主流安全产品，如防病毒、防火墙、VPN、入侵检测、漏洞扫描、代码审计等，熟悉主流的攻击技术和原理，尤其是在数据库产品类的入侵攻击与防护领域具备扎实的信息安全知识；能够独立组织开展对公司自有产品的安全渗透测试及安全漏洞评估相关工作。
+  待遇：
+面议
+联系方式：
+hire@pingcap.com
+工作地点：
+北京</description>
+    </item>
+    
+    <item>
+      <title>资深渠道合作总监</title>
+      <link>https://pingcap.com/about-cn/recruit/business/channel-sales-director/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/business/channel-sales-director/</guid>
+      <description>资深渠道合作总监 岗位职责：
+  根据公司产品（分布式数据库），负责相关合作伙伴的建立、维护、发展与管理；
+  制定相关合作伙伴的拓展计划，执行并完成相关合作伙伴拓展计划和销售任务；
+  配合销售及市场部门完成相关工作。
+  任职要求：
+  5 年以上软件行业渠道销售经验；
+  与主要 IT 系统集成商、行业应用软件开发商具有良好的合作关系，金融行业尤佳；
+  具有良好的渠道拓展能力和丰富的渠道资源和渠道管理经验；
+  具有数据库软件等基础软件渠道销售经验者优先，有技术背景优先；
+  强烈的责任心、良好的沟通能力、团队协作能力。
+  待遇：
+Base 20K - 40K，期权 + 丰厚的业绩奖金，优秀者可面议
+工作地点：
+北京</description>
+    </item>
+    
+    <item>
+      <title>资深行业销售总监</title>
+      <link>https://pingcap.com/about-cn/recruit/business/sales-director/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/business/sales-director/</guid>
+      <description>资深行业销售总监 岗位职责：
+  负责分布式数据库产品的业务拓展、合作及销售；
+  完成整体业绩指标，包括销售额和回款额。
+  任职要求：
+  5 年以上 IT 软件产品（通用软件/行业应用软件）销售经验，出色的过往销售业绩；
+  有特定政企行业的客户和渠道资源，比如金融、制造业、电信等；
+  出众的沟通表达能力、抗压能力、管理能力，具有敬业精神及团队合作意识；
+  如有数据库技术经验或售前经验有加分。
+  待遇：
+Base 20K - 40K，期权 + 丰厚的业绩奖金，优秀者可面议
+工作地点：
+北京，上海，杭州，广州，深圳，成都</description>
+    </item>
+    
+    <item>
+      <title>资深销售经理（TiDB, Cloud）</title>
+      <link>https://pingcap.com/about-cn/recruit/business/global-sales-manager/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/business/global-sales-manager/</guid>
+      <description>重点对接中国本地出海企业，负责 TiDB 及云上产品在海外的业务拓展、合作及销售；发展指定区域的标杆客户，扩大 TiDB 在当地市场的影响力，发挥标杆带动作用；在指定区域内增加营收和扩大市场份额，按季度达到或超过营收目标.</description>
+    </item>
+    
+    <item>
+      <title>运维工程师</title>
+      <link>https://pingcap.com/about-cn/recruit/engineering/sa-engineer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/engineering/sa-engineer/</guid>
+      <description>运维工程师 岗位职责：
+  保障服务稳定可靠：SA 负责从硬件到网络，从基础服务到各内外部应用的正常运行；
+  协调沟通第三方服务：从调研、协调、到使用第三方服务，诸如 CDN、公有云；
+  响应开发团队需求：访问控制，资源调度，环境准备，服务搭建等；
+  负责 IDC 和所有公有云资源的管理、分配、维护及安全加固；
+  负责监控报警体系建设、错误收集、后续处理及持续改进；
+  不断的用自动化工具优化以上这些流程；
+  任职要求：
+  能独立完成运维监控报警体系建设，并熟悉常见监控和报警相关工具，如 Nagios/Zabbix/Graphite/Grafana/Prometheus 等；
+  熟悉 Docker、K8s 容器化相关技术，有大规模生产环境使用经验；
+  喜欢尝试 DevOps 等自动化运维相关领域的新技术新产品；
+  熟悉 Shell/Python/Golang 中一种或多种；
+  有强大的抗压能力、成本意识和责任感；
+  本科学历及以上（条件优秀者，大专学历亦可）
+  加分项：
+  熟悉虚拟化、容器化相关技术（如 Docker/K8S）；
+  有设计过较大型 IDC 网络（1000+台物理机网络）的经验；
+  具备 Cisco、Juniper、华为高级认证水平者优先。
+  待遇：</description>
+    </item>
+    
+    <item>
+      <title>首席项目经理</title>
+      <link>https://pingcap.com/about-cn/recruit/business/chief-project-manager/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/business/chief-project-manager/</guid>
+      <description>首席项目经理 岗位职责：
+  设计产品 POC 和项目实施交付的相关标准化流程，并根据实际情况不断迭代优化；
+  提升产品 POC 和项目实施交付的效率和质量，提升客户满意度，赢得客户信赖；
+  对实施交付相关项目管理工作负责，以承接需求为起点，产品服务顺利交付到客户为终点，实现端到端的交付业务管理；
+  对项目所涉及的技术方案、规划设计方案、交付方案、合同相关条款等关键点和风险点进行评审把关；
+  以科学的数据管理手段为驱动；
+  通过培训，提升技术支持服务员工的项目管理能力。
+  任职要求：
+  全日制本科及以上学历，至少 5 年 IT 背景或软件开发、集成项目工作经验；
+  三年以上大型传统企业软件项目实施、交付管理经验；
+  熟悉项目管理流程和方法论，具有良好的技术能力和客户服务意识，较强团队管理能力和组织协调能力，能够独立承担项目，解决项目过程中出现的问题；
+  有强烈的责任心和时间观念，能够根据项目实际情况制定、推进、分解计划，善于协调各方资源，共同完成目标；
+  有 PMP 证书、信息产业部系统集成项目经理证书等优先；
+  熟悉数据库领域优先。
+  待遇：
+Base 20K - 40K，13薪 + 丰厚的年终奖金，优秀者可面议
+工作地点：
+北京</description>
+    </item>
+    
+    <item>
+      <title>高级产品市场经理</title>
+      <link>https://pingcap.com/about-cn/recruit/market/senior-product-marketing-manager/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/market/senior-product-marketing-manager/</guid>
+      <description>高级产品市场经理 职位描述：
+  负责规划产品/功能的上市策略，设计营销体系并落实，为增长负责；
+  进行产品市场分析，竞争动态、技术动向及趋势等市场调研分析，输出行业推广战略；
+  联动其他部门，创建和维护商业化营销材料，包括商业产品介绍、宣传文案、引流落地页文案等产品市场文案；
+  负责对外推广的策划和执行，并与解决方案、商业团队密切合作，通过线上 / 下活动传递营销信息；
+  定期数据分析，为营销策略提供依据。
+  任职要求：
+  具备产品市场分析及推广策划能力，熟悉互联网营销整体流程，熟悉各种推广手段，对互联网，企业级服务，数据库等领域熟悉，了解开源；
+  从事互联网营销、产品市场 3 年以上，有独立产品市场运作经验，具备相关活动的实施经验和资源；
+  具有较强的策划能力和文案与表达能力，善于发现和分析事物，善于总结；
+  执行力强，协作能力强，有目标导向，思路敏捷，善于沟通；
+  具备基础设施领域技术背景，或英文优秀者加分。
+  待遇
+25K -40K，13薪 + 奖金，优秀者可面议
+联系方式：
+hire@pingcap.com
+工作地点
+北京</description>
+    </item>
+    
+    <item>
+      <title>高级应用架构师 (Java 方向)</title>
+      <link>https://pingcap.com/about-cn/recruit/solution-architecture/senior-solution-architect-java/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/solution-architecture/senior-solution-architect-java/</guid>
+      <description>高级应用架构师 (Java 方向) 职位描述：
+ 深入跟踪及研究应用开发领域前沿架构及技术，为 TiDB 分布式数据库的应用适配能力提供产品能力规划支持； 根据 TiDB 分布式架构技术特性，深度研究并对应用适配的细分方向，如 TiDB SQL 优化、应用相关故障诊断等设计编制最佳实践及技术指引； 结合实践需求，设计制定 TiDB 的应用开发相关的技术方案，并推动技术方案落地； 支持国内外商业重点场景 PoC 和项目； 跨团队协作，配合产品团队整理应用适配相关需求，配合 QA 团队设计优化行业相关测试用例。  任职要求：
+ 3 年以上 Java 联机应用开发经验，2 年以上的企业服务工作经验，有 Java 框架开发工作经验优先； 熟悉掌握 Spring、Spring MVC、MyBatis 等常用框架，了解其工作原理； 熟悉 MySQL JDBC 配置及优化及主流数据库连接池工作原理； 具备应用排查性能问题的经验，有较强的故障定位和问题解决能力，有处理复杂应用问题及故障的经验； 熟悉数据库基础原理，熟悉应用侧数据库及缓存操作； 熟悉 Linux 操作系统，如常用命令、文件系统、系统配置等； 具备良好的英语书面及口语表达能力； 丰富的项目管理、项目实施经验，较强的文档编写能力； 良好的沟通、技术演讲、资源协调能力，高度的责任心和团队合作精神； 认可及热爱开源技术，熟悉开源软件生态及社区；  加分项：
+ 银行/证券/保险/制造/零售/电商/物流业从业经验； 应用开发侧熟悉 Python/Golang 等开发场景 具备微服务建设经验； 了解容器技术； 有自己的开源作品；  待遇
+20k-40k +期权，13 薪+奖金，优秀者可面议
+联系方式：
+hire@pingcap.com
+工作地点
+北京，上海</description>
+    </item>
+    
+    <item>
+      <title>高级数据库架构师</title>
+      <link>https://pingcap.com/about-cn/recruit/solution-architecture/senior-solution-architect-db/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/solution-architecture/senior-solution-architect-db/</guid>
+      <description>高级数据库架构师 职位描述：
+ 深度研究 TiDB，对 TiDB 技术解决方案的细分方向，如高可用容灾架构、异构数据库迁移、第三方联合解决方案等有持续产出、贡献； 探索 TiDB 的能力极限，指导适用场景的筛选，指导产品克服关键瓶颈； 深度跟踪及研究国内外分布式数据库前沿架构及相关技术，为产品决策团队提供产品路线图决策分析及支持； 支持国内外商业重点场景 PoC 和项目；  任职要求：
+ 5 年以上 DBA 或 RDBMS 解决方案架构设计相关工作经验（MySQL、Oracle、DB2 等），精通一种关系型数据库的配置、备份、优化、监控、管理； 1 年以上的分布式数据库相关工作经验（TiDB、OceanBase、GoldenDB、TDSQL、GaussDB T），了解分布式数据库的前沿技术； 丰富的 PoC、项目管理和项目实施经验，能够独立完成数据库解决方案架构设计经验，精通高可用容灾解决方案，能够独立完成 POC 文档编写； 精通 Linux 操作系统运维，具有较强的故障定位和问题解决能力，有丰富处理重大故障的经历，有存储和网络运维经验； 良好的沟通、技术演讲、资源协调能力，高度的责任心和团队合作精神； 对某行业场景比较熟悉，有丰富的企业服务、管理经验。 备良好的英语书面及口语表达能力； 认可及热爱开源技术，熟悉开源软件生态及社区；  加分项：
+ 银行/证券/保险/制造/零售/电商/物流业从业经验； 有在分布式数据库厂商从业经验； DevOps 工作经验； 英语听说能力； 了解容器技术；  待遇
+20k-40k +期权，13 薪+奖金，优秀者可面议
+联系方式：
+hire@pingcap.com
+工作地点
+北京，上海</description>
+    </item>
+    
+    <item>
+      <title>高级解决方案架构师</title>
+      <link>https://pingcap.com/about-cn/recruit/business/senior-solution-architect-overseas/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pingcap.com/about-cn/recruit/business/senior-solution-architect-overseas/</guid>
+      <description>与出海行业关键合作伙伴建立技术侧联合解决方案的合作，并配合商业化部门建立和维护相关解决方案认证体系；负责用户的技术交流、技术支持、POC 等工作，及合作伙伴厂商的技术交流；熟悉国内出海行业及海外云服务生态，研究与公司核心产品相关的潜力行业及潜力场景&amp;hellip;&amp;hellip;</description>
+    </item>
+    
+  </channel>
+</rss>
