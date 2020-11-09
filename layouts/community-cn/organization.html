@@ -118,20 +118,20 @@ Community Organization
             {{- end -}}
           </div>
 
-          <div class="member-type">SIGs</div>
+          <div class="member-type" id="sigs">SIGs</div>
           <div class="flex-lists divider members contributor">
             {{- range $idx, $i := .Site.Data.community_cn_organization.tikv -}}
             <div class="contributor-info contributor-info-cn member flex-lists">
-              <a href="/developer/sig/{{ $i.sig_name }}" class="name">{{ $i.sig_name }}</a>
-              <a href="{{ $i.sig_url }}" target="_blank"><img src="/images/github.svg" /></a>
-              <a href="{{ $i.channel }}" target="_blank"><img src="/images/slack.svg" /></a>
+              <a href="/developer/sig/{{ $i.sig_name }}" class="name"><p>{{ $i.sig_name }}</p></a>
+              <a href="{{ $i.sig_url }}" target="_blank" class="github-link"><img src="/images/github.svg" /></a>
+              <a href="{{ $i.channel }}" target="_blank" class="slack-link"><img src="/images/slack.svg" /></a>
             </div>
             {{- end -}}
             {{- range $idx, $i := .Site.Data.community_cn_organization.tidb -}}
             <div class="contributor-info contributor-info-cn member flex-lists">
               <a href="/developer/sig/{{ $i.sig_name }}" class="name">{{ $i.sig_name }}</a>
-              <a href="{{ $i.sig_url }}" target="_blank"><img src="/images/github.svg" /></a>
-              <a href="{{ $i.channel }}" target="_blank"><img src="/images/slack.svg" /></a>
+              <a href="{{ $i.sig_url }}" target="_blank" class="github-link"><img src="/images/github.svg" /></a>
+              <a href="{{ $i.channel }}" target="_blank" class="slack-link"><img src="/images/slack.svg" /></a>
             </div>
             {{- end -}}
           </div>

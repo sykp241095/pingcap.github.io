@@ -1,9 +1,6 @@
 const sigBaseURL = 'https://bots.tidb.io/ti-community-bot/sigs/'
 
 function renderData(sigName, membership) {
-  console.log('member', membership)
-
-
   $(
     '<div class="member-header" id="member-' + sigName + '">' + sigName + ' SIG </div>'
   ).appendTo('.developer-group-members')
@@ -20,15 +17,13 @@ function renderData(sigName, membership) {
   Object.keys(membership).forEach((member) =>
     membership[member].forEach((m) =>
       $(
-        '<div class="member flex-lists">\
-          <a href="https://github.com/' + m.githubName + '">\
+        '<a class="member flex-lists" href="https://github.com/' + m.githubName + '">\
             <img class="lazy avatar" src="https://github.com/' + m.githubName + '.png" alt="avatar" />\
             <div class="member-info">\
               <p>' + m.githubName + '</p>\
               <div class="github-icon"><p>' + m.githubName + '</p></div>\
             </div>\
-          </a>\
-        </div>'
+        </a>'
       ).appendTo('#member-' + member)
     )
   )
@@ -38,13 +33,11 @@ function getSig(sigName) {
   let url = sigBaseURL + sigName
 
   $.getJSON(url, data => {
-    console.log(
-      'data',
-      data.data,
-      data.data.membership,
-      Object.keys(data.data.membership)
-    )
     const membership = data.data.membership
+    if(data) {
+      $('.loader-spinner').css('display', 'none')
+      $('.developer-sig').css('background-color', '#F5F6F8')
+    }
     renderData(sigName, membership)
   })
 }
